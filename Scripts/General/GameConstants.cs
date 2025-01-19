@@ -1,4 +1,4 @@
-namespace GamedevTvActionAdventure2.d_RPG.Scripts.General;
+namespace GamedevTvActionAdventure25d_RPG.Scripts.General;
 
 public abstract class GameConstants
 {

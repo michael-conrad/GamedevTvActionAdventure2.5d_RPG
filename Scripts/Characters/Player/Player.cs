@@ -1,20 +1,22 @@
-using GamedevTvActionAdventure2.d_RPG.Scripts.General;
+using GamedevTvActionAdventure25d_RPG.Scripts.General;
 using Godot;
+
+namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class Player : CharacterBody3D
 {
     [ExportGroup("Required Nodes")]
-    [Export] private AnimationPlayer _animationPlayer;
-    [Export] private Sprite3D _sprite3D;
+    [Export] public AnimationPlayer animationPlayer;
+    [Export] public Sprite3D sprite3D;
 
-    [ExportGroup("Gameplay Settings")] [Export]
-    private int _speed = 5;
+    [ExportGroup("Gameplay Settings")]
+    [Export] public int speed = 5;
     
     private Vector3 _direction = Vector3.Zero;
 
     public override void _Ready()
     {
-        _animationPlayer.Play(GameConstants.Anim.Idle);
+        animationPlayer.Play(GameConstants.Anim.Idle);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -30,32 +32,19 @@ public partial class Player : CharacterBody3D
             GameConstants.Input.MoveRight,
             GameConstants.Input.MoveUp,
             GameConstants.Input.MoveDown);
-        Flip(input);
-        Animate(input);
-        _direction = new Vector3(input.X, 0, input.Y) * _speed;
+        _direction = new Vector3(input.X, 0, input.Y) * speed;
+        Flip(_direction);
     }
 
-    private void Animate(Vector2 input)
+    private void Flip(Vector3 motion)
     {
-        if (input == Vector2.Zero)
+        if (motion.X < 0)
         {
-            _animationPlayer.Play(GameConstants.Anim.Idle);
+            sprite3D.FlipH = true;
         }
-        else
+        else if (motion.X > 0)
         {
-            _animationPlayer.Play(GameConstants.Anim.Move);
-        }
-    }
-
-    private void Flip(Vector2 input)
-    {
-        if (input.X < 0)
-        {
-            _sprite3D.FlipH = true;
-        }
-        else if (input.X > 0)
-        {
-            _sprite3D.FlipH = false;
+            sprite3D.FlipH = false;
         }
     }
 }
