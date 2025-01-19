@@ -9,15 +9,28 @@ public partial class PlayerMoveState : Node
 
     public override void _Ready()
     {
+        SetPhysicsProcess(false);
         _player = GetParent<Player>();
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+        if (_player.direction == Vector3.Zero) _player.stateMachineNode.SwitchState<PlayerIdleState>();
     }
 
     public override void _Notification(int what)
     {
         base._Notification(what);
-        if (what == GameConstants.Anim.StateChanged)
+        if (what == (int)GameConstants.States.StateChanged)
         {
             _player.animationPlayer.Play(GameConstants.Anim.Move);
+            SetPhysicsProcess(true);
+        }
+
+        if (what == (int)GameConstants.States.PhysicsDisable)
+        {
+            SetPhysicsProcess(false);
         }
     }
 }

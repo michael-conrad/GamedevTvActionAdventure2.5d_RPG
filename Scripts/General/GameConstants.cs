@@ -2,9 +2,14 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.General;
 
 public abstract class GameConstants
 {
+    public enum States
+    {
+        StateChanged = 5_001,
+        PhysicsDisable = 5_002
+    }
+
     public abstract class Anim
     {
-        public const int StateChanged = 5_001;
         public const string Idle = "Idle";
         public const string Move = "Move";
     }

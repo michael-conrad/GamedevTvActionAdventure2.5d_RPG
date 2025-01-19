@@ -41,12 +41,7 @@ public partial class Player : CharacterBody3D
     private void Flip(Vector3 motion)
     {
         if (motion.X < 0)
-        {
             sprite3D.FlipH = true;
-        }
-        else if (motion.X > 0)
-        {
-            sprite3D.FlipH = false;
-        }
+        else if (motion.X > 0) sprite3D.FlipH = false;
     }
 }
