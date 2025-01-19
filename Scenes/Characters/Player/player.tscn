@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=82 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
 [ext_resource type="Texture2D" uid="uid://crclm0o8w7qjy" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_djdun"]
@@ -79,6 +79,7 @@
 [ext_resource type="Texture2D" uid="uid://7u0jkl45w2ol" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_003.png" id="74_1f3aq"]
 [ext_resource type="Texture2D" uid="uid://dxxfuxge6h8bp" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_004.png" id="75_ssny7"]
 [ext_resource type="Texture2D" uid="uid://dgrc8ah3jmfio" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_005.png" id="76_hj24q"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_d55l3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_chftp"]
 animations = [{
@@ -128,7 +129,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_0bv3d")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dying",
 "speed": 20.0
 }, {
@@ -228,7 +229,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("46_lns5m")
 }],
-"loop": true,
+"loop": false,
 "name": &"Kicking",
 "speed": 20.0
 }, {
@@ -310,7 +311,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("70_82tt0")
 }],
-"loop": true,
+"loop": false,
 "name": &"Slashing",
 "speed": 20.0
 }, {
@@ -333,7 +334,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("76_hj24q")
 }],
-"loop": true,
+"loop": false,
 "name": &"Sliding",
 "speed": 20.0
 }]
@@ -345,15 +346,18 @@ stateMachineNode = NodePath("StateMachine")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Sliding"
-
-[node name="IdleState" type="Node" parent="."]
-script = ExtResource("32_tmdfr")
-
-[node name="MoveState" type="Node" parent="."]
-script = ExtResource("33_6et8e")
+animation = &"Idle Blinking"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_currentState", "_states")]
 script = ExtResource("34_7ram5")
-_currentState = NodePath("../IdleState")
-_states = [NodePath("../IdleState"), NodePath("../MoveState")]
+_currentState = NodePath("IdleState")
+_states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState")]
+
+[node name="DashState" type="Node" parent="StateMachine"]
+script = ExtResource("80_d55l3")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("32_tmdfr")
+
+[node name="MoveState" type="Node" parent="StateMachine"]
+script = ExtResource("33_6et8e")

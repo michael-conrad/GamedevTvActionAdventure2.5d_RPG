@@ -10,12 +10,7 @@ public partial class StateMachine : Node
 
     public override void _Ready()
     {
-        if (_currentState != null) _currentState.Notification((int)GameConstants.States.StateChanged);
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        base._PhysicsProcess(delta);
+        // if (_currentState != null) _currentState.Notification((int)GameConstants.States.StateChanged);
     }
 
     public void SwitchState<T>()
@@ -23,7 +18,11 @@ public partial class StateMachine : Node
         Node newState = null;
         foreach (var state in _states)
             if (state is T)
+            {
                 newState = state;
+                GD.Print("New State");
+            }
+
 
         if (newState == null) return;
 

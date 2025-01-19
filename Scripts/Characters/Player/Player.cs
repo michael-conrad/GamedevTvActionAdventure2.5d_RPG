@@ -14,6 +14,7 @@ public partial class Player : CharacterBody3D
     [Export] public AnimatedSprite3D sprite3D;
     [Export] public StateMachine stateMachineNode;
 
+
     public override void _Ready()
     {
         // ignore

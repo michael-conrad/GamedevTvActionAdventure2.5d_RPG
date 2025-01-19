@@ -10,7 +10,8 @@ public partial class PlayerMoveState : Node
     public override void _Ready()
     {
         SetPhysicsProcess(false);
-        _player = GetParent<Player>();
+        // _player = GetParent<Player>();
+        _player = FindParent("Player").GetNode<Player>(".");
     }
 
     public override void _PhysicsProcess(double delta)
