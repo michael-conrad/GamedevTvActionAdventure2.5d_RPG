@@ -2,8 +2,17 @@ using Godot;
 
 public partial class Player : CharacterBody3D
 {
-    private Vector3 _direction = Vector3.Zero;
+    [ExportGroup("Required Nodes")]
+    [Export] private AnimationPlayer _animationPlayer;
+    [Export] private Sprite3D _sprite3D;
     
+    private Vector3 _direction = Vector3.Zero;
+
+    public override void _Ready()
+    {
+        base._Ready();
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         Velocity = _direction;
