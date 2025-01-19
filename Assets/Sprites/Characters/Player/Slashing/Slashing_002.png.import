@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2fqs5arhj2gf"
-path.s3tc="res://.godot/imported/Slashing_002.png-1b1663c77d57b4dffe5853ca6546422b.s3tc.ctex"
+path="res://.godot/imported/Slashing_002.png-1b1663c77d57b4dffe5853ca6546422b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Sprites/Characters/Player/Slashing/Slashing_002.png"
-dest_files=["res://.godot/imported/Slashing_002.png-1b1663c77d57b4dffe5853ca6546422b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Slashing_002.png-1b1663c77d57b4dffe5853ca6546422b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

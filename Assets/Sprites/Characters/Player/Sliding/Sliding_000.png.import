@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mpg2jle7jv7n"
-path.s3tc="res://.godot/imported/Sliding_000.png-3feb80365700fdc5bb956e2043f2270e.s3tc.ctex"
+path="res://.godot/imported/Sliding_000.png-3feb80365700fdc5bb956e2043f2270e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Sprites/Characters/Player/Sliding/Sliding_000.png"
-dest_files=["res://.godot/imported/Sliding_000.png-3feb80365700fdc5bb956e2043f2270e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sliding_000.png-3feb80365700fdc5bb956e2043f2270e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

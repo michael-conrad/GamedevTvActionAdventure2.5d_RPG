@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://carx323wc3xjl"
-path.s3tc="res://.godot/imported/Kicking_002.png-340f07304428a6d8da7fff60577983d4.s3tc.ctex"
+path="res://.godot/imported/Kicking_002.png-340f07304428a6d8da7fff60577983d4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Sprites/Characters/Player/Kicking/Kicking_002.png"
-dest_files=["res://.godot/imported/Kicking_002.png-340f07304428a6d8da7fff60577983d4.s3tc.ctex"]
+dest_files=["res://.godot/imported/Kicking_002.png-340f07304428a6d8da7fff60577983d4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
