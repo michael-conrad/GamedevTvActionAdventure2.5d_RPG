@@ -94,6 +94,7 @@ _animationPlayer = NodePath("AnimationPlayer")
 _sprite3D = NodePath("Sprite3D")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 4
 texture = ExtResource("2_djdun")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

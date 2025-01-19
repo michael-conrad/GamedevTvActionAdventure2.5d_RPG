@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdqyu5xgjf4oq"
-path.s3tc="res://.godot/imported/Running_007.png-4decbe91a06002d1e4f5f1cee21f4a42.s3tc.ctex"
+path="res://.godot/imported/Running_007.png-4decbe91a06002d1e4f5f1cee21f4a42.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Sprites/Characters/Player/Running/Running_007.png"
-dest_files=["res://.godot/imported/Running_007.png-4decbe91a06002d1e4f5f1cee21f4a42.s3tc.ctex"]
+dest_files=["res://.godot/imported/Running_007.png-4decbe91a06002d1e4f5f1cee21f4a42.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
