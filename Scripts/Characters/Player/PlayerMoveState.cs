@@ -24,7 +24,7 @@ public partial class PlayerMoveState : Node
         base._Notification(what);
         if (what == (int)GameConstants.States.StateChanged)
         {
-            _player.animationPlayer.Play(GameConstants.Anim.Move);
+            _player.sprite3D.Play(GameConstants.Anim.Move);
             SetPhysicsProcess(true);
         }
 

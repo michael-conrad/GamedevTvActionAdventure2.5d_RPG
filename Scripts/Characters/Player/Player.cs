@@ -6,14 +6,12 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 public partial class Player : CharacterBody3D
 {
     [ExportGroup("Required Nodes")] [Export]
-    public AnimationPlayer animationPlayer;
-
     public Vector3 direction = Vector3.Zero;
 
     [ExportGroup("Gameplay Settings")] [Export]
     public int speed = 5;
 
-    [Export] public Sprite3D sprite3D;
+    [Export] public AnimatedSprite3D sprite3D;
     [Export] public StateMachine stateMachineNode;
 
     public override void _Ready()
@@ -41,7 +39,12 @@ public partial class Player : CharacterBody3D
     private void Flip(Vector3 motion)
     {
         if (motion.X < 0)
+        {
             sprite3D.FlipH = true;
-        else if (motion.X > 0) sprite3D.FlipH = false;
+        }
+        else
+        {
+            if (motion.X > 0) sprite3D.FlipH = false;
+        }
     }
 }

@@ -24,7 +24,7 @@ public partial class PlayerIdleState : Node
         base._Notification(what);
         if (what == (int)GameConstants.States.StateChanged)
         {
-            _player.animationPlayer.Play(GameConstants.Anim.Idle);
+            _player.sprite3D.Play(GameConstants.Anim.Idle);
             SetPhysicsProcess(true);
         }
 

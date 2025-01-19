@@ -9,4 +9,4 @@ script = ExtResource("1_w6kfe")
 [node name="Player" parent="." instance=ExtResource("2_vujc1")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.9815)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354557, 23.9815)
