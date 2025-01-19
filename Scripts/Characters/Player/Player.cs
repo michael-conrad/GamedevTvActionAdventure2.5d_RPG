@@ -1,3 +1,4 @@
+using GamedevTvActionAdventure2.d_RPG.Scripts.General;
 using Godot;
 
 public partial class Player : CharacterBody3D
@@ -10,7 +11,7 @@ public partial class Player : CharacterBody3D
 
     public override void _Ready()
     {
-        _animationPlayer.Play("Idle");
+        _animationPlayer.Play(GameConstants.Anim.Idle);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -22,18 +23,19 @@ public partial class Player : CharacterBody3D
     public override void _Input(InputEvent @event)
     {
         var input = Input.GetVector(
-            "MoveLeft",
-            "MoveRight",
-            "MoveForward",
-            "MoveBackward");
+            GameConstants.Input.MoveLeft,
+            GameConstants.Input.MoveRight,
+            GameConstants.Input.MoveUp,
+            GameConstants.Input.MoveDown);
+        
         _direction = new Vector3(input.X, 0, input.Y) * 5;
         if (_direction == Vector3.Zero)
         {
-            _animationPlayer.Play("Idle");
+            _animationPlayer.Play(GameConstants.Anim.Idle);
         }
         else
         {
-            _animationPlayer.Play("Move");
+            _animationPlayer.Play(GameConstants.Anim.Move);
         }
     }
 }
