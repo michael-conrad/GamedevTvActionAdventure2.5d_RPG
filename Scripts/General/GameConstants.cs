@@ -4,14 +4,9 @@ public abstract class GameConstants
 {
     public abstract class Anim
     {
+        public const int StateChanged = 5_001;
         public const string Idle = "Idle";
         public const string Move = "Move";
-    }
-
-    public abstract class AnimStateNotification
-    {
-        public const int Idle = 5_001;
-        public const int Move = 5_002;
     }
 
     public abstract class Input

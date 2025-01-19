@@ -5,18 +5,19 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class PlayerIdleState : Node
 {
+    private Player _player;
+
     public override void _Ready()
     {
-        // ignore
+        _player = GetParent<Player>();
     }
 
     public override void _Notification(int what)
     {
         base._Notification(what);
-        if (what == GameConstants.AnimStateNotification.Idle)
+        if (what == GameConstants.Anim.StateChanged)
         {
-            Player player = GetParent<Player>();
-            player.animationPlayer.Play(GameConstants.Anim.Idle);
+            _player.animationPlayer.Play(GameConstants.Anim.Idle);
         }
     }
 }
