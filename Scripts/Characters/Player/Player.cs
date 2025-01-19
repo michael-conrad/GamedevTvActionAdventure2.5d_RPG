@@ -10,7 +10,7 @@ public partial class Player : CharacterBody3D
 
     public override void _Ready()
     {
-        base._Ready();
+        _animationPlayer.Play("Idle");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -27,5 +27,13 @@ public partial class Player : CharacterBody3D
             "MoveForward",
             "MoveBackward");
         _direction = new Vector3(input.X, 0, input.Y) * 5;
+        if (_direction == Vector3.Zero)
+        {
+            _animationPlayer.Play("Idle");
+        }
+        else
+        {
+            _animationPlayer.Play("Move");
+        }
     }
 }
