@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=39 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
 [ext_resource type="Texture2D" uid="uid://crclm0o8w7qjy" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_djdun"]
@@ -32,7 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://bf3yfnlg3emsi" path="res://Assets/Sprites/Characters/Player/Running/Running_010.png" id="30_5utdf"]
 [ext_resource type="Texture2D" uid="uid://kgok2wbiji34" path="res://Assets/Sprites/Characters/Player/Running/Running_011.png" id="31_x0hw8"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerIdleState.cs" id="32_tmdfr"]
-[ext_resource type="Script" path="res://Scripts/Characters/Player/MoveState.cs" id="33_6et8e"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerMoveState.cs" id="33_6et8e"]
+[ext_resource type="Script" path="res://Scripts/Characters/StateMachine.cs" id="34_7ram5"]
 
 [sub_resource type="Animation" id="Animation_ageck"]
 resource_name = "Idle"
@@ -90,8 +91,10 @@ _data = {
 "RESET": SubResource("Animation_jhwu4")
 }
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("animationPlayer", "sprite3D")]
 script = ExtResource("1_fvqxw")
+animationPlayer = NodePath("AnimationPlayer")
+sprite3D = NodePath("Sprite3D")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 4
@@ -107,3 +110,8 @@ script = ExtResource("32_tmdfr")
 
 [node name="MoveState" type="Node" parent="."]
 script = ExtResource("33_6et8e")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_currentState", "_states")]
+script = ExtResource("34_7ram5")
+_currentState = NodePath("../IdleState")
+_states = [NodePath("../IdleState"), NodePath("../MoveState")]

@@ -7,7 +7,16 @@ public partial class PlayerIdleState : Node
 {
     public override void _Ready()
     {
-        Player player = GetParent<Player>();
-        player.animationPlayer.Play(GameConstants.Anim.Idle);
+        // ignore
+    }
+
+    public override void _Notification(int what)
+    {
+        base._Notification(what);
+        if (what == GameConstants.AnimStateNotification.Idle)
+        {
+            Player player = GetParent<Player>();
+            player.animationPlayer.Play(GameConstants.Anim.Idle);
+        }
     }
 }

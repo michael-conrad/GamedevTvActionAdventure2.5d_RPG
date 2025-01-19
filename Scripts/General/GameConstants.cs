@@ -8,6 +8,12 @@ public abstract class GameConstants
         public const string Move = "Move";
     }
 
+    public abstract class AnimStateNotification
+    {
+        public const int Idle = 5_001;
+        public const int Move = 5_002;
+    }
+
     public abstract class Input
     {
         public const string MoveLeft = "MoveLeft";
