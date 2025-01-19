@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="GameDev TV 2.5d RPG C#"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://Scenes/Levels/main.tscn"
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://Assets/diceset.svg"
 
 [dotnet]
 
-project/assembly_name="GameDev TV 2.5d RPG C#"
+project/assembly_name="gamedev-tv-action-adventure-2.5d-rpg"
