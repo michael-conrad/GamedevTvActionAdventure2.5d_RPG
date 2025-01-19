@@ -18,11 +18,7 @@ public partial class StateMachine : Node
         Node newState = null;
         foreach (var state in _states)
             if (state is T)
-            {
                 newState = state;
-                GD.Print("New State");
-            }
-
 
         if (newState == null) return;
 

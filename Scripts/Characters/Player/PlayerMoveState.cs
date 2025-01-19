@@ -29,9 +29,6 @@ public partial class PlayerMoveState : Node
             SetPhysicsProcess(true);
         }
 
-        if (what == (int)GameConstants.States.PhysicsDisable)
-        {
-            SetPhysicsProcess(false);
-        }
+        if (what == (int)GameConstants.States.PhysicsDisable) SetPhysicsProcess(false);
     }
 }

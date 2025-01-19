@@ -29,9 +29,6 @@ public partial class PlayerDashState : Node
             SetPhysicsProcess(true);
         }
 
-        if (what == (int)GameConstants.States.PhysicsDisable)
-        {
-            SetPhysicsProcess(false);
-        }
+        if (what == (int)GameConstants.States.PhysicsDisable) SetPhysicsProcess(false);
     }
 }
