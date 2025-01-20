@@ -3,46 +3,20 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
-public partial class PlayerMoveState : Node
+public partial class PlayerMoveState : PlayerState
 {
-    private Player _player;
-
-    public override void _Ready()
-    {
-        SetPhysicsProcess(false);
-        // _player = GetParent<Player>();
-        _player = FindParent("Player").GetNode<Player>(".");
-    }
-
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        if (_player.direction == Vector3.Zero)
+        if (CharacterNode.direction == Vector3.Zero)
         {
-            _player.stateMachineNode.SwitchState<PlayerIdleState>();
+            CharacterNode.stateMachineNode.SwitchState<PlayerIdleState>();
             return;
         }
 
-        _player.Velocity = _player.direction * _player.speed;
-        _player.MoveAndSlide();
-        _player.Flip();
-    }
-
-    public override void _Notification(int what)
-    {
-        base._Notification(what);
-        if (what == (int)GameConstants.States.StateChanged)
-        {
-            _player.sprite3D.Play(GameConstants.Anim.Move);
-            SetPhysicsProcess(true);
-            SetProcessInput(true);
-        }
-
-        if (what == (int)GameConstants.States.PhysicsDisable)
-        {
-            SetPhysicsProcess(false);
-            SetProcessInput(false);
-        }
+        CharacterNode.Velocity = CharacterNode.direction * CharacterNode.speed;
+        CharacterNode.MoveAndSlide();
+        CharacterNode.Flip();
     }
 
     public override void _Input(InputEvent @event)
@@ -50,7 +24,13 @@ public partial class PlayerMoveState : Node
         base._Input(@event);
         if (Input.IsActionJustPressed("Dash"))
         {
-            _player.stateMachineNode.SwitchState<PlayerDashState>();
+            CharacterNode.stateMachineNode.SwitchState<PlayerDashState>();
         }
+    }
+
+    protected override void EnterState()
+    {
+        base.EnterState();
+        CharacterNode.sprite3D.Play(GameConstants.Anim.Move);
     }
 }

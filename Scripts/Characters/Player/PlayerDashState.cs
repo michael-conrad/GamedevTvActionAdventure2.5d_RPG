@@ -3,52 +3,43 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
-public partial class PlayerDashState : Node
+public partial class PlayerDashState : PlayerState
 {
-    private Player _player;
     [Export] private float _speed = 10;
     [Export] private Timer _timer;
 
     public override void _Ready()
     {
-        SetPhysicsProcess(false);
-        // _player = GetParent<Player>(); // doesn't work with nested setup - results in Class Cast exception errors
-        _player = FindParent("Player").GetNode<Player>(".");
+        base._Ready();
         _timer.Timeout += HandleDashTimeOut;
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        _player.MoveAndSlide();
-        _player.Flip();
+        CharacterNode.MoveAndSlide();
+        CharacterNode.Flip();
     }
 
     private void HandleDashTimeOut()
     {
-        _player.stateMachineNode.SwitchState<PlayerIdleState>();
-        _player.Velocity = Vector3.Zero;
+        CharacterNode.stateMachineNode.SwitchState<PlayerIdleState>();
+        CharacterNode.Velocity = Vector3.Zero;
     }
 
-    public override void _Notification(int what)
+    protected override void EnterState()
     {
-        base._Notification(what);
-        if (what == (int)GameConstants.States.StateChanged)
+        CharacterNode.sprite3D.Play(GameConstants.Anim.Dash);
+        SetPhysicsProcess(true);
+        if (CharacterNode.direction != Vector3.Zero)
         {
-            _player.sprite3D.Play(GameConstants.Anim.Dash);
-            SetPhysicsProcess(true);
-            if (_player.direction != Vector3.Zero)
-            {
-                _player.Velocity = _player.direction * _speed;
-            }
-            else
-            {
-                _player.Velocity = _player.sprite3D.FlipH ? Vector3.Left * _speed : Vector3.Right * _speed;
-            }
-
-            _timer.Start();
+            CharacterNode.Velocity = CharacterNode.direction * _speed;
+        }
+        else
+        {
+            CharacterNode.Velocity = CharacterNode.sprite3D.FlipH ? Vector3.Left * _speed : Vector3.Right * _speed;
         }
 
-        if (what == (int)GameConstants.States.PhysicsDisable) SetPhysicsProcess(false);
+        _timer.Start();
     }
 }
