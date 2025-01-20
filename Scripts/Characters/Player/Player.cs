@@ -5,12 +5,13 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class Player : CharacterBody3D
 {
-    public Vector3 direction = Vector3.Zero;
+    public Vector3 Direction { get; private set; } = Vector3.Zero;
 
-    [ExportGroup("Required Nodes")] [Export]
-    public AnimatedSprite3D sprite3D;
+    [ExportGroup("Required Nodes")] //
+    [Export]
+    public AnimatedSprite3D CharacterSprite { get; private set; }
 
-    [Export] public StateMachine stateMachineNode;
+    [Export] public StateMachine StateMachine { get; private set; }
 
     public override void _Ready()
     {
@@ -24,18 +25,18 @@ public partial class Player : CharacterBody3D
             GameConstants.Input.MoveRight,
             GameConstants.Input.MoveUp,
             GameConstants.Input.MoveDown);
-        direction = new Vector3(input.X, 0, input.Y);
+        Direction = new Vector3(input.X, 0, input.Y);
     }
 
     public void Flip()
     {
-        if (direction.X < 0)
+        if (Direction.X < 0)
         {
-            sprite3D.FlipH = true;
+            CharacterSprite.FlipH = true;
         }
         else
         {
-            if (direction.X > 0) sprite3D.FlipH = false;
+            if (Direction.X > 0) CharacterSprite.FlipH = false;
         }
     }
 }

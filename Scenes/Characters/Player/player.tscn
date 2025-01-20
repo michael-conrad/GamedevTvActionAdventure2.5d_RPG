@@ -339,14 +339,14 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("sprite3D", "stateMachineNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CharacterSprite", "StateMachine")]
 script = ExtResource("1_fvqxw")
-sprite3D = NodePath("AnimatedSprite3D")
-stateMachineNode = NodePath("StateMachine")
+CharacterSprite = NodePath("AnimatedSprite3D")
+StateMachine = NodePath("StateMachine")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Sliding"
+animation = &"Idle Blinking"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_currentState", "_states")]
 script = ExtResource("34_7ram5")
