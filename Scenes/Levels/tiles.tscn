@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbx4jy8cnng6o"]
+
+[ext_resource type="PackedScene" uid="uid://yiecj1c5obd3" path="res://Assets/Models/Dungeon/gltf/floor_tile_small.gltf.glb" id="1_6dnin"]
+[ext_resource type="PackedScene" uid="uid://boljimj8ph3lb" path="res://Assets/Models/Dungeon/gltf/stairs_wood_decorated.gltf.glb" id="2_ub86s"]
+[ext_resource type="PackedScene" uid="uid://cioxqqwego785" path="res://Assets/Models/Dungeon/gltf/wall.gltf.glb" id="3_7ey34"]
+[ext_resource type="PackedScene" uid="uid://bpkvlpf5svl8c" path="res://Assets/Models/Dungeon/gltf/wall_corner.gltf.glb" id="4_upt58"]
+[ext_resource type="PackedScene" uid="uid://chbbyhe3g24g3" path="res://Assets/Models/Dungeon/gltf/wall_doorway_scaffold.glb" id="5_57u36"]
+[ext_resource type="PackedScene" uid="uid://cnkjdcjjibtvt" path="res://Assets/Models/Dungeon/gltf/wall_open_scaffold.gltf.glb" id="6_mnc68"]
+[ext_resource type="PackedScene" uid="uid://n6pls11snx7i" path="res://Assets/Models/Dungeon/gltf/wall_Tsplit.gltf.glb" id="7_pjkyi"]
+
+[node name="Tiles" type="Node3D"]
+
+[node name="floor_tile_small_gltf" parent="." instance=ExtResource("1_6dnin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0221152, -2.23293, -1.36586)
+
+[node name="stairs_wood_decorated_gltf" parent="." instance=ExtResource("2_ub86s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37534, -3.5271, -2.14619)
+
+[node name="wall_gltf" parent="." instance=ExtResource("3_7ey34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4607, -0.251728, -0.0801158)
+
+[node name="wall_corner_gltf" parent="." instance=ExtResource("4_upt58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07589, -1.32112, 2.69697)
+
+[node name="wall_doorway_scaffold2" parent="." instance=ExtResource("5_57u36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32937, -3.81109, -2.34077)
+
+[node name="wall_open_scaffold_gltf" parent="." instance=ExtResource("6_mnc68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.584, -3.97898, -2.45283)
+
+[node name="wall_Tsplit_gltf" parent="." instance=ExtResource("7_pjkyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2929, -0.218256, -0.151849)
