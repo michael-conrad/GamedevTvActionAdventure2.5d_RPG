@@ -3,7 +3,7 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
-public partial class PlayerState : Node
+public abstract partial class PlayerState : Node
 {
     protected Player CharacterNode;
 
