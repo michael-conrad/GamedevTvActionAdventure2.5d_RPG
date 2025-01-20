@@ -20,12 +20,6 @@ public partial class Player : CharacterBody3D
         // ignore
     }
 
-    public override void _PhysicsProcess(double delta)
-    {
-        Velocity = direction;
-        MoveAndSlide();
-    }
-
     public override void _Input(InputEvent @event)
     {
         var input = Input.GetVector(
@@ -34,10 +28,9 @@ public partial class Player : CharacterBody3D
             GameConstants.Input.MoveUp,
             GameConstants.Input.MoveDown);
         direction = new Vector3(input.X, 0, input.Y) * speed;
-        Flip(direction);
     }
 
-    private void Flip(Vector3 motion)
+    public void Flip(Vector3 motion)
     {
         if (motion.X < 0)
         {

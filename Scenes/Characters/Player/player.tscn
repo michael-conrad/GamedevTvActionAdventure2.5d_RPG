@@ -346,15 +346,20 @@ stateMachineNode = NodePath("StateMachine")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Idle Blinking"
+animation = &"Sliding"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_currentState", "_states")]
 script = ExtResource("34_7ram5")
 _currentState = NodePath("IdleState")
 _states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState")]
 
-[node name="DashState" type="Node" parent="StateMachine"]
+[node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_timer")]
 script = ExtResource("80_d55l3")
+_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/DashState"]
+wait_time = 0.25
+one_shot = true
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("32_tmdfr")

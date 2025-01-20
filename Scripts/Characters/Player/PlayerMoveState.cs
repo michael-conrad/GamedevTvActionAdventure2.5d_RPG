@@ -17,7 +17,15 @@ public partial class PlayerMoveState : Node
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        if (_player.direction == Vector3.Zero) _player.stateMachineNode.SwitchState<PlayerIdleState>();
+        if (_player.direction == Vector3.Zero)
+        {
+            _player.stateMachineNode.SwitchState<PlayerIdleState>();
+            return;
+        }
+
+        _player.Velocity = _player.direction;
+        _player.MoveAndSlide();
+        _player.Flip(_player.direction);
     }
 
     public override void _Notification(int what)
