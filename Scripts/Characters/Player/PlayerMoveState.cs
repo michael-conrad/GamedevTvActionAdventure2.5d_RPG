@@ -27,8 +27,22 @@ public partial class PlayerMoveState : Node
         {
             _player.sprite3D.Play(GameConstants.Anim.Move);
             SetPhysicsProcess(true);
+            SetProcessInput(true);
         }
 
-        if (what == (int)GameConstants.States.PhysicsDisable) SetPhysicsProcess(false);
+        if (what == (int)GameConstants.States.PhysicsDisable)
+        {
+            SetPhysicsProcess(false);
+            SetProcessInput(false);
+        }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        if (Input.IsActionJustPressed("Dash"))
+        {
+            _player.stateMachineNode.SwitchState<PlayerDashState>();
+        }
     }
 }

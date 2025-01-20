@@ -10,7 +10,7 @@ public partial class PlayerIdleState : Node
     public override void _Ready()
     {
         SetPhysicsProcess(false);
-        // _player = GetParent<Player>();
+        SetProcessInput(false);
         _player = FindParent("Player").GetNode<Player>(".");
         _player.stateMachineNode.SwitchState<PlayerIdleState>();
     }
@@ -24,12 +24,27 @@ public partial class PlayerIdleState : Node
     public override void _Notification(int what)
     {
         base._Notification(what);
-        if (what == (int)GameConstants.States.StateChanged)
+        switch (what)
         {
-            _player.sprite3D.Play(GameConstants.Anim.Idle);
-            SetPhysicsProcess(true);
+            case (int)GameConstants.States.StateChanged:
+                _player.sprite3D.Play(GameConstants.Anim.Idle);
+                SetPhysicsProcess(true);
+                SetProcessInput(true);
+                break;
+            case (int)GameConstants.States.PhysicsDisable:
+                SetPhysicsProcess(false);
+                SetProcessInput(false);
+                break;
         }
+    }
 
-        if (what == (int)GameConstants.States.PhysicsDisable) SetPhysicsProcess(false);
+    // TODO: Do this better, using a proper state machine class.
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        if (Input.IsActionJustPressed("Dash"))
+        {
+            _player.stateMachineNode.SwitchState<PlayerDashState>();
+        }
     }
 }
