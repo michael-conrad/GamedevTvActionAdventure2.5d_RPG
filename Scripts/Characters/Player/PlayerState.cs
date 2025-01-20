@@ -13,7 +13,6 @@ public abstract partial class PlayerState : Node
         SetPhysicsProcess(false);
         SetProcessInput(false);
         CharacterNode = FindParent("Player").GetNode<Player>(".");
-        CharacterNode.stateMachineNode.SwitchState<PlayerIdleState>();
     }
 
     public override void _Notification(int what)
@@ -21,12 +20,12 @@ public abstract partial class PlayerState : Node
         base._Notification(what);
         switch (what)
         {
-            case (int)GameConstants.States.StateChanged:
+            case (int)GameConstants.States.EnterState:
                 EnterState();
                 SetPhysicsProcess(true);
                 SetProcessInput(true);
                 break;
-            case (int)GameConstants.States.PhysicsDisable:
+            case (int)GameConstants.States.ExitState:
                 SetPhysicsProcess(false);
                 SetProcessInput(false);
                 break;

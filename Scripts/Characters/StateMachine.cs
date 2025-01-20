@@ -22,8 +22,8 @@ public partial class StateMachine : Node
 
         if (newState == null) return;
 
-        _currentState.Notification((int)GameConstants.States.PhysicsDisable);
+        _currentState.Notification((int)GameConstants.States.ExitState);
         _currentState = newState;
-        _currentState.Notification((int)GameConstants.States.StateChanged);
+        _currentState.Notification((int)GameConstants.States.EnterState);
     }
 }

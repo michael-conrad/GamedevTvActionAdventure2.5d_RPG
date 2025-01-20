@@ -4,8 +4,8 @@ public abstract class GameConstants
 {
     public enum States
     {
-        StateChanged = 5_001,
-        PhysicsDisable = 5_002
+        EnterState = 5_001,
+        ExitState = 5_002
     }
 
     public abstract class Anim
