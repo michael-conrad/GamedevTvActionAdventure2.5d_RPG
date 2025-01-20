@@ -27,18 +27,18 @@ public partial class Player : CharacterBody3D
             GameConstants.Input.MoveRight,
             GameConstants.Input.MoveUp,
             GameConstants.Input.MoveDown);
-        direction = new Vector3(input.X, 0, input.Y) * speed;
+        direction = new Vector3(input.X, 0, input.Y);
     }
 
-    public void Flip(Vector3 motion)
+    public void Flip()
     {
-        if (motion.X < 0)
+        if (direction.X < 0)
         {
             sprite3D.FlipH = true;
         }
         else
         {
-            if (motion.X > 0) sprite3D.FlipH = false;
+            if (direction.X > 0) sprite3D.FlipH = false;
         }
     }
 }

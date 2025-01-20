@@ -23,9 +23,9 @@ public partial class PlayerMoveState : Node
             return;
         }
 
-        _player.Velocity = _player.direction;
+        _player.Velocity = _player.direction * _player.speed;
         _player.MoveAndSlide();
-        _player.Flip(_player.direction);
+        _player.Flip();
     }
 
     public override void _Notification(int what)
