@@ -5,6 +5,9 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class PlayerMoveState : PlayerState
 {
+    [Export(PropertyHint.Range, "0, 20, 0.1")]
+    private float _speed = 5;
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -14,7 +17,7 @@ public partial class PlayerMoveState : PlayerState
             return;
         }
 
-        CharacterNode.Velocity = CharacterNode.direction * CharacterNode.speed;
+        CharacterNode.Velocity = CharacterNode.direction * _speed;
         CharacterNode.MoveAndSlide();
         CharacterNode.Flip();
     }

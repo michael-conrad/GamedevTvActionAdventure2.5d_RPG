@@ -5,7 +5,9 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class PlayerDashState : PlayerState
 {
-    [Export] private float _speed = 10;
+    [Export(PropertyHint.Range, "0,20,0.1")]
+    private float _speed = 10;
+
     [Export] private Timer _timer;
 
     public override void _Ready()

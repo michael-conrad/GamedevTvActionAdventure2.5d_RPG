@@ -5,15 +5,12 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class Player : CharacterBody3D
 {
-    [ExportGroup("Required Nodes")] [Export]
     public Vector3 direction = Vector3.Zero;
 
-    [ExportGroup("Gameplay Settings")] [Export]
-    public int speed = 5;
+    [ExportGroup("Required Nodes")] [Export]
+    public AnimatedSprite3D sprite3D;
 
-    [Export] public AnimatedSprite3D sprite3D;
     [Export] public StateMachine stateMachineNode;
-
 
     public override void _Ready()
     {
