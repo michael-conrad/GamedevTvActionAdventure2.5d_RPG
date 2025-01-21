@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 boot_splash/image="res://Assets/Icon.png"
 config/icon="res://Assets/diceset.svg"
 
+[display]
+
+window/size/initial_position_type=3
+
 [dotnet]
 
 project/assembly_name="GamedevTvActionAdventure2.5d_RPG"
@@ -94,3 +98,7 @@ XBoxMenu={
 
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Player"
+
+[physics]
+
+common/physics_interpolation=true
