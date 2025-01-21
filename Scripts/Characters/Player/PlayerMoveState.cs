@@ -17,8 +17,12 @@ public partial class PlayerMoveState : PlayerState
             return;
         }
 
-        CharacterNode.Velocity = CharacterNode.Direction * _speed;
-        CharacterNode.MoveAndSlide();
+        if (CharacterNode.IsOnFloor())
+        {
+            CharacterNode.Velocity = CharacterNode.Direction * _speed;
+            CharacterNode.MoveAndSlide();
+        }
+
         CharacterNode.Flip();
     }
 

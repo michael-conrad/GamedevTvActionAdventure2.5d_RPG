@@ -35,4 +35,16 @@ public abstract partial class PlayerState : Node
     protected virtual void EnterState()
     {
     }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+        if (!CharacterNode.IsOnFloor())
+        {
+            var velocity = CharacterNode.Velocity;
+            velocity += CharacterNode.GetGravity(); // * CharacterNode.GravityFactor;
+            CharacterNode.Velocity = velocity;
+            CharacterNode.MoveAndSlide();
+        }
+    }
 }

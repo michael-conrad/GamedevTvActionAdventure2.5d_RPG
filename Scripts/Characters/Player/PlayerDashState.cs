@@ -31,6 +31,12 @@ public partial class PlayerDashState : PlayerState
 
     protected override void EnterState()
     {
+        if (!CharacterNode.IsOnFloor())
+        {
+            HandleDashTimeOut();
+            return;
+        }
+
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Dash);
         SetPhysicsProcess(true);
         if (CharacterNode.Direction != Vector3.Zero)

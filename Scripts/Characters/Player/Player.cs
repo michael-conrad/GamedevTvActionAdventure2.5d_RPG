@@ -3,7 +3,7 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
-public partial class Player : FallingCharacterBody3D
+public partial class Player : CharacterBody3D
 {
     public Vector3 Direction { get; private set; } = Vector3.Zero;
 
