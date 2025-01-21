@@ -345,6 +345,7 @@ CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_chftp")
 animation = &"Idle Blinking"
 
