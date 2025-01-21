@@ -34,8 +34,7 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:wall_doorway_scaffold": {
-"generate/physics": true,
-"physics/shape_type": 1
+"generate/physics": true
 }
 }
 }

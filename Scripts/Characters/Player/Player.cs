@@ -3,20 +3,16 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
-public partial class Player : CharacterBody3D
+public partial class Player : FallingCharacterBody3D
 {
     public Vector3 Direction { get; private set; } = Vector3.Zero;
+
 
     [ExportGroup("Required Nodes")] //
     [Export]
     public AnimatedSprite3D CharacterSprite { get; private set; }
 
     [Export] public StateMachine StateMachine { get; private set; }
-
-    public override void _Ready()
-    {
-        // ignore
-    }
 
     public override void _Input(InputEvent @event)
     {
