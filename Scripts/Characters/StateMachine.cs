@@ -8,7 +8,9 @@ public partial class StateMachine : Node {
     [Export] private Node[] _states;
 
     public override void _Ready() {
-        // if (_currentState != null) _currentState.Notification((int)GameConstants.States.StateChanged);
+        if (_currentState != null) {
+            _currentState.Notification((int)GameConstants.States.EnterState);
+        }
     }
 
     public void SwitchState<T>() {

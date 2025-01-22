@@ -6,7 +6,4 @@
         <EnableDynamicLoading>true</EnableDynamicLoading>
         <RootNamespace>GamedevTvActionAdventure25d_RPG</RootNamespace>
     </PropertyGroup>
-    <ItemGroup>
-        <Folder Include="Scripts\Characters\Enemy\"/>
-    </ItemGroup>
 </Project>

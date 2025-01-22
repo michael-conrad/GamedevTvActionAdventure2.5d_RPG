@@ -48,7 +48,6 @@
 [ext_resource type="Texture2D" uid="uid://kgok2wbiji34" path="res://Assets/Sprites/Characters/Player/Running/Running_011.png" id="31_x0hw8"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerIdleState.cs" id="32_tmdfr"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerMoveState.cs" id="33_6et8e"]
-[ext_resource type="Script" path="res://Scripts/Characters/StateMachine.cs" id="34_7ram5"]
 [ext_resource type="Texture2D" uid="uid://c1gh01ikujawo" path="res://Assets/Sprites/Characters/Player/Kicking/Kicking_000.png" id="35_r1ptc"]
 [ext_resource type="Texture2D" uid="uid://ckx8ude2lxm1t" path="res://Assets/Sprites/Characters/Player/Kicking/Kicking_001.png" id="36_3onv7"]
 [ext_resource type="Texture2D" uid="uid://carx323wc3xjl" path="res://Assets/Sprites/Characters/Player/Kicking/Kicking_002.png" id="37_fw0ts"]
@@ -79,6 +78,7 @@
 [ext_resource type="Texture2D" uid="uid://7u0jkl45w2ol" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_003.png" id="74_1f3aq"]
 [ext_resource type="Texture2D" uid="uid://dxxfuxge6h8bp" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_004.png" id="75_ssny7"]
 [ext_resource type="Texture2D" uid="uid://dgrc8ah3jmfio" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_005.png" id="76_hj24q"]
+[ext_resource type="PackedScene" uid="uid://b15tct2altow7" path="res://Scenes/Characters/state_machine.tscn" id="77_x37t5"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_d55l3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p4emw"]
@@ -192,7 +192,7 @@ animations = [{
 "texture": ExtResource("19_1lxsg")
 }],
 "loop": true,
-"name": &"Idle Blinking",
+"name": &"Idle",
 "speed": 20.0
 }, {
 "frames": [{
@@ -346,8 +346,7 @@ animations = [{
 collision_layer = 2
 floor_max_angle = 1.55334
 script = ExtResource("1_fvqxw")
-_rayDepth = 1.6
-_rayDistance = 0.4
+RayDepth = 1.8
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
 
@@ -357,12 +356,11 @@ shape = SubResource("CapsuleShape3D_p4emw")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Idle Blinking"
+animation = &"Idle"
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_currentState", "_states")]
-script = ExtResource("34_7ram5")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_x37t5")]
 _currentState = NodePath("IdleState")
-_states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("DashState")]
+_states = [NodePath("DashState"), NodePath("IdleState"), NodePath("MoveState")]
 
 [node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_timer")]
 script = ExtResource("80_d55l3")

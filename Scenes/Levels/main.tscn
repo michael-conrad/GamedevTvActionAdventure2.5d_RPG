@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bivnbgn86rjdl"]
+[gd_scene load_steps=5 format=3 uid="uid://bivnbgn86rjdl"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_w6kfe"]
 [ext_resource type="PackedScene" uid="uid://dc2f24h2ivhp0" path="res://Scenes/Characters/Player/player.tscn" id="2_vujc1"]
 [ext_resource type="MeshLibrary" uid="uid://bweti2ok8cbyp" path="res://Resources/tiles.tres" id="3_xpqar"]
+[ext_resource type="PackedScene" uid="uid://dui1q6ovp3aqf" path="res://Scenes/Characters/Enemy/enemy.tscn" id="4_wdwq2"]
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1328, -4.99153, -0.601326)
@@ -39,3 +40,9 @@ data = {
 "cells": PackedInt32Array(66, 53, 1441793, 131100, 16, 1)
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("4_wdwq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6979, 3.41235, 31.4929)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_wdwq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.134712, 2.46318, 35.175)
