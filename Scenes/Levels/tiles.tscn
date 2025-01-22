@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://n6pls11snx7i" path="res://Assets/Models/Dungeon/gltf/wall_Tsplit.gltf.glb" id="7_pjkyi"]
 
 [node name="Tiles" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="floor_tile_small_gltf" parent="." instance=ExtResource("1_6dnin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0221152, -2.23293, -1.36586)

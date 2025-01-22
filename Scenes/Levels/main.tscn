@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bivnbgn86rjdl"]
+[gd_scene load_steps=4 format=3 uid="uid://bivnbgn86rjdl"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_w6kfe"]
 [ext_resource type="PackedScene" uid="uid://dc2f24h2ivhp0" path="res://Scenes/Characters/Player/player.tscn" id="2_vujc1"]
 [ext_resource type="MeshLibrary" uid="uid://bweti2ok8cbyp" path="res://Resources/tiles.tres" id="3_xpqar"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qjvo7"]
-size = Vector3(35, 2, 2)
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1328, -4.99153, -0.601326)
@@ -39,13 +36,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
 mesh_library = ExtResource("3_xpqar")
 cell_size = Vector3(0.5, 2, 0.5)
 data = {
-"cells": PackedInt32Array(131100, 18, 1, 66, 53, 1441793)
+"cells": PackedInt32Array(66, 53, 1441793, 131100, 16, 1)
 }
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="Invisible Wall" type="StaticBody3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.259487, 1.93482, 43.282)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Invisible Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8128, 0, 0)
-shape = SubResource("BoxShape3D_qjvo7")
+metadata/_editor_floor_ = Vector3(0, 2, 0)

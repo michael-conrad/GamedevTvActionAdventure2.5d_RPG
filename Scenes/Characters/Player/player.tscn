@@ -346,6 +346,8 @@ animations = [{
 collision_layer = 2
 floor_max_angle = 1.55334
 script = ExtResource("1_fvqxw")
+_rayDepth = 1.6
+_rayDistance = 0.4
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
 
@@ -375,3 +377,7 @@ script = ExtResource("32_tmdfr")
 
 [node name="MoveState" type="Node" parent="StateMachine"]
 script = ExtResource("33_6et8e")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.840761, 0)
+target_position = Vector3(0, -2, 0)
