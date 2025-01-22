@@ -274,7 +274,7 @@ animations = [{
 "texture": ExtResource("31_x0hw8")
 }],
 "loop": true,
-"name": &"Running",
+"name": &"Move",
 "speed": 20.0
 }, {
 "frames": [{
@@ -356,7 +356,7 @@ shape = SubResource("CapsuleShape3D_p4emw")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Idle"
+animation = &"Move"
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_x37t5")]
 _currentState = NodePath("IdleState")

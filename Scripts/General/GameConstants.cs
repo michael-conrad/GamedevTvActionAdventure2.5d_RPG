@@ -8,7 +8,7 @@ public abstract class GameConstants {
 
     public abstract class Anim {
         public const string Idle = "Idle";
-        public const string Move = "Running";
+        public const string Move = "Move";
         public const string Dash = "Sliding";
     }
 
