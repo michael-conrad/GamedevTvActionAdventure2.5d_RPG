@@ -11,10 +11,21 @@ public partial class EnemyReturnState : EnemyState {
         _destination = CharacterNode.PathNode.Curve.GetPointPosition(0) + CharacterNode.PathNode.GlobalPosition;
     }
 
+    public override void _PhysicsProcess(double delta) {
+        base._PhysicsProcess(delta);
+
+        if (CharacterNode.GlobalPosition == _destination) {
+            return;
+        }
+
+        CharacterNode.Velocity = CharacterNode.GlobalPosition.DirectionTo(_destination);
+        CharacterNode.MoveAndSlide();
+        CharacterNode.Flip();
+    }
+
     protected override void EnterState() {
         base.EnterState();
         GD.Print(CharacterNode.Name + ", Enter State: " + GetName());
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
-        CharacterNode.GlobalPosition = _destination;
     }
 }
