@@ -518,5 +518,6 @@ script = ExtResource("103_on363")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
+radius = 0.63
 debug_enabled = true
 debug_path_custom_point_size = 32.0

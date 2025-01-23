@@ -21,8 +21,8 @@ public partial class EnemyReturnState : EnemyState {
             CharacterNode.StateMachine.SwitchState<EnemyIdleState>();
         }
 
-        // CharacterNode.Direction = CharacterNode.GlobalPosition.DirectionTo(_destination);
-        // CharacterNode.Velocity = CharacterNode.Direction;
+        CharacterNode.Direction = CharacterNode.GlobalPosition.DirectionTo(_destination);
+        CharacterNode.Velocity = CharacterNode.Direction;
     }
 
     protected override void EnterState() {
