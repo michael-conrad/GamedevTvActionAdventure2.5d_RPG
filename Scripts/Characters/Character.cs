@@ -26,11 +26,11 @@ public abstract partial class Character : CharacterBody3D {
     [Export] public StateMachine StateMachine { get; private set; }
 
     public void Flip() {
-        if (Direction.X < 0) {
+        if (Direction.X < 0 || Velocity.X < 0) {
             CharacterSprite.FlipH = true;
         }
         else {
-            if (Direction.X > 0) {
+            if (Direction.X > 0 || Velocity.X > 0) {
                 CharacterSprite.FlipH = false;
             }
         }
