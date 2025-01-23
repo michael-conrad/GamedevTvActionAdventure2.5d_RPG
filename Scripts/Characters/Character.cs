@@ -14,6 +14,8 @@ public abstract partial class Character : CharacterBody3D {
     [Export]
     protected internal Path3D PathNode { get; private set; }
 
+    [Export] protected internal NavigationAgent3D NaviAgent { get; private set; }
+
     public Vector3 Direction { get; set; } = Vector3.Zero;
     public RayCast3D RayCast { get; set; }
 

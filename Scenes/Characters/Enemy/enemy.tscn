@@ -492,8 +492,9 @@ animations = [{
 radius = 0.62749
 height = 1.84371
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("CharacterSprite", "StateMachine")]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("NaviAgent", "CharacterSprite", "StateMachine")]
 script = ExtResource("1_abhp2")
+NaviAgent = NodePath("NavigationAgent3D")
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
 
@@ -506,7 +507,7 @@ animation = &"Move"
 shape = SubResource("CapsuleShape3D_rw63o")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("101_ghdln")]
-_currentState = NodePath("ReturnState")
+_currentState = NodePath("IdleState")
 _states = [NodePath("IdleState"), NodePath("ReturnState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
@@ -514,3 +515,8 @@ script = ExtResource("102_fmq08")
 
 [node name="ReturnState" type="Node" parent="StateMachine"]
 script = ExtResource("103_on363")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+debug_path_custom_point_size = 32.0
