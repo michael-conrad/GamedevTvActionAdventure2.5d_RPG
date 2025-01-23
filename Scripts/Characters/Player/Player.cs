@@ -7,6 +7,7 @@ public partial class Player : Character {
     public override void _Ready() {
         base._Ready();
         RayCast = GetNode<RayCast3D>("RayCast3D");
+        StateMachine.SwitchState<PlayerIdleState>();
     }
 
     public override void _Input(InputEvent @event) {

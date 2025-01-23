@@ -4,10 +4,6 @@ using Godot;
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class PlayerIdleState : PlayerState {
-    public override void _Ready() {
-        base._Ready();
-        CharacterNode.StateMachine.SwitchState<PlayerIdleState>();
-    }
 
     public override void _PhysicsProcess(double delta) {
         base._PhysicsProcess(delta);
@@ -17,10 +13,9 @@ public partial class PlayerIdleState : PlayerState {
     }
 
 
-    // TODO: Do this better, using a proper state machine class.
     public override void _Input(InputEvent @event) {
         base._Input(@event);
-        if (Input.IsActionJustPressed("Dash")) {
+        if (Input.IsActionJustPressed(GameConstants.Input.Dash)) {
             CharacterNode.StateMachine.SwitchState<PlayerDashState>();
         }
     }

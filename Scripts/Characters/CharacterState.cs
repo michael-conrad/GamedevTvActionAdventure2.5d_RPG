@@ -11,7 +11,6 @@ public abstract partial class CharacterState : Node {
         SetPhysicsProcess(false);
         SetProcessInput(false);
         CharacterNode = GetParent<StateMachine>().GetParent<Character>(); //FindParent("Player").GetNode<Player>(".");
-        GD.Print("Ready: " + CharacterNode.Name + ", " + GetName());
     }
 
     public override void _Notification(int what) {
@@ -33,16 +32,15 @@ public abstract partial class CharacterState : Node {
 
     public override void _PhysicsProcess(double delta) {
         base._PhysicsProcess(delta);
-        if (CharacterNode.IsOnFloor()) {
-            return;
-        }
+        if (!CharacterNode.IsOnFloor()) {
+            /*
+             * Fall!
+             */
 
-        /*
-         * Fall!
-         */
-        var velocity = CharacterNode.Velocity;
-        velocity += CharacterNode.GetGravity(); // * CharacterNode.GravityFactor;
-        CharacterNode.Velocity = velocity;
-        CharacterNode.MoveAndSlide();
+            var velocity = CharacterNode.Velocity;
+            velocity += CharacterNode.GetGravity(); // * CharacterNode.GravityFactor;
+            CharacterNode.Velocity = velocity;
+            CharacterNode.MoveAndSlide();
+        }
     }
 }

@@ -16,13 +16,11 @@ public partial class PlayerDashState : PlayerState {
 
     public override void _PhysicsProcess(double delta) {
         base._PhysicsProcess(delta);
-        if (IsNotFacingEdge()) {
-            CharacterNode.MoveAndSlide();
-            CharacterNode.Flip();
-        }
-        else {
+        if (IsFacingEdge()) {
             CharacterNode.Velocity = Vector3.Zero;
         }
+        CharacterNode.MoveAndSlide();
+        CharacterNode.Flip();
     }
 
     private void HandleDashTimeOut() {

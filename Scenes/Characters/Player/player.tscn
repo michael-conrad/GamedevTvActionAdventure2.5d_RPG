@@ -359,21 +359,21 @@ sprite_frames = SubResource("SpriteFrames_chftp")
 animation = &"Move"
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_x37t5")]
-_currentState = NodePath("IdleState")
-_states = [NodePath("DashState"), NodePath("IdleState"), NodePath("MoveState")]
+_currentState = NodePath("PlayerIdleState")
+_states = [NodePath("PlayerDashState"), NodePath("PlayerIdleState"), NodePath("PlayerMoveState")]
 
-[node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_timer")]
+[node name="PlayerDashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_timer")]
 script = ExtResource("80_d55l3")
 _timer = NodePath("Timer")
 
-[node name="Timer" type="Timer" parent="StateMachine/DashState"]
+[node name="Timer" type="Timer" parent="StateMachine/PlayerDashState"]
 wait_time = 0.25
 one_shot = true
 
-[node name="IdleState" type="Node" parent="StateMachine"]
+[node name="PlayerIdleState" type="Node" parent="StateMachine"]
 script = ExtResource("32_tmdfr")
 
-[node name="MoveState" type="Node" parent="StateMachine"]
+[node name="PlayerMoveState" type="Node" parent="StateMachine"]
 script = ExtResource("33_6et8e")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

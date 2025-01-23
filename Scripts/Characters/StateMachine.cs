@@ -28,5 +28,6 @@ public partial class StateMachine : Node {
         _currentState.Notification((int)GameConstants.States.ExitState);
         _currentState = newState;
         _currentState.Notification((int)GameConstants.States.EnterState);
+        GD.Print("Switched to state: " + _currentState.Name);
     }
 }

@@ -507,13 +507,13 @@ animation = &"Move"
 shape = SubResource("CapsuleShape3D_rw63o")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("101_ghdln")]
-_currentState = NodePath("IdleState")
-_states = [NodePath("IdleState"), NodePath("ReturnState")]
+_currentState = NodePath("EnemyIdleState")
+_states = [NodePath("EnemyIdleState"), NodePath("EnemyReturnState")]
 
-[node name="IdleState" type="Node" parent="StateMachine"]
+[node name="EnemyIdleState" type="Node" parent="StateMachine"]
 script = ExtResource("102_fmq08")
 
-[node name="ReturnState" type="Node" parent="StateMachine"]
+[node name="EnemyReturnState" type="Node" parent="StateMachine"]
 script = ExtResource("103_on363")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
