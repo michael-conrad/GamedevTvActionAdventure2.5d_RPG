@@ -19,6 +19,7 @@ public partial class PlayerDashState : PlayerState {
         if (IsFacingEdge()) {
             CharacterNode.Velocity = Vector3.Zero;
         }
+
         CharacterNode.MoveAndSlide();
         CharacterNode.Flip();
     }

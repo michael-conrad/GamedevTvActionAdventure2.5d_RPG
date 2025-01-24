@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://dui1q6ovp3aqf"]
+[gd_scene load_steps=107 format=3 uid="uid://dui1q6ovp3aqf"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_abhp2"]
 [ext_resource type="Texture2D" uid="uid://8uccqi2sj8y5" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_000.png" id="2_w1sv8"]
@@ -103,6 +103,7 @@
 [ext_resource type="PackedScene" uid="uid://b15tct2altow7" path="res://Scenes/Characters/state_machine.tscn" id="101_ghdln"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="102_fmq08"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyReturnState.cs" id="103_on363"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="104_o2k8l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e6a02"]
 animations = [{
@@ -508,14 +509,16 @@ shape = SubResource("CapsuleShape3D_rw63o")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("101_ghdln")]
 _currentState = NodePath("EnemyIdleState")
-_states = [NodePath("EnemyIdleState"), NodePath("EnemyReturnState")]
+_states = [NodePath("EnemyIdleState"), NodePath("EnemyReturnState"), NodePath("EnemyPatrolState")]
 
 [node name="EnemyIdleState" type="Node" parent="StateMachine"]
 script = ExtResource("102_fmq08")
 
 [node name="EnemyReturnState" type="Node" parent="StateMachine"]
 script = ExtResource("103_on363")
-_speed = 2.0
+
+[node name="EnemyPatrolState" type="Node" parent="StateMachine"]
+script = ExtResource("104_o2k8l")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true

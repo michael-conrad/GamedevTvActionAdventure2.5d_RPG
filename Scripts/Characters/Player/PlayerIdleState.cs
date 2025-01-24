@@ -4,7 +4,6 @@ using Godot;
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class PlayerIdleState : PlayerState {
-
     public override void _PhysicsProcess(double delta) {
         base._PhysicsProcess(delta);
         if (CharacterNode.Direction != Vector3.Zero) {
