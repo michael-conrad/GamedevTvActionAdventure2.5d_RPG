@@ -516,6 +516,7 @@ script = ExtResource("102_fmq08")
 
 [node name="EnemyReturnState" type="Node" parent="StateMachine"]
 script = ExtResource("103_on363")
+_speed = 2.0
 
 [node name="EnemyPatrolState" type="Node" parent="StateMachine"]
 script = ExtResource("104_o2k8l")
