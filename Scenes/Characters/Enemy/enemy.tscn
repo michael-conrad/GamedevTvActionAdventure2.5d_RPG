@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://dui1q6ovp3aqf"]
+[gd_scene load_steps=109 format=3 uid="uid://dui1q6ovp3aqf"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_abhp2"]
 [ext_resource type="Texture2D" uid="uid://8uccqi2sj8y5" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_000.png" id="2_w1sv8"]
@@ -104,6 +104,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="102_fmq08"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyReturnState.cs" id="103_on363"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="104_o2k8l"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="105_5n1jc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e6a02"]
 animations = [{
@@ -493,11 +494,15 @@ animations = [{
 radius = 0.62749
 height = 1.84371
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("NaviAgent", "CharacterSprite", "StateMachine")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_sp3bk"]
+radius = 6.0
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("CharacterSprite", "StateMachine", "ChaseArea", "NaviAgent")]
 script = ExtResource("1_abhp2")
-NaviAgent = NodePath("NavigationAgent3D")
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
+ChaseArea = NodePath("ChaseArea")
+NaviAgent = NodePath("NavigationAgent3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 pixel_size = 0.003
@@ -525,5 +530,15 @@ _timer = NodePath("Timer")
 [node name="Timer" type="Timer" parent="StateMachine/EnemyPatrolState"]
 one_shot = true
 
+[node name="ChaseState" type="Node" parent="StateMachine"]
+script = ExtResource("105_5n1jc")
+
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
+
+[node name="ChaseArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseArea"]
+shape = SubResource("SphereShape3D_sp3bk")

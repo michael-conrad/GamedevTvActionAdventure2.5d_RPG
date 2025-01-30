@@ -32,5 +32,12 @@ public partial class EnemyReturnState : EnemyState
         base.EnterState();
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
         CharacterNode.NaviAgent.TargetPosition = Destination;
+        CharacterNode.ChaseArea.BodyEntered += HandleChaseAreaBodyEntered;
+    }
+
+    protected override void ExitState()
+    {
+        base.ExitState();
+        CharacterNode.ChaseArea.BodyEntered -= HandleChaseAreaBodyEntered;
     }
 }
