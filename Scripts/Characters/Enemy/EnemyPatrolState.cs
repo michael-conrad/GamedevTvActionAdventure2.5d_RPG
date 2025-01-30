@@ -16,12 +16,6 @@ public partial class EnemyPatrolState : EnemyState
         return ++_pointIndex % CharacterNode.PathNode.Curve.PointCount;
     }
 
-    public override void _Ready()
-    {
-        base._Ready();
-        CharacterNode.NaviAgent.NavigationFinished += HandleNavigationFinished;
-    }
-
     protected override void EnterState()
     {
         base.EnterState();
@@ -29,6 +23,14 @@ public partial class EnemyPatrolState : EnemyState
         Destination = GetPointGlobalPosition(_nextPointIndex());
         CharacterNode.NaviAgent.TargetPosition = Destination;
         _timer.Timeout += HandleTimeout;
+        CharacterNode.NaviAgent.NavigationFinished += HandleNavigationFinished;
+    }
+
+    protected override void ExitState()
+    {
+        base.ExitState();
+        _timer.Timeout -= HandleTimeout;
+        CharacterNode.NaviAgent.NavigationFinished -= HandleNavigationFinished;
     }
 
     private void HandleTimeout()
@@ -52,11 +54,11 @@ public partial class EnemyPatrolState : EnemyState
 
     public override void _PhysicsProcess(double delta)
     {
-        base._PhysicsProcess(delta);
         if (!_timer.IsStopped())
         {
             return;
         }
-        // Move();
+
+        base._PhysicsProcess(delta);
     }
 }
