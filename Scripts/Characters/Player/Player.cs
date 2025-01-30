@@ -3,14 +3,17 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
-public partial class Player : Character {
-    public override void _Ready() {
+public partial class Player : Character
+{
+    public override void _Ready()
+    {
         base._Ready();
         RayCast = GetNode<RayCast3D>("RayCast3D");
         StateMachine.SwitchState<PlayerIdleState>();
     }
 
-    public override void _Input(InputEvent @event) {
+    public override void _Input(InputEvent @event)
+    {
         var input = Input.GetVector(
             GameConstants.Input.MoveLeft,
             GameConstants.Input.MoveRight,

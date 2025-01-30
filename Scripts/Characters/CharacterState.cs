@@ -3,19 +3,23 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters;
 
-public abstract partial class CharacterState : Node {
+public abstract partial class CharacterState : Node
+{
     protected Character CharacterNode;
 
-    public override void _Ready() {
+    public override void _Ready()
+    {
         base._Ready();
         SetPhysicsProcess(false);
         SetProcessInput(false);
         CharacterNode = GetParent<StateMachine>().GetParent<Character>(); //FindParent("Player").GetNode<Player>(".");
     }
 
-    public override void _Notification(int what) {
+    public override void _Notification(int what)
+    {
         base._Notification(what);
-        switch (what) {
+        switch (what)
+        {
             case (int)GameConstants.States.EnterState:
                 EnterState();
                 SetPhysicsProcess(true);
@@ -28,11 +32,15 @@ public abstract partial class CharacterState : Node {
         }
     }
 
-    protected virtual void EnterState() { }
+    protected virtual void EnterState()
+    {
+    }
 
-    public override void _PhysicsProcess(double delta) {
+    public override void _PhysicsProcess(double delta)
+    {
         base._PhysicsProcess(delta);
-        if (!CharacterNode.IsOnFloor()) {
+        if (!CharacterNode.IsOnFloor())
+        {
             /*
              * Fall!
              */

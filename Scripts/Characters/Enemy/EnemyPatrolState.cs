@@ -3,20 +3,23 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 
-public partial class EnemyPatrolState : EnemyState {
+public partial class EnemyPatrolState : EnemyState
+{
     [Export(PropertyHint.Range, "0,20,0.1")]
     private float _maxIdleTime = 4;
 
     private int _pointIndex;
     [Export] private Timer _timer;
 
-    public override void _Ready() {
+    public override void _Ready()
+    {
         base._Ready();
         CharacterNode.NaviAgent.NavigationFinished += HandleNavigationFinished;
         _timer.Timeout += HandleTimeout;
     }
 
-    protected override void EnterState() {
+    protected override void EnterState()
+    {
         base.EnterState();
         _pointIndex = 1;
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
@@ -24,14 +27,16 @@ public partial class EnemyPatrolState : EnemyState {
         CharacterNode.NaviAgent.TargetPosition = Destination;
     }
 
-    private void HandleTimeout() {
+    private void HandleTimeout()
+    {
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
         _pointIndex = ++_pointIndex % CharacterNode.PathNode.Curve.PointCount;
         Destination = GetPointGlobalPosition(_pointIndex);
         CharacterNode.NaviAgent.TargetPosition = Destination;
     }
 
-    private void HandleNavigationFinished() {
+    private void HandleNavigationFinished()
+    {
         GD.Print("Navigation finished");
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Idle);
         var rng = new RandomNumberGenerator();
@@ -41,10 +46,11 @@ public partial class EnemyPatrolState : EnemyState {
         Destination = GetPointGlobalPosition(_pointIndex);
     }
 
-    public override void _PhysicsProcess(double delta) {
+    public override void _PhysicsProcess(double delta)
+    {
         base._PhysicsProcess(delta);
-        if (!_timer.IsStopped()) {
-            return;
+        if (!_timer.IsStopped())
+        {
         }
         // Move();
     }

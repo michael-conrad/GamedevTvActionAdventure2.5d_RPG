@@ -2,7 +2,8 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters;
 
-public abstract partial class Character : CharacterBody3D {
+public abstract partial class Character : CharacterBody3D
+{
     [ExportGroup("Game Settings")] //
     [Export(PropertyHint.Range, "0, 10, 0.1")]
     protected float RayDepth = 1.5f;
@@ -25,12 +26,16 @@ public abstract partial class Character : CharacterBody3D {
 
     [Export] public StateMachine StateMachine { get; private set; }
 
-    public void Flip() {
-        if (Direction.X < 0 || Velocity.X < 0) {
+    public void Flip()
+    {
+        if (Direction.X < 0 || Velocity.X < 0)
+        {
             CharacterSprite.FlipH = true;
         }
-        else {
-            if (Direction.X > 0 || Velocity.X > 0) {
+        else
+        {
+            if (Direction.X > 0 || Velocity.X > 0)
+            {
                 CharacterSprite.FlipH = false;
             }
         }
