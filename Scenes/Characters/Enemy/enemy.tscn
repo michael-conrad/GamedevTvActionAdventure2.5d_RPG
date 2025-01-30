@@ -518,11 +518,12 @@ script = ExtResource("102_fmq08")
 script = ExtResource("103_on363")
 _speed = 2.0
 
-[node name="EnemyPatrolState" type="Node" parent="StateMachine"]
+[node name="EnemyPatrolState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_timer")]
 script = ExtResource("104_o2k8l")
+_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/EnemyPatrolState"]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-avoidance_enabled = true
-radius = 0.75
-use_3d_avoidance = true
+path_postprocessing = 1
 debug_enabled = true

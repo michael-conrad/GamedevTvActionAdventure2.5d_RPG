@@ -9,7 +9,12 @@ public abstract partial class EnemyState : CharacterState {
     protected Vector3 Destination;
 
     protected Vector3 GetPointGlobalPosition(int index) {
-        return CharacterNode.PathNode.Curve.GetPointPosition(index) + CharacterNode.PathNode.GlobalPosition;
+        return GetPointPosition(index) + CharacterNode.PathNode.GlobalPosition;
+    }
+
+    protected Vector3 GetPointPosition(int index) {
+        index %= CharacterNode.PathNode.Curve.PointCount;
+        return CharacterNode.PathNode.Curve.GetPointPosition(index);
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -23,12 +28,12 @@ public abstract partial class EnemyState : CharacterState {
         var velocity = CharacterNode.GlobalPosition.DirectionTo(nextPosition) * _speed;
         if (nav.AvoidanceEnabled) {
             nav.Velocity = velocity;
+            CharacterNode.MoveAndSlide();
+            CharacterNode.Flip();
         }
         else {
             _velocityComputed(velocity);
         }
-
-        CharacterNode.Flip();
     }
 
     protected void _velocityComputed(Vector3 safeVelocity) {

@@ -71,13 +71,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375914, 0)
 curve = SubResource("Curve3D_y04ou")
 
 [node name="Enemy2" parent="Enemies/Path3D2" node_paths=PackedStringArray("PathNode") instance=ExtResource("4_wdwq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.612, 14.8184, 30.8165)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3533, 14.8184, -10.6497)
 PathNode = NodePath("..")
 
 [node name="Path3D" type="Path3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.31608, 22.5467)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.31608, 24.2675)
 curve = SubResource("Curve3D_u2jdb")
 
 [node name="Enemy" parent="Enemies/Path3D" node_paths=PackedStringArray("PathNode") instance=ExtResource("4_wdwq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4387, 18.7284, 1.91618)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4387, 18.7284, -37.1876)
 PathNode = NodePath("..")
