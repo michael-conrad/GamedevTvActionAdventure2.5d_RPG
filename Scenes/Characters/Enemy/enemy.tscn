@@ -523,7 +523,7 @@ script = ExtResource("104_o2k8l")
 _timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="StateMachine/EnemyPatrolState"]
+one_shot = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_postprocessing = 1
 debug_enabled = true

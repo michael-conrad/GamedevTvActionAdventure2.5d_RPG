@@ -28,6 +28,7 @@ public partial class EnemyPatrolState : EnemyState
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
         Destination = GetPointGlobalPosition(_nextPointIndex());
         CharacterNode.NaviAgent.TargetPosition = Destination;
+        _timer.Timeout += HandleTimeout;
     }
 
     private void HandleTimeout()
@@ -36,7 +37,6 @@ public partial class EnemyPatrolState : EnemyState
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
         Destination = GetPointGlobalPosition(_nextPointIndex());
         CharacterNode.NaviAgent.TargetPosition = Destination;
-        _timer.Timeout -= HandleTimeout;
     }
 
     private void HandleNavigationFinished()
@@ -46,7 +46,6 @@ public partial class EnemyPatrolState : EnemyState
         CharacterNode.Velocity = Vector3.Zero;
         var rng = new RandomNumberGenerator();
         _timer.WaitTime = rng.RandfRange(0, _maxIdleTime);
-        _timer.Timeout += HandleTimeout;
         _timer.Start();
         Destination = GetPointGlobalPosition(_nextPointIndex());
     }
