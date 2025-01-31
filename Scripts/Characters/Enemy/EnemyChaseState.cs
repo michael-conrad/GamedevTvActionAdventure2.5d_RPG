@@ -1,7 +1,7 @@
-using GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
-using GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 using GamedevTvActionAdventure25d_RPG.Scripts.General;
 using Godot;
+
+namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 
 public partial class EnemyChaseState : EnemyState
 {
@@ -15,7 +15,7 @@ public partial class EnemyChaseState : EnemyState
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
         foreach (var body in CharacterNode.ChaseArea.GetOverlappingBodies())
         {
-            if (body is not Player player)
+            if (body is not Player.Player player)
             {
                 continue;
             }
