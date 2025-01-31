@@ -491,13 +491,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rw63o"]
-radius = 0.62749
-height = 1.84371
+radius = 0.4
+height = 1.8
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_sp3bk"]
-radius = 6.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_85ukm"]
+radius = 7.0
 
 [node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("CharacterSprite", "StateMachine", "ChaseArea", "NaviAgent")]
+floor_max_angle = 1.55334
 script = ExtResource("1_abhp2")
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
@@ -514,7 +515,7 @@ shape = SubResource("CapsuleShape3D_rw63o")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("101_ghdln")]
 _currentState = NodePath("EnemyIdleState")
-_states = [NodePath("EnemyIdleState"), NodePath("EnemyReturnState"), NodePath("EnemyPatrolState")]
+_states = [NodePath("EnemyIdleState"), NodePath("EnemyReturnState"), NodePath("EnemyPatrolState"), NodePath("ChaseState")]
 
 [node name="EnemyIdleState" type="Node" parent="StateMachine"]
 script = ExtResource("102_fmq08")
@@ -530,8 +531,13 @@ _timer = NodePath("Timer")
 [node name="Timer" type="Timer" parent="StateMachine/EnemyPatrolState"]
 one_shot = true
 
-[node name="ChaseState" type="Node" parent="StateMachine"]
+[node name="ChaseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_timer")]
 script = ExtResource("105_5n1jc")
+_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/ChaseState"]
+wait_time = 0.25
+autostart = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
@@ -541,4 +547,4 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseArea"]
-shape = SubResource("SphereShape3D_sp3bk")
+shape = SubResource("CylinderShape3D_85ukm")

@@ -82,7 +82,8 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_d55l3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p4emw"]
-height = 1.80698
+radius = 0.3
+height = 1.7
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_chftp"]
 animations = [{
@@ -346,9 +347,9 @@ animations = [{
 collision_layer = 2
 floor_max_angle = 1.55334
 script = ExtResource("1_fvqxw")
+RayDepth = 1.8
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
-RayDepth = 1.8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_p4emw")

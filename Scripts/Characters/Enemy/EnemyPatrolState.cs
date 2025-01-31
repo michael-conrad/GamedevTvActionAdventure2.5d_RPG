@@ -24,7 +24,9 @@ public partial class EnemyPatrolState : EnemyState
         CharacterNode.NaviAgent.TargetPosition = Destination;
         _timer.Timeout += HandleTimeout;
         CharacterNode.NaviAgent.NavigationFinished += HandleNavigationFinished;
-        CharacterNode.ChaseArea.BodyEntered += HandleChaseAreaBodyEntered;
+        var characterNodeChaseArea = CharacterNode.ChaseArea;
+        characterNodeChaseArea.BodyEntered += HandleChaseAreaBodyEntered;
+        characterNodeChaseArea.BodyExited += HandleChaseAreaBodyExited;
     }
 
     protected override void ExitState()
@@ -32,7 +34,9 @@ public partial class EnemyPatrolState : EnemyState
         base.ExitState();
         _timer.Timeout -= HandleTimeout;
         CharacterNode.NaviAgent.NavigationFinished -= HandleNavigationFinished;
-        CharacterNode.ChaseArea.BodyEntered -= HandleChaseAreaBodyEntered;
+        var characterNodeChaseArea = CharacterNode.ChaseArea;
+        characterNodeChaseArea.BodyEntered -= HandleChaseAreaBodyEntered;
+        characterNodeChaseArea.BodyExited -= HandleChaseAreaBodyExited;
     }
 
     private void HandleTimeout()

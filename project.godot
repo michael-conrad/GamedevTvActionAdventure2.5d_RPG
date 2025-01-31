@@ -18,6 +18,7 @@ config/icon="res://Assets/diceset.svg"
 
 [display]
 
+window/size/mode=2
 window/size/initial_position_type=3
 
 [dotnet]
