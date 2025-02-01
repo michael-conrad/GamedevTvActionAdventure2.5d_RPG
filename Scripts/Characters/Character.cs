@@ -52,13 +52,16 @@ public abstract partial class Character : CharacterBody3D
 
     private void HandleHurtBoxEnter(Area3D area)
     {
-        StatResource stat = GetStatResource(Stat.Health);
-        GD.Print($"HP: {stat.StatValue}");
+        StatResource health = GetStatResource(Stat.Health);
+        Character player = area.GetOwner<Character>();
+        var strengthValue = player.GetStatResource(Stat.Strength).StatValue;
+        health.StatValue -= strengthValue;
+        GD.Print($"Hurt: {this.Name}, Remaining Health: {health.StatValue}");
     }
 
     public StatResource GetStatResource(Stat stat)
     {
-        return Stats.FirstOrDefault(element => element.StatType == stat);
+        return Stats.FirstOrDefault(e => e.StatType == stat);
     }
 
     public void Flip()
