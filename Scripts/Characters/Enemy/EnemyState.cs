@@ -8,6 +8,7 @@ public abstract partial class EnemyState : CharacterState
     private float _speed = 1.0f;
 
     protected Vector3 Destination;
+    protected CharacterBody3D Target;
 
     protected Vector3 GetPointGlobalPosition(int index)
     {
@@ -66,5 +67,20 @@ public abstract partial class EnemyState : CharacterState
         {
             CharacterNode.StateMachine.SwitchState<EnemyReturnState>();
         }
+    }
+
+    protected Player.Player GetPlayerIn(Area3D area)
+    {
+        foreach (var body in area.GetOverlappingBodies())
+        {
+            if (body is not Player.Player player)
+            {
+                continue;
+            }
+
+            return player;
+        }
+
+        return null;
     }
 }

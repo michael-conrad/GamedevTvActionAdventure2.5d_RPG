@@ -4,6 +4,8 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters;
 
 public abstract partial class Character : CharacterBody3D
 {
+    protected internal Area3D AttackArea;
+
     [ExportGroup("Game Settings")] //
     [Export(PropertyHint.Range, "0, 10, 0.1")]
     protected float RayDepth = 1.5f;
@@ -27,6 +29,13 @@ public abstract partial class Character : CharacterBody3D
 
     public Vector3 Direction { get; set; } = Vector3.Zero;
     public RayCast3D RayCast { get; set; }
+
+    public override void _Ready()
+    {
+        base._Ready();
+        // I really find setting these via the Godot editor asinine. So no export for you deary!
+        AttackArea = GetNodeOrNull<Area3D>("AttackArea");
+    }
 
     public void Flip()
     {

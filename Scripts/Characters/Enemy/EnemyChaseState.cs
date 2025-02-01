@@ -5,8 +5,6 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 
 public partial class EnemyChaseState : EnemyState
 {
-    private CharacterBody3D _target;
-
     [Export] private Timer _timer;
 
     protected override void EnterState()
@@ -20,12 +18,18 @@ public partial class EnemyChaseState : EnemyState
                 continue;
             }
 
-            _target = player;
+            Target = player;
             break;
         }
 
         _timer.Timeout += HandleTimeout;
         CharacterNode.ChaseArea.BodyExited += HandleChaseAreaBodyExited;
+        CharacterNode.AttackArea.BodyEntered += HandleAttackAreaBodyEntered;
+    }
+
+    private void HandleAttackAreaBodyEntered(Node3D body)
+    {
+        CharacterNode.StateMachine.SwitchState<EnemyAttackState>();
     }
 
     protected override void ExitState()
@@ -33,11 +37,12 @@ public partial class EnemyChaseState : EnemyState
         base.ExitState();
         _timer.Timeout -= HandleTimeout;
         CharacterNode.ChaseArea.BodyExited -= HandleChaseAreaBodyExited;
+        CharacterNode.AttackArea.BodyEntered -= HandleAttackAreaBodyEntered;
     }
 
     private void HandleTimeout()
     {
-        Destination = _target.GlobalPosition;
+        Destination = Target.GlobalPosition;
         CharacterNode.NaviAgent.TargetPosition = Destination;
     }
 
