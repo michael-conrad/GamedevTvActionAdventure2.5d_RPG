@@ -1,3 +1,4 @@
+using GamedevTvActionAdventure25d_RPG.Scripts.Resources;
 using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters;
@@ -5,8 +6,6 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters;
 public abstract partial class Character : CharacterBody3D
 {
     protected internal Area3D AttackArea;
-    protected internal Area3D HitBox;
-    protected internal Area3D HurtBox;
 
     [ExportGroup("Game Settings")] //
     [Export(PropertyHint.Range, "0, 10, 0.1")]
@@ -14,6 +13,11 @@ public abstract partial class Character : CharacterBody3D
 
     [Export(PropertyHint.Range, "0, 10, 0.1")]
     protected float RayDistance = 0.4f;
+
+    public Area3D HitBox { get; private set; }
+    public Area3D HurtBox { get; private set; }
+
+    [Export] public StatResource[] Stats { get; private set; }
 
     [ExportGroup("Required Nodes")] //
     [Export]

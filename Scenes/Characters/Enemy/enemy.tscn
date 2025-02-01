@@ -1,6 +1,7 @@
-[gd_scene load_steps=111 format=3 uid="uid://dui1q6ovp3aqf"]
+[gd_scene load_steps=114 format=3 uid="uid://dui1q6ovp3aqf"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_abhp2"]
+[ext_resource type="Script" path="res://Scripts/Resources/StatResource.cs" id="2_pecru"]
 [ext_resource type="Texture2D" uid="uid://8uccqi2sj8y5" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_000.png" id="2_w1sv8"]
 [ext_resource type="Texture2D" uid="uid://b2q4doabiricl" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_001.png" id="3_oosc5"]
 [ext_resource type="Texture2D" uid="uid://bmxtjsm5ioll6" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_002.png" id="4_72voc"]
@@ -106,6 +107,16 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="104_o2k8l"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="105_5n1jc"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_ne4y0"]
+
+[sub_resource type="Resource" id="Resource_4fx3y"]
+script = ExtResource("2_pecru")
+StatType = 0
+StatValue = 20.0
+
+[sub_resource type="Resource" id="Resource_3t6ix"]
+script = ExtResource("2_pecru")
+StatType = 1
+StatValue = 4.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e6a02"]
 animations = [{
@@ -506,6 +517,7 @@ collision_layer = 4
 collision_mask = 3
 floor_max_angle = 1.55334
 script = ExtResource("1_abhp2")
+Stats = Array[Object]([SubResource("Resource_4fx3y"), SubResource("Resource_3t6ix")])
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
 ChaseArea = NodePath("ChaseArea")
