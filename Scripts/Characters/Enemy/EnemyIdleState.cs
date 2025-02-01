@@ -26,7 +26,7 @@ public partial class EnemyIdleState : EnemyState
     {
         base._PhysicsProcess(delta);
         var nav = CharacterNode.NaviAgent;
-        if (!nav.IsNavigationFinished())
+        if (IsNavigationReady() && !nav.IsNavigationFinished())
         {
             CharacterNode.StateMachine.SwitchState<EnemyReturnState>();
             return;

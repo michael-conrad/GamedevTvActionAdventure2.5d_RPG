@@ -1,4 +1,5 @@
 using GamedevTvActionAdventure25d_RPG.Scripts.General;
+using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 
@@ -41,6 +42,11 @@ public partial class EnemyAttackState : EnemyState
     protected override void ExitState()
     {
         base.ExitState();
-        CharacterNode.CharacterSprite.AnimationFinished -= AttackFinished;
+        var animationFinished = AnimatedSprite3D.SignalName.AnimationFinished;
+        var callable = Callable.From(AttackFinished);
+        if (CharacterNode.CharacterSprite.IsConnected(animationFinished, callable))
+        {
+            CharacterNode.CharacterSprite.AnimationFinished -= AttackFinished;
+        }
     }
 }

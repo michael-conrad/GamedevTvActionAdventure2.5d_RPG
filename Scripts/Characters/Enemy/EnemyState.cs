@@ -27,8 +27,19 @@ public abstract partial class EnemyState : CharacterState
         Move();
     }
 
+    protected bool IsNavigationReady()
+    {
+        var nav = CharacterNode.NaviAgent;
+        return NavigationServer3D.MapGetIterationId(nav.GetNavigationMap()) != 0;
+    }
+
     protected void Move()
     {
+        if (!IsNavigationReady())
+        {
+            return;
+        }
+
         var nav = CharacterNode.NaviAgent;
         var nextPosition = nav.GetNextPathPosition();
         var velocity = CharacterNode.GlobalPosition.DirectionTo(nextPosition) * _speed;
