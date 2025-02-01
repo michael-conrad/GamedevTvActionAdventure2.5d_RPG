@@ -32,6 +32,10 @@ public partial class EnemyAttackState : EnemyState
         {
             CharacterNode.StateMachine.SwitchState<EnemyChaseState>();
         }
+        else
+        {
+            CharacterNode.StateMachine.SwitchState<EnemyReturnState>();
+        }
     }
 
     protected override void ExitState()

@@ -148,7 +148,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack",
-"speed": 20.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -252,7 +252,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Death",
-"speed": 20.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -311,7 +311,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"DeathSmoke",
-"speed": 20.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -370,7 +370,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 20.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -447,7 +447,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Move",
-"speed": 20.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -488,7 +488,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"TakeHit",
-"speed": 20.0
+"speed": 24.0
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rw63o"]
@@ -514,7 +514,7 @@ NaviAgent = NodePath("NavigationAgent3D")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_e6a02")
-animation = &"Attack"
+animation = &"Idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_rw63o")
