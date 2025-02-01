@@ -374,9 +374,7 @@ shape = SubResource("CapsuleShape3D_p4emw")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Attack2"
-frame = 11
-frame_progress = 1.0
+animation = &"Idle"
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_x37t5")]
 _currentState = NodePath("PlayerIdleState")

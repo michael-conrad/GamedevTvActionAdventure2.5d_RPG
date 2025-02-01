@@ -24,12 +24,30 @@ public partial class PlayerAttackState : PlayerState
     {
         base.EnterState();
 
-        CharacterNode.CharacterSprite.Play(GameConstants.Anim.Attack + (_comboCount + 1));
-        CharacterNode.CharacterSprite.AnimationFinished += HandleAnimationFinished;
+        var sprite = CharacterNode.CharacterSprite;
+        sprite.Play(GameConstants.Anim.Attack + (_comboCount + 1));
+        sprite.AnimationFinished += HandleAnimationFinished;
+        sprite.FrameChanged += HandleFrameChange;
+
 
         _comboCount = ++_comboCount % _maxComboCount;
         _timer.Stop();
     }
+
+    private void HandleFrameChange()
+    {
+        var sprite = CharacterNode.CharacterSprite;
+        if (sprite.Frame == 4 && sprite.Animation == GameConstants.Anim.Attack + 1)
+        {
+            PerformHit();
+        }
+
+        if (sprite.Frame == 3 && sprite.Animation == GameConstants.Anim.Attack + 1)
+        {
+            PerformHit();
+        }
+    }
+
 
     private void HandleAnimationFinished()
     {
@@ -39,7 +57,14 @@ public partial class PlayerAttackState : PlayerState
     protected override void ExitState()
     {
         base.ExitState();
-        CharacterNode.CharacterSprite.AnimationFinished -= HandleAnimationFinished;
+        var sprite = CharacterNode.CharacterSprite;
+        sprite.AnimationFinished -= HandleAnimationFinished;
+        sprite.FrameChanged -= HandleFrameChange;
         _timer.Start(_comboTime);
+    }
+
+    private void PerformHit()
+    {
+        GD.Print("Perform hit");
     }
 }
