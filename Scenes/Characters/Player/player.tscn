@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=85 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
 [ext_resource type="Texture2D" uid="uid://crclm0o8w7qjy" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_djdun"]
@@ -344,6 +344,9 @@ animations = [{
 "speed": 120.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ti3vj"]
+size = Vector3(0.5, 0.5, 0.5)
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CharacterSprite", "StateMachine")]
 collision_layer = 2
 collision_mask = 5
@@ -387,3 +390,11 @@ script = ExtResource("81_gi2rf")
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.840761, 0)
 target_position = Vector3(0, -2, 0)
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00143999, 0, 0.555093)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_ti3vj")

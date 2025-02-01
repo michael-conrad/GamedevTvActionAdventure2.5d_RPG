@@ -5,6 +5,8 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters;
 public abstract partial class Character : CharacterBody3D
 {
     protected internal Area3D AttackArea;
+    protected internal Area3D HitBox;
+    protected internal Area3D HurtBox;
 
     [ExportGroup("Game Settings")] //
     [Export(PropertyHint.Range, "0, 10, 0.1")]
@@ -35,6 +37,17 @@ public abstract partial class Character : CharacterBody3D
         base._Ready();
         // I really find setting these via the Godot editor asinine. So no export for you deary!
         AttackArea = GetNodeOrNull<Area3D>("AttackArea");
+        HitBox = GetNodeOrNull<Area3D>("HitBox");
+        HurtBox = GetNodeOrNull<Area3D>("HurtBox");
+        if (HurtBox != null)
+        {
+            HurtBox.AreaEntered += HandleHurtBoxEnter;
+        }
+    }
+
+    private void HandleHurtBoxEnter(Area3D area)
+    {
+        GD.Print($"{area.Name}: Hit");
     }
 
     public void Flip()

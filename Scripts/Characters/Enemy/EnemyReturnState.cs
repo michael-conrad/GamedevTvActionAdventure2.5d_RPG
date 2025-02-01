@@ -1,5 +1,4 @@
 using GamedevTvActionAdventure25d_RPG.Scripts.General;
-using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 
@@ -19,7 +18,6 @@ public partial class EnemyReturnState : EnemyState
         var nav = CharacterNode.NaviAgent;
         if (nav.IsNavigationFinished())
         {
-            GD.Print("Returning to patrol: " + CharacterNode.Name);
             CharacterNode.StateMachine.SwitchState<EnemyPatrolState>();
             return;
         }

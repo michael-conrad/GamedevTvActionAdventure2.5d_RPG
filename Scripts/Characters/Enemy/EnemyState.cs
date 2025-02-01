@@ -53,7 +53,6 @@ public abstract partial class EnemyState : CharacterState
 
     protected void HandleChaseAreaBodyEntered(Node3D node3D)
     {
-        GD.Print("Chase Area Enter: " + node3D.Name);
         if (node3D is Player.Player)
         {
             CharacterNode.StateMachine.SwitchState<EnemyChaseState>();
@@ -62,7 +61,6 @@ public abstract partial class EnemyState : CharacterState
 
     protected void HandleChaseAreaBodyExited(Node3D node3D)
     {
-        GD.Print("Chase Area Exit: " + node3D.Name);
         if (node3D is Player.Player)
         {
             CharacterNode.StateMachine.SwitchState<EnemyReturnState>();

@@ -41,7 +41,6 @@ public partial class EnemyPatrolState : EnemyState
 
     private void HandleTimeout()
     {
-        GD.Print("Timeout " + CharacterNode.Name);
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
         Destination = GetPointGlobalPosition(_nextPointIndex());
         CharacterNode.NaviAgent.TargetPosition = Destination;
@@ -49,7 +48,6 @@ public partial class EnemyPatrolState : EnemyState
 
     private void HandleNavigationFinished()
     {
-        GD.Print("Navigation finished" + CharacterNode.Name);
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Idle);
         CharacterNode.Velocity = Vector3.Zero;
         var rng = new RandomNumberGenerator();
