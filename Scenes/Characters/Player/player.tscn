@@ -365,7 +365,7 @@ frame_progress = 1.0
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_x37t5")]
 _currentState = NodePath("PlayerIdleState")
-_states = [NodePath("PlayerDashState"), NodePath("PlayerIdleState"), NodePath("PlayerMoveState")]
+_states = [NodePath("PlayerDashState"), NodePath("PlayerIdleState"), NodePath("PlayerMoveState"), NodePath("PlayerAttackState")]
 
 [node name="PlayerDashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_timer")]
 script = ExtResource("80_d55l3")
