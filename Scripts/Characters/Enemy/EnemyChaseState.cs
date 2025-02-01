@@ -1,3 +1,4 @@
+using System.Linq;
 using GamedevTvActionAdventure25d_RPG.Scripts.General;
 using Godot;
 
@@ -11,17 +12,7 @@ public partial class EnemyChaseState : EnemyState
     {
         base.EnterState();
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
-        foreach (var body in CharacterNode.ChaseArea.GetOverlappingBodies())
-        {
-            if (body is not Player.Player player)
-            {
-                continue;
-            }
-
-            Target = player;
-            break;
-        }
-
+        Target = (Player.Player)CharacterNode.ChaseArea.GetOverlappingBodies().FirstOrDefault(p => p is Player.Player);
         _timer.Timeout += HandleTimeout;
         CharacterNode.ChaseArea.BodyExited += HandleChaseAreaBodyExited;
         CharacterNode.AttackArea.BodyEntered += HandleAttackAreaBodyEntered;

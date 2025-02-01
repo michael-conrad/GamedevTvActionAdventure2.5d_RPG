@@ -1,3 +1,4 @@
+using System.Linq;
 using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
@@ -80,16 +81,6 @@ public abstract partial class EnemyState : CharacterState
 
     protected Player.Player GetPlayerIn(Area3D area)
     {
-        foreach (var body in area.GetOverlappingBodies())
-        {
-            if (body is not Player.Player player)
-            {
-                continue;
-            }
-
-            return player;
-        }
-
-        return null;
+        return (Player.Player)area.GetOverlappingBodies().FirstOrDefault(p => p is Player.Player);
     }
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using GamedevTvActionAdventure25d_RPG.Scripts.General;
 using Godot;
 
@@ -18,15 +19,7 @@ public partial class StateMachine : Node
 
     public void SwitchState<T>()
     {
-        Node newState = null;
-        foreach (var state in _states)
-        {
-            if (state is T)
-            {
-                newState = state;
-            }
-        }
-
+        Node newState = _states.FirstOrDefault(state => state is T);
         if (newState == null)
         {
             return;

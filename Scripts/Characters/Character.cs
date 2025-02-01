@@ -1,3 +1,4 @@
+using System.Linq;
 using GamedevTvActionAdventure25d_RPG.Scripts.Resources;
 using Godot;
 
@@ -51,7 +52,13 @@ public abstract partial class Character : CharacterBody3D
 
     private void HandleHurtBoxEnter(Area3D area)
     {
-        GD.Print($"{area.Name}: Hit");
+        StatResource stat = GetStatResource(Stat.Health);
+        GD.Print($"HP: {stat.StatValue}");
+    }
+
+    public StatResource GetStatResource(Stat stat)
+    {
+        return Stats.FirstOrDefault(element => element.StatType == stat);
     }
 
     public void Flip()
