@@ -78,4 +78,10 @@ public abstract partial class Character : CharacterBody3D
             }
         }
     }
+
+    public void EnableHitBox(bool flag)
+    {
+        var shape = HitBox.GetNodeOrNull<CollisionShape3D>("CollisionShape3D");
+        if (shape != null) shape.Disabled = !flag;
+    }
 }

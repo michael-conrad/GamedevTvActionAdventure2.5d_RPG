@@ -55,6 +55,7 @@ public partial class PlayerAttackState : PlayerState
 
     private void HandleAnimationFinished()
     {
+        CharacterNode.EnableHitBox(false);
         CharacterNode.StateMachine.SwitchState<PlayerIdleState>();
     }
 
@@ -70,6 +71,7 @@ public partial class PlayerAttackState : PlayerState
     private void PerformHit()
     {
         CharacterNode.HitBox.Position = CharacterNode.Direction * _hitBoxDistance;
+        CharacterNode.EnableHitBox(true);
         GD.Print("Perform hit");
     }
 }
