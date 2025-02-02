@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://dui1q6ovp3aqf"]
+[gd_scene load_steps=115 format=3 uid="uid://dui1q6ovp3aqf"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_abhp2"]
 [ext_resource type="Script" path="res://Scripts/Resources/StatResource.cs" id="2_pecru"]
@@ -512,6 +512,9 @@ radius = 7.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o5uy1"]
 radius = 1.4
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_sil3t"]
+size = Vector3(0.5, 0.5, 0.5)
+
 [node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("CharacterSprite", "StateMachine", "ChaseArea", "NaviAgent")]
 collision_layer = 4
 collision_mask = 3
@@ -526,7 +529,8 @@ NaviAgent = NodePath("NavigationAgent3D")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_e6a02")
-animation = &"Idle"
+animation = &"Attack"
+frame = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_rw63o")
@@ -578,6 +582,14 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
 shape = SubResource("CylinderShape3D_o5uy1")
+
+[node name="HitBox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_sil3t")
+disabled = true
 
 [node name="HurtBox" type="Area3D" parent="."]
 collision_layer = 0

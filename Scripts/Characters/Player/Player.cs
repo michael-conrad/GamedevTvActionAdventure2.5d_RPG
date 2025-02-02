@@ -20,7 +20,7 @@ public partial class Player : Character
             GameConstants.Input.MoveUp,
             GameConstants.Input.MoveDown);
         Direction = new Vector3(input.X, 0, input.Y);
-        RayCast.Position = Direction * RayDistance;
+        RayCast.Position = LastFacing * RayDistance;
         RayCast.TargetPosition = new Vector3(0, -RayDepth, 0); // Relative to the RayCast3D Node's position!
         Flip();
     }

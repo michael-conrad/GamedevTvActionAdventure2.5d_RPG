@@ -408,3 +408,10 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 shape = SubResource("BoxShape3D_ti3vj")
 disabled = true
+
+[node name="HurtBox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("CapsuleShape3D_p4emw")

@@ -7,6 +7,9 @@ public abstract partial class CharacterState : Node
 {
     protected Character CharacterNode;
 
+    [Export(PropertyHint.Range, "0, 10, 0.1")]
+    protected float HitBoxDistance = 0.75f;
+
     public override void _Ready()
     {
         base._Ready();
@@ -55,5 +58,11 @@ public abstract partial class CharacterState : Node
             CharacterNode.Velocity = velocity;
             CharacterNode.MoveAndSlide();
         }
+    }
+
+    protected void PerformHit()
+    {
+        CharacterNode.HitBox.Position = CharacterNode.LastFacing * HitBoxDistance;
+        CharacterNode.EnableHitBox(true);
     }
 }

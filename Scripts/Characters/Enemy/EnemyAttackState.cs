@@ -12,41 +12,64 @@ public partial class EnemyAttackState : EnemyState
         if (player != null)
         {
             Target = player;
-            CharacterNode.CharacterSprite.Play(GameConstants.Anim.Attack);
-            CharacterNode.CharacterSprite.AnimationFinished += AttackFinished;
+            var sprite = CharacterNode.CharacterSprite;
+            sprite.Play(GameConstants.Anim.Attack);
+            sprite.AnimationFinished += HandleAnimationFinished;
+            sprite.FrameChanged += HandleFrameChange;
             return;
         }
 
         CharacterNode.StateMachine.SwitchState<EnemyIdleState>();
     }
 
-    private void AttackFinished()
+    private void HandleFrameChange()
     {
+        var sprite = CharacterNode.CharacterSprite;
+        if (sprite.Frame == 3 && sprite.Animation == GameConstants.Anim.Attack)
+        {
+            PerformHit();
+        }
+    }
+
+
+    private void HandleAnimationFinished()
+    {
+        CharacterNode.EnableHitBox(false);
+
         // wait 0.1 secs, then transition back to chase
-        var timer = GetTree().CreateTimer(0.1f);
-        timer.Timeout += () => CharacterNode.StateMachine.SwitchState<EnemyAttackState>();
-        if (GetPlayerIn(CharacterNode.AttackArea) != null)
+        var timer = GetTree().CreateTimer(AfterAttackDelay);
+        timer.Timeout += () =>
         {
-            CharacterNode.StateMachine.SwitchState<EnemyAttackState>();
-        }
-        else if (GetPlayerIn(CharacterNode.ChaseArea) != null)
-        {
-            CharacterNode.StateMachine.SwitchState<EnemyChaseState>();
-        }
-        else
-        {
-            CharacterNode.StateMachine.SwitchState<EnemyReturnState>();
-        }
+            if (GetPlayerIn(CharacterNode.AttackArea) != null)
+            {
+                CharacterNode.StateMachine.SwitchState<EnemyAttackState>();
+            }
+            else if (GetPlayerIn(CharacterNode.ChaseArea) != null)
+            {
+                CharacterNode.StateMachine.SwitchState<EnemyChaseState>();
+            }
+            else
+            {
+                CharacterNode.StateMachine.SwitchState<EnemyReturnState>();
+            }
+        };
     }
 
     protected override void ExitState()
     {
         base.ExitState();
         var animationFinished = AnimatedSprite3D.SignalName.AnimationFinished;
-        var callable = Callable.From(AttackFinished);
-        if (CharacterNode.CharacterSprite.IsConnected(animationFinished, callable))
+        var callableAnimationFinished = Callable.From(HandleAnimationFinished);
+        if (CharacterNode.CharacterSprite.IsConnected(animationFinished, callableAnimationFinished))
         {
-            CharacterNode.CharacterSprite.AnimationFinished -= AttackFinished;
+            CharacterNode.CharacterSprite.AnimationFinished -= HandleAnimationFinished;
+        }
+
+        var frameChanged = AnimatedSprite3D.SignalName.FrameChanged;
+        var callableFrameChanged = Callable.From(HandleFrameChange);
+        if (CharacterNode.CharacterSprite.IsConnected(frameChanged, callableFrameChanged))
+        {
+            CharacterNode.CharacterSprite.AnimationFinished -= HandleFrameChange;
         }
     }
 }

@@ -8,9 +8,6 @@ public partial class PlayerAttackState : PlayerState
     private int _comboCount = 0;
     [Export] private float _comboTime = 0.5f;
 
-    [Export(PropertyHint.Range, "0, 10, 0.1")]
-    private float _hitBoxDistance = 0.75f;
-
     private int _maxComboCount = 2;
     private Timer _timer;
 
@@ -27,13 +24,10 @@ public partial class PlayerAttackState : PlayerState
     protected override void EnterState()
     {
         base.EnterState();
-
         var sprite = CharacterNode.CharacterSprite;
         sprite.Play(GameConstants.Anim.Attack + (_comboCount + 1));
         sprite.AnimationFinished += HandleAnimationFinished;
         sprite.FrameChanged += HandleFrameChange;
-
-
         _comboCount = ++_comboCount % _maxComboCount;
         _timer.Stop();
     }
@@ -46,7 +40,7 @@ public partial class PlayerAttackState : PlayerState
             PerformHit();
         }
 
-        if (sprite.Frame == 3 && sprite.Animation == GameConstants.Anim.Attack + 1)
+        if (sprite.Frame == 3 && sprite.Animation == GameConstants.Anim.Attack + 2)
         {
             PerformHit();
         }
@@ -66,12 +60,5 @@ public partial class PlayerAttackState : PlayerState
         sprite.AnimationFinished -= HandleAnimationFinished;
         sprite.FrameChanged -= HandleFrameChange;
         _timer.Start(_comboTime);
-    }
-
-    private void PerformHit()
-    {
-        CharacterNode.HitBox.Position = CharacterNode.Direction * _hitBoxDistance;
-        CharacterNode.EnableHitBox(true);
-        GD.Print("Perform hit");
     }
 }

@@ -8,6 +8,9 @@ public abstract partial class EnemyState : CharacterState
     [Export(PropertyHint.Range, "0, 20, 0.1")]
     private float _speed = 1.0f;
 
+    [Export(PropertyHint.Range, "0, 1, 0.1")]
+    protected float AfterAttackDelay = 0.25f;
+
     protected Vector3 Destination;
     protected CharacterBody3D Target;
 

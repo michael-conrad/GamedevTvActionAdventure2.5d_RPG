@@ -34,7 +34,9 @@ public abstract partial class Character : CharacterBody3D
 
     [Export] protected internal Path3D PathNode { get; private set; }
 
-    public Vector3 Direction { get; set; } = Vector3.Zero;
+    public Vector3 Direction { get; protected set; } = Vector3.Zero;
+    public Vector3 LastFacing { get; protected set; } = Vector3.Zero;
+
     public RayCast3D RayCast { get; set; }
 
     public override void _Ready()
@@ -50,13 +52,14 @@ public abstract partial class Character : CharacterBody3D
         }
     }
 
+
     private void HandleHurtBoxEnter(Area3D area)
     {
-        StatResource health = GetStatResource(Stat.Health);
-        Character player = area.GetOwner<Character>();
+        var health = GetStatResource(Stat.Health);
+        var player = area.GetOwner<Character>();
         var strengthValue = player.GetStatResource(Stat.Strength).StatValue;
         health.StatValue -= strengthValue;
-        GD.Print($"Hurt: {this.Name}, Remaining Health: {health.StatValue}");
+        GD.Print($"Hurt: {Name}, Remaining Health: {health.StatValue}");
     }
 
     public StatResource GetStatResource(Stat stat)
@@ -81,7 +84,20 @@ public abstract partial class Character : CharacterBody3D
 
     public void EnableHitBox(bool flag)
     {
+        HitBox.Position = LastFacing * 0.5f;
         var shape = HitBox.GetNodeOrNull<CollisionShape3D>("CollisionShape3D");
-        if (shape != null) shape.Disabled = !flag;
+        if (shape != null)
+        {
+            shape.Disabled = !flag;
+        }
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+        if (Velocity != Vector3.Zero)
+        {
+            LastFacing = Velocity.Normalized();
+        }
     }
 }
