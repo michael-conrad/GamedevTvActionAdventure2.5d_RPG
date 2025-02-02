@@ -374,7 +374,7 @@ shape = SubResource("CapsuleShape3D_p4emw")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Idle"
+animation = &"Attack2"
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_x37t5")]
 _currentState = NodePath("PlayerIdleState")
@@ -402,7 +402,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.840761, 0)
 target_position = Vector3(0, -2, 0)
 
 [node name="HitBox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00143999, 0, 0.555093)
 collision_layer = 2
 collision_mask = 0
 

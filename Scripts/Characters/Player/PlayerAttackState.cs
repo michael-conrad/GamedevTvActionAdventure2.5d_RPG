@@ -7,6 +7,10 @@ public partial class PlayerAttackState : PlayerState
 {
     private int _comboCount = 0;
     [Export] private float _comboTime = 0.5f;
+
+    [Export(PropertyHint.Range, "0, 10, 0.1")]
+    private float _hitBoxDistance = 0.75f;
+
     private int _maxComboCount = 2;
     private Timer _timer;
 
@@ -65,6 +69,7 @@ public partial class PlayerAttackState : PlayerState
 
     private void PerformHit()
     {
+        CharacterNode.HitBox.Position = CharacterNode.Direction * _hitBoxDistance;
         GD.Print("Perform hit");
     }
 }
