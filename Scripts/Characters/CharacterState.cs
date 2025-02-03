@@ -60,7 +60,7 @@ public abstract partial class CharacterState : Node
         }
     }
 
-    protected void PerformHit()
+    protected virtual void PerformHit()
     {
         CharacterNode.HitBox.Position = CharacterNode.LastFacing * HitBoxDistance;
         CharacterNode.EnableHitBox(true);
