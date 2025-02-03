@@ -19,6 +19,11 @@ public partial class StateMachine : Node
 
     public void SwitchState<T>()
     {
+        if (_currentState is T)
+        {
+            return;
+        }
+
         var newState = _states.FirstOrDefault(state => state is T);
         if (newState == null)
         {

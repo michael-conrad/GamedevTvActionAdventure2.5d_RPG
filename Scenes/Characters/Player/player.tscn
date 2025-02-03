@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=89 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
 [ext_resource type="Script" path="res://Scripts/Resources/StatResource.cs" id="2_3tg47"]
@@ -82,6 +82,7 @@
 [ext_resource type="PackedScene" uid="uid://b15tct2altow7" path="res://Scenes/Characters/state_machine.tscn" id="77_x37t5"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_d55l3"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="81_gi2rf"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_hutok"]
 
 [sub_resource type="Resource" id="Resource_8ccmf"]
 script = ExtResource("2_3tg47")
@@ -228,7 +229,7 @@ animations = [{
 "texture": ExtResource("16_0bv3d")
 }],
 "loop": false,
-"name": &"Dying",
+"name": &"Death",
 "speed": 24.0
 }, {
 "frames": [{
@@ -374,11 +375,11 @@ shape = SubResource("CapsuleShape3D_p4emw")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Attack2"
+animation = &"Idle"
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_x37t5")]
 _currentState = NodePath("PlayerIdleState")
-_states = [NodePath("PlayerDashState"), NodePath("PlayerIdleState"), NodePath("PlayerMoveState"), NodePath("PlayerAttackState")]
+_states = [NodePath("PlayerDashState"), NodePath("PlayerIdleState"), NodePath("PlayerMoveState"), NodePath("PlayerAttackState"), NodePath("PlayerDeathState")]
 
 [node name="PlayerDashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_timer")]
 script = ExtResource("80_d55l3")
@@ -396,6 +397,9 @@ script = ExtResource("33_6et8e")
 
 [node name="PlayerAttackState" type="Node" parent="StateMachine"]
 script = ExtResource("81_gi2rf")
+
+[node name="PlayerDeathState" type="Node" parent="StateMachine"]
+script = ExtResource("83_hutok")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.840761, 0)

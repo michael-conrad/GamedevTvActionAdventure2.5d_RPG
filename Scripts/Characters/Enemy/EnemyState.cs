@@ -1,4 +1,5 @@
 using System.Linq;
+using GamedevTvActionAdventure25d_RPG.Scripts.Resources;
 using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
@@ -13,6 +14,14 @@ public abstract partial class EnemyState : CharacterState
 
     protected Vector3 Destination;
     protected CharacterBody3D Target;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        var health = CharacterNode.GetStatResource(Stat.Health);
+        health.OnZero += HandleZeroHealth;
+    }
+
 
     protected Vector3 GetPointGlobalPosition(int index)
     {
@@ -85,5 +94,10 @@ public abstract partial class EnemyState : CharacterState
     protected Player.Player GetPlayerIn(Area3D area)
     {
         return (Player.Player)area.GetOverlappingBodies().FirstOrDefault(p => p is Player.Player);
+    }
+
+    private void HandleZeroHealth()
+    {
+        CharacterNode.StateMachine.SwitchState<EnemyDeathState>();
     }
 }
