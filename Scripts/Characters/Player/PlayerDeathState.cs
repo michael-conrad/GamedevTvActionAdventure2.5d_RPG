@@ -7,17 +7,12 @@ public partial class PlayerDeathState : PlayerState
     protected override void EnterState()
     {
         base.EnterState();
-        CharacterNode.CharacterSprite.Play(GameConstants.Anim.Death);
         CharacterNode.CharacterSprite.AnimationFinished += HandleAnimationFinished;
+        CharacterNode.CharacterSprite.Play(GameConstants.Anim.Death);
     }
 
     private void HandleAnimationFinished()
     {
         CharacterNode.QueueFree();
-    }
-
-    protected override void ExitState()
-    {
-        base.ExitState();
     }
 }

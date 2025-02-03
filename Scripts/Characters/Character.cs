@@ -52,7 +52,6 @@ public abstract partial class Character : CharacterBody3D
         }
     }
 
-
     private void HandleHurtBoxEnter(Area3D area)
     {
         var health = GetStatResource(Stat.Health);

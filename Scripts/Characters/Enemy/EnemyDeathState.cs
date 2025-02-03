@@ -7,17 +7,12 @@ public partial class EnemyDeathState : EnemyState
     protected override void EnterState()
     {
         base.EnterState();
-        CharacterNode.CharacterSprite.Play(GameConstants.Anim.Death);
         CharacterNode.CharacterSprite.AnimationFinished += HandleAnimationFinished;
+        CharacterNode.CharacterSprite.Play(GameConstants.Anim.Death);
     }
 
-    protected virtual void HandleAnimationFinished()
+    private void HandleAnimationFinished()
     {
         CharacterNode.QueueFree();
-    }
-
-    protected override void ExitState()
-    {
-        base.ExitState();
     }
 }
