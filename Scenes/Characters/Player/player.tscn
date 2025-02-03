@@ -85,11 +85,13 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_hutok"]
 
 [sub_resource type="Resource" id="Resource_8ccmf"]
+resource_local_to_scene = true
 script = ExtResource("2_3tg47")
 StatType = 0
 StatValue = 100.0
 
 [sub_resource type="Resource" id="Resource_sfgau"]
+resource_local_to_scene = true
 script = ExtResource("2_3tg47")
 StatType = 1
 StatValue = 3.0
