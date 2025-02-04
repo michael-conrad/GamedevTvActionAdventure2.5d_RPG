@@ -109,13 +109,13 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_ne4y0"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyDeathState.cs" id="108_khtqs"]
 
-[sub_resource type="Resource" id="Resource_w102p"]
+[sub_resource type="Resource" id="Resource_d6q5f"]
 resource_local_to_scene = true
 script = ExtResource("2_pecru")
 StatType = 0
 StatValue = 20.0
 
-[sub_resource type="Resource" id="Resource_iu035"]
+[sub_resource type="Resource" id="Resource_xgiby"]
 resource_local_to_scene = true
 script = ExtResource("2_pecru")
 StatType = 1
@@ -523,7 +523,7 @@ collision_layer = 4
 collision_mask = 3
 floor_max_angle = 1.55334
 script = ExtResource("1_abhp2")
-Stats = Array[Object]([SubResource("Resource_w102p"), SubResource("Resource_iu035")])
+Stats = Array[Object]([SubResource("Resource_d6q5f"), SubResource("Resource_xgiby")])
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
 ChaseArea = NodePath("ChaseArea")
