@@ -18,6 +18,8 @@ config/icon="res://Assets/diceset.svg"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/mode=2
 window/size/initial_position_type=3
 
