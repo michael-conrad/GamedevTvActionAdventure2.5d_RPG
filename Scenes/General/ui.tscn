@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://de6lvoatlehk8"]
+[gd_scene load_steps=7 format=3 uid="uid://de6lvoatlehk8"]
 
 [ext_resource type="Texture2D" uid="uid://eak017jc0ed3" path="res://Assets/Sprites/UI/UI Element 1.png" id="1_cgfk4"]
+[ext_resource type="Script" path="res://Scripts/UI/UiController.cs" id="1_qsktx"]
+[ext_resource type="Script" path="res://Scripts/UI/UiContainer.cs" id="1_wrkeo"]
 [ext_resource type="FontFile" uid="uid://dtuftcit1l65s" path="res://Assets/RifficFree-Bold.ttf" id="2_ef7ti"]
 [ext_resource type="Texture2D" uid="uid://2mlfyurpjekx" path="res://Assets/Sprites/UI/UI Element 2.png" id="3_ucc45"]
 
@@ -18,20 +20,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qsktx")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Start" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wrkeo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Start"]
 layout_mode = 2
 theme_override_constants/separation = 120
 
-[node name="Main Logo" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+[node name="Main Logo" type="TextureRect" parent="Start/VBoxContainer"]
 custom_minimum_size = Vector2(0, 384)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -40,7 +45,7 @@ texture = ExtResource("1_cgfk4")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Start" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="Start/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6

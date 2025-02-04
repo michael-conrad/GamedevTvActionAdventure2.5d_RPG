@@ -84,13 +84,13 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="81_gi2rf"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_hutok"]
 
-[sub_resource type="Resource" id="Resource_8ccmf"]
+[sub_resource type="Resource" id="Resource_8g3p5"]
 resource_local_to_scene = true
 script = ExtResource("2_3tg47")
 StatType = 0
 StatValue = 100.0
 
-[sub_resource type="Resource" id="Resource_sfgau"]
+[sub_resource type="Resource" id="Resource_ynnte"]
 resource_local_to_scene = true
 script = ExtResource("2_3tg47")
 StatType = 1
@@ -367,7 +367,7 @@ collision_mask = 5
 floor_max_angle = 1.55334
 script = ExtResource("1_fvqxw")
 RayDepth = 1.8
-Stats = Array[Object]([SubResource("Resource_8ccmf"), SubResource("Resource_sfgau")])
+Stats = Array[Object]([SubResource("Resource_8g3p5"), SubResource("Resource_ynnte")])
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
 
