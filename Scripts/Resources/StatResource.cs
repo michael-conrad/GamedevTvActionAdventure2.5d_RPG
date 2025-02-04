@@ -7,7 +7,6 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Resources;
 public partial class StatResource : Resource
 {
     private float _statValue;
-    public Action OnZero;
     [Export] public Stat StatType { get; private set; }
 
     [Export] public float StatValue
@@ -19,4 +18,6 @@ public partial class StatResource : Resource
             if (_statValue == 0) OnZero?.Invoke();
         }
     }
+
+    public event Action OnZero;
 }
