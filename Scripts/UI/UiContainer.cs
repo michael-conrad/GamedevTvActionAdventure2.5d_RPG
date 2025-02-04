@@ -1,3 +1,4 @@
+using GamedevTvActionAdventure25d_RPG.Scripts.General;
 using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.UI;
@@ -20,6 +21,7 @@ public partial class UiContainer : CenterContainer
             // do start the game
             Visible = false;
             GetTree().Paused = false;
+            GameEvents.RaiseStartGame();
         }
     }
 }
