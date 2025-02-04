@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bivnbgn86rjdl"]
+[gd_scene load_steps=15 format=3 uid="uid://bivnbgn86rjdl"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_w6kfe"]
 [ext_resource type="PackedScene" uid="uid://dc2f24h2ivhp0" path="res://Scenes/Characters/Player/player.tscn" id="2_vujc1"]
@@ -6,13 +6,13 @@
 [ext_resource type="MeshLibrary" uid="uid://bweti2ok8cbyp" path="res://Resources/tiles.tres" id="3_xpqar"]
 [ext_resource type="PackedScene" uid="uid://dui1q6ovp3aqf" path="res://Scenes/Characters/Enemy/enemy.tscn" id="4_wdwq2"]
 
-[sub_resource type="Resource" id="Resource_8ccmf"]
+[sub_resource type="Resource" id="Resource_bpd0x"]
 resource_local_to_scene = true
 script = ExtResource("3_hy5u8")
 StatType = 0
 StatValue = 100.0
 
-[sub_resource type="Resource" id="Resource_sfgau"]
+[sub_resource type="Resource" id="Resource_5tnjo"]
 resource_local_to_scene = true
 script = ExtResource("3_hy5u8")
 StatType = 1
@@ -32,13 +32,13 @@ _data = {
 }
 point_count = 27
 
-[sub_resource type="Resource" id="Resource_4fx3y"]
+[sub_resource type="Resource" id="Resource_ccs4y"]
 resource_local_to_scene = true
 script = ExtResource("3_hy5u8")
 StatType = 0
 StatValue = 20.0
 
-[sub_resource type="Resource" id="Resource_3t6ix"]
+[sub_resource type="Resource" id="Resource_y21wq"]
 resource_local_to_scene = true
 script = ExtResource("3_hy5u8")
 StatType = 1
@@ -51,13 +51,25 @@ _data = {
 }
 point_count = 24
 
+[sub_resource type="Resource" id="Resource_wv55c"]
+resource_local_to_scene = true
+script = ExtResource("3_hy5u8")
+StatType = 0
+StatValue = 20.0
+
+[sub_resource type="Resource" id="Resource_rpway"]
+resource_local_to_scene = true
+script = ExtResource("3_hy5u8")
+StatType = 1
+StatValue = 4.0
+
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1328, -4.99153, -0.601326)
 script = ExtResource("1_w6kfe")
 
 [node name="Player" parent="." instance=ExtResource("2_vujc1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6784, 10, 5.9897)
-Stats = Array[Object]([SubResource("Resource_8ccmf"), SubResource("Resource_sfgau")])
+Stats = Array[Object]([SubResource("Resource_bpd0x"), SubResource("Resource_5tnjo")])
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 6)
@@ -99,7 +111,7 @@ curve = SubResource("Curve3D_y04ou")
 
 [node name="Enemy2" parent="Enemies/Path3D2" node_paths=PackedStringArray("PathNode") instance=ExtResource("4_wdwq2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3533, 10.8184, -4.6497)
-Stats = Array[Object]([SubResource("Resource_4fx3y"), SubResource("Resource_3t6ix")])
+Stats = Array[Object]([SubResource("Resource_ccs4y"), SubResource("Resource_y21wq")])
 PathNode = NodePath("..")
 
 [node name="Path3D" type="Path3D" parent="Enemies"]
@@ -108,5 +120,5 @@ curve = SubResource("Curve3D_u2jdb")
 
 [node name="Enemy" parent="Enemies/Path3D" node_paths=PackedStringArray("PathNode") instance=ExtResource("4_wdwq2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4387, 14.7284, -39.1876)
-Stats = Array[Object]([SubResource("Resource_4fx3y"), SubResource("Resource_3t6ix")])
+Stats = Array[Object]([SubResource("Resource_wv55c"), SubResource("Resource_rpway")])
 PathNode = NodePath("..")

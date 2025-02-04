@@ -572,7 +572,7 @@ script = ExtResource("106_ne4y0")
 script = ExtResource("108_khtqs")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-debug_enabled = true
+avoidance_enabled = true
 
 [node name="ChaseArea" type="Area3D" parent="."]
 collision_layer = 0
