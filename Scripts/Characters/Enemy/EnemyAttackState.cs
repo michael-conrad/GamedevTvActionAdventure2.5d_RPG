@@ -1,25 +1,51 @@
 using GamedevTvActionAdventure25d_RPG.Scripts.General;
-using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 
 public partial class EnemyAttackState : EnemyState
 {
+    private bool _isConnected = false;
+
     protected override void EnterState()
     {
         base.EnterState();
+        ConnectSignals();
         var player = GetPlayerIn(CharacterNode.AttackArea);
         if (player != null)
         {
             Target = player;
-            var sprite = CharacterNode.CharacterSprite;
-            sprite.Play(GameConstants.Anim.Attack);
-            sprite.AnimationFinished += HandleAnimationFinished;
-            sprite.FrameChanged += HandleFrameChange;
+            CharacterNode.CharacterSprite.Play(GameConstants.Anim.Attack);
             return;
         }
 
-        CharacterNode.StateMachine.SwitchState<EnemyIdleState>();
+        CharacterNode.StateMachine.SwitchState<EnemyChaseState>();
+    }
+
+
+    private void ConnectSignals()
+    {
+        if (_isConnected)
+        {
+            return;
+        }
+
+        _isConnected = true;
+        var sprite = CharacterNode.CharacterSprite;
+        sprite.AnimationFinished += HandleAnimationFinished;
+        sprite.FrameChanged += HandleFrameChange;
+    }
+
+    private void DisconnectSignals()
+    {
+        if (!_isConnected)
+        {
+            return;
+        }
+
+        var sprite = CharacterNode.CharacterSprite;
+        sprite.AnimationFinished -= HandleAnimationFinished;
+        sprite.FrameChanged -= HandleFrameChange;
+        _isConnected = false;
     }
 
     private void HandleFrameChange()
@@ -43,33 +69,23 @@ public partial class EnemyAttackState : EnemyState
             if (GetPlayerIn(CharacterNode.AttackArea) != null)
             {
                 CharacterNode.StateMachine.SwitchState<EnemyAttackState>();
+                return;
             }
-            else if (GetPlayerIn(CharacterNode.ChaseArea) != null)
+
+            if (GetPlayerIn(CharacterNode.ChaseArea) != null)
             {
                 CharacterNode.StateMachine.SwitchState<EnemyChaseState>();
+                return;
             }
-            else
-            {
-                CharacterNode.StateMachine.SwitchState<EnemyReturnState>();
-            }
+
+            CharacterNode.StateMachine.SwitchState<EnemyReturnState>();
         };
+        CharacterNode.StateMachine.SwitchState<EnemyChaseState>();
     }
 
     protected override void ExitState()
     {
         base.ExitState();
-        var animationFinished = AnimatedSprite3D.SignalName.AnimationFinished;
-        var callableAnimationFinished = Callable.From(HandleAnimationFinished);
-        if (CharacterNode.CharacterSprite.IsConnected(animationFinished, callableAnimationFinished))
-        {
-            CharacterNode.CharacterSprite.AnimationFinished -= HandleAnimationFinished;
-        }
-
-        var frameChanged = AnimatedSprite3D.SignalName.FrameChanged;
-        var callableFrameChanged = Callable.From(HandleFrameChange);
-        if (CharacterNode.CharacterSprite.IsConnected(frameChanged, callableFrameChanged))
-        {
-            CharacterNode.CharacterSprite.AnimationFinished -= HandleFrameChange;
-        }
+        DisconnectSignals();
     }
 }

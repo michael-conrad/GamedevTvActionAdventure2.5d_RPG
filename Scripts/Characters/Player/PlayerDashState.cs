@@ -5,6 +5,8 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class PlayerDashState : PlayerState
 {
+    private bool _isConnected = false;
+
     [Export(PropertyHint.Range, "0,20,0.1")]
     private float _speed = 10;
 
@@ -13,7 +15,20 @@ public partial class PlayerDashState : PlayerState
     public override void _Ready()
     {
         base._Ready();
+    }
+
+    private void ConnectSignals()
+    {
+        if (_isConnected) return;
+        _isConnected = true;
         _timer.Timeout += HandleDashTimeOut;
+    }
+
+    private void DisconnectSignals()
+    {
+        if (!_isConnected) return;
+        _isConnected = false;
+        _timer.Timeout -= HandleDashTimeOut;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -36,6 +51,8 @@ public partial class PlayerDashState : PlayerState
 
     protected override void EnterState()
     {
+        ConnectSignals();
+
         if (!CharacterNode.IsOnFloor())
         {
             HandleDashTimeOut();
@@ -55,5 +72,11 @@ public partial class PlayerDashState : PlayerState
         }
 
         _timer.Start();
+    }
+
+    protected override void ExitState()
+    {
+        base.ExitState();
+        DisconnectSignals();
     }
 }

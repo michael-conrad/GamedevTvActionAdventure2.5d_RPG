@@ -88,7 +88,7 @@
 resource_local_to_scene = true
 script = ExtResource("2_3tg47")
 StatType = 0
-StatValue = 100.0
+StatValue = 8.0
 
 [sub_resource type="Resource" id="Resource_k1sa8"]
 resource_local_to_scene = true

@@ -6,11 +6,13 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 
 public abstract partial class EnemyState : CharacterState
 {
+    private bool _isConnected = false;
+
     [Export(PropertyHint.Range, "0, 20, 0.1")]
     private float _speed = 1.0f;
 
     [Export(PropertyHint.Range, "0, 1, 0.1")]
-    protected float AfterAttackDelay = 0.25f;
+    protected float AfterAttackDelay = 0.1f;
 
     protected Vector3 Destination;
     protected CharacterBody3D Target;
@@ -18,10 +20,34 @@ public abstract partial class EnemyState : CharacterState
     public override void _Ready()
     {
         base._Ready();
+        ConnectSignals();
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        DisconnectSignals();
+        base.Dispose(disposing);
+    }
+
+    private void ConnectSignals()
+    {
+        if (_isConnected) return;
+        _isConnected = true;
         var health = CharacterNode.GetStatResource(Stat.Health);
         health.OnZero += HandleZeroHealth;
     }
 
+    private void DisconnectSignals()
+    {
+        if (!_isConnected)
+        {
+            return;
+        }
+
+        _isConnected = false;
+        var health = CharacterNode.GetStatResource(Stat.Health);
+        health.OnZero -= HandleZeroHealth;
+    }
 
     protected Vector3 GetPointGlobalPosition(int index)
     {

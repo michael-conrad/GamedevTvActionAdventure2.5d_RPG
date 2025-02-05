@@ -7,6 +7,7 @@ public partial class PlayerAttackState : PlayerState
 {
     private int _comboCount = 0;
     [Export] private float _comboTime = 0.5f;
+    private bool _isConnected = false;
 
     private int _maxComboCount = 2;
     private Timer _timer;
@@ -24,12 +25,29 @@ public partial class PlayerAttackState : PlayerState
     protected override void EnterState()
     {
         base.EnterState();
+        ConnectSignals();
         var sprite = CharacterNode.CharacterSprite;
         sprite.Play(GameConstants.Anim.Attack + (_comboCount + 1));
-        sprite.AnimationFinished += HandleAnimationFinished;
-        sprite.FrameChanged += HandleFrameChange;
         _comboCount = ++_comboCount % _maxComboCount;
         _timer.Stop();
+    }
+
+    private void ConnectSignals()
+    {
+        if (_isConnected) return;
+        _isConnected = true;
+        var sprite = CharacterNode.CharacterSprite;
+        sprite.AnimationFinished += HandleAnimationFinished;
+        sprite.FrameChanged += HandleFrameChange;
+    }
+
+    private void DisconnectSignals()
+    {
+        if (!_isConnected) return;
+        _isConnected = false;
+        var sprite = CharacterNode.CharacterSprite;
+        sprite.AnimationFinished -= HandleAnimationFinished;
+        sprite.FrameChanged -= HandleFrameChange;
     }
 
     private void HandleFrameChange()
@@ -56,9 +74,7 @@ public partial class PlayerAttackState : PlayerState
     protected override void ExitState()
     {
         base.ExitState();
-        var sprite = CharacterNode.CharacterSprite;
-        sprite.AnimationFinished -= HandleAnimationFinished;
-        sprite.FrameChanged -= HandleFrameChange;
+        DisconnectSignals();
         _timer.Start(_comboTime);
     }
 }

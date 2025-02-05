@@ -5,6 +5,8 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 
 public partial class EnemyPatrolState : EnemyState
 {
+    private bool _isConnected = false;
+
     [Export(PropertyHint.Range, "0,20,0.1")]
     private float _maxIdleTime = 4;
 
@@ -19,19 +21,34 @@ public partial class EnemyPatrolState : EnemyState
     protected override void EnterState()
     {
         base.EnterState();
+        ConnectSignals();
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Move);
         Destination = GetPointGlobalPosition(_nextPointIndex());
         CharacterNode.NaviAgent.TargetPosition = Destination;
+    }
+
+    private void ConnectSignals()
+    {
+        if (_isConnected) return;
+        _isConnected = true;
         _timer.Timeout += HandleTimeout;
         CharacterNode.NaviAgent.NavigationFinished += HandleNavigationFinished;
         var characterNodeChaseArea = CharacterNode.ChaseArea;
         characterNodeChaseArea.BodyEntered += HandleChaseAreaBodyEntered;
         characterNodeChaseArea.BodyExited += HandleChaseAreaBodyExited;
+
     }
 
     protected override void ExitState()
     {
         base.ExitState();
+        DisconnectSignals();
+    }
+
+    private void DisconnectSignals()
+    {
+        if (!_isConnected) return;
+        _isConnected = false;
         _timer.Timeout -= HandleTimeout;
         CharacterNode.NaviAgent.NavigationFinished -= HandleNavigationFinished;
         var characterNodeChaseArea = CharacterNode.ChaseArea;
