@@ -6,6 +6,8 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters;
 
 public abstract partial class Character : CharacterBody3D
 {
+    private bool _isConnected = false;
+
     protected internal Area3D AttackArea;
 
     [ExportGroup("Game Settings")] //
@@ -46,10 +48,31 @@ public abstract partial class Character : CharacterBody3D
         AttackArea = GetNodeOrNull<Area3D>("AttackArea");
         HitBox = GetNodeOrNull<Area3D>("HitBox");
         HurtBox = GetNodeOrNull<Area3D>("HurtBox");
-        if (HurtBox != null)
+        ConnectSignals();
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        DisconnectSignals();
+    }
+
+    private void DisconnectSignals()
+    {
+        if (!_isConnected || HurtBox == null) return;
+        _isConnected = false;
+        HurtBox.AreaEntered -= HandleHurtBoxEnter;
+    }
+
+    private void ConnectSignals()
+    {
+        if (_isConnected || HurtBox == null)
         {
-            HurtBox.AreaEntered += HandleHurtBoxEnter;
+            return;
         }
+
+        _isConnected = true;
+        HurtBox.AreaEntered += HandleHurtBoxEnter;
     }
 
     private void HandleHurtBoxEnter(Area3D area)

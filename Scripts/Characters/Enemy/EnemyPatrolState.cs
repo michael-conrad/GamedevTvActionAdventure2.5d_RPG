@@ -29,7 +29,11 @@ public partial class EnemyPatrolState : EnemyState
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
         _timer.Timeout += HandleTimeout;
         CharacterNode.NaviAgent.NavigationFinished += HandleNavigationFinished;
@@ -47,7 +51,11 @@ public partial class EnemyPatrolState : EnemyState
 
     private void DisconnectSignals()
     {
-        if (!_isConnected) return;
+        if (!_isConnected)
+        {
+            return;
+        }
+
         _isConnected = false;
         _timer.Timeout -= HandleTimeout;
         CharacterNode.NaviAgent.NavigationFinished -= HandleNavigationFinished;

@@ -1,11 +1,12 @@
-[gd_scene load_steps=89 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=88 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
-[ext_resource type="Script" path="res://Scripts/Resources/StatResource.cs" id="2_3tg47"]
 [ext_resource type="Texture2D" uid="uid://crclm0o8w7qjy" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_djdun"]
 [ext_resource type="Texture2D" uid="uid://o4dspckoej4s" path="res://Assets/Sprites/Characters/Player/Dying/Dying_000.png" id="2_vkpkh"]
+[ext_resource type="Resource" uid="uid://bl5sjifbv0mk5" path="res://Resources/player_health_stat.tres" id="2_wc4v5"]
 [ext_resource type="Texture2D" uid="uid://dxlnser676cqr" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_000.png" id="3_k0e6w"]
 [ext_resource type="Texture2D" uid="uid://7xuemwpt088y" path="res://Assets/Sprites/Characters/Player/Dying/Dying_001.png" id="3_qv18q"]
+[ext_resource type="Resource" uid="uid://bolacv87yi15i" path="res://Resources/player_strength_stat.tres" id="3_srimo"]
 [ext_resource type="Texture2D" uid="uid://0fwmagkqoxnv" path="res://Assets/Sprites/Characters/Player/Dying/Dying_002.png" id="4_edg3k"]
 [ext_resource type="Texture2D" uid="uid://3u8b12u02qhg" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_002.png" id="4_vtird"]
 [ext_resource type="Texture2D" uid="uid://bckfsi17vlooo" path="res://Assets/Sprites/Characters/Player/Dying/Dying_003.png" id="5_5v5rv"]
@@ -83,18 +84,6 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_d55l3"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="81_gi2rf"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_hutok"]
-
-[sub_resource type="Resource" id="Resource_lag33"]
-resource_local_to_scene = true
-script = ExtResource("2_3tg47")
-StatType = 0
-StatValue = 8.0
-
-[sub_resource type="Resource" id="Resource_k1sa8"]
-resource_local_to_scene = true
-script = ExtResource("2_3tg47")
-StatType = 1
-StatValue = 3.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p4emw"]
 radius = 0.3
@@ -367,7 +356,7 @@ collision_mask = 5
 floor_max_angle = 1.55334
 script = ExtResource("1_fvqxw")
 RayDepth = 1.8
-Stats = Array[Object]([SubResource("Resource_lag33"), SubResource("Resource_k1sa8")])
+Stats = Array[Object]([ExtResource("2_wc4v5"), ExtResource("3_srimo")])
 CharacterSprite = NodePath("AnimatedSprite3D")
 StateMachine = NodePath("StateMachine")
 

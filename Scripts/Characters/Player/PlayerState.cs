@@ -16,7 +16,11 @@ public abstract partial class PlayerState : CharacterState
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
         var health = CharacterNode.GetStatResource(Stat.Health);
         health.OnZero += HandleZeroHealth;
@@ -24,7 +28,11 @@ public abstract partial class PlayerState : CharacterState
 
     private void DisconnectSignals()
     {
-        if (!_isConnected) return;
+        if (!_isConnected)
+        {
+            return;
+        }
+
         _isConnected = false;
         var health = CharacterNode.GetStatResource(Stat.Health);
         health.OnZero -= HandleZeroHealth;

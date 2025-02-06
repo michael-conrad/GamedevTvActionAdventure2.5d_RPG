@@ -19,7 +19,11 @@ public partial class EnemyChaseState : EnemyState
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
         _timer.Timeout += HandleTimeout;
         CharacterNode.ChaseArea.BodyExited += HandleChaseAreaBodyExited;

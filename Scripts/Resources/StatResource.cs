@@ -15,6 +15,7 @@ public partial class StatResource : Resource
         set
         {
             _statValue = Mathf.Clamp(value, 0, Mathf.Inf);
+            OnUpdate?.Invoke();
             if (_statValue == 0)
             {
                 OnZero?.Invoke();
@@ -22,10 +23,6 @@ public partial class StatResource : Resource
         }
     }
 
+    public event Action OnUpdate;
     public event Action OnZero;
-
-    // public StatResource()
-    // {
-    //     ResourceLocalToScene = true;
-    // }
 }

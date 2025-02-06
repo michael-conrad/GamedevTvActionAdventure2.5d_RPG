@@ -36,7 +36,11 @@ public partial class EnemyReturnState : EnemyState
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
 
         var nav = CharacterNode.NaviAgent;
@@ -49,7 +53,11 @@ public partial class EnemyReturnState : EnemyState
 
     private void DisconnectSignals()
     {
-        if (!_isConnected) return;
+        if (!_isConnected)
+        {
+            return;
+        }
+
         _isConnected = false;
         var nav = CharacterNode.NaviAgent;
         var characterNodeChaseArea = CharacterNode.ChaseArea;

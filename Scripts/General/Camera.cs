@@ -16,7 +16,11 @@ public partial class Camera : Camera3D
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
         GameEvents.OnStartGame += HandleStartGame;
         GameEvents.OnEndGame += HandleEndGame;

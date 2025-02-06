@@ -31,7 +31,11 @@ public abstract partial class EnemyState : CharacterState
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
         var health = CharacterNode.GetStatResource(Stat.Health);
         health.OnZero += HandleZeroHealth;

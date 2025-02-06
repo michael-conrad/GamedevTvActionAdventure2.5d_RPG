@@ -19,14 +19,22 @@ public partial class PlayerDashState : PlayerState
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
         _timer.Timeout += HandleDashTimeOut;
     }
 
     private void DisconnectSignals()
     {
-        if (!_isConnected) return;
+        if (!_isConnected)
+        {
+            return;
+        }
+
         _isConnected = false;
         _timer.Timeout -= HandleDashTimeOut;
     }

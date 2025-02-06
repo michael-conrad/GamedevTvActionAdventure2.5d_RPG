@@ -34,7 +34,11 @@ public partial class PlayerAttackState : PlayerState
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
         var sprite = CharacterNode.CharacterSprite;
         sprite.AnimationFinished += HandleAnimationFinished;
@@ -43,7 +47,11 @@ public partial class PlayerAttackState : PlayerState
 
     private void DisconnectSignals()
     {
-        if (!_isConnected) return;
+        if (!_isConnected)
+        {
+            return;
+        }
+
         _isConnected = false;
         var sprite = CharacterNode.CharacterSprite;
         sprite.AnimationFinished -= HandleAnimationFinished;

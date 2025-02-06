@@ -15,14 +15,22 @@ public partial class PlayerDeathState : PlayerState
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
         CharacterNode.CharacterSprite.AnimationFinished += HandleAnimationFinished;
     }
 
     private void DisconnectSignals()
     {
-        if (!_isConnected) return;
+        if (!_isConnected)
+        {
+            return;
+        }
+
         _isConnected = false;
         CharacterNode.CharacterSprite.AnimationFinished -= HandleAnimationFinished;
     }
