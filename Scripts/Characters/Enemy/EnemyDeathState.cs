@@ -44,5 +44,6 @@ public partial class EnemyDeathState : EnemyState
     private void HandleAnimationFinished()
     {
         CharacterNode.QueueFree();
+        CharacterNode.PathNode.QueueFree();
     }
 }
