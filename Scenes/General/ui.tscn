@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://de6lvoatlehk8"]
+[gd_scene load_steps=14 format=3 uid="uid://de6lvoatlehk8"]
 
 [ext_resource type="Texture2D" uid="uid://eak017jc0ed3" path="res://Assets/Sprites/UI/UI Element 1.png" id="1_cgfk4"]
 [ext_resource type="Script" path="res://Scripts/UI/UiController.cs" id="1_qsktx"]
 [ext_resource type="Script" path="res://Scripts/UI/UiContainer.cs" id="1_wrkeo"]
 [ext_resource type="FontFile" uid="uid://dtuftcit1l65s" path="res://Assets/RifficFree-Bold.ttf" id="2_ef7ti"]
 [ext_resource type="Texture2D" uid="uid://2mlfyurpjekx" path="res://Assets/Sprites/UI/UI Element 2.png" id="3_ucc45"]
+[ext_resource type="Texture2D" uid="uid://bjmby6nrersge" path="res://Assets/Sprites/UI/UI ElementUI 12.png" id="6_dg40t"]
+[ext_resource type="Texture2D" uid="uid://d35wsiq12hhki" path="res://Assets/Sprites/UI/UI ElementUI 6.png" id="7_kmvve"]
+[ext_resource type="Texture2D" uid="uid://ejc08v2o1kue" path="res://Assets/Sprites/UI/UI ElementUI 7.png" id="8_jhcnp"]
+[ext_resource type="Texture2D" uid="uid://yafohq2f34dy" path="res://Assets/Sprites/UI/UI ElementUI 8.png" id="9_176c7"]
+[ext_resource type="Texture2D" uid="uid://b8ollsd7swgpm" path="res://Assets/Sprites/UI/UI ElementUI 9.png" id="10_3nik6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xsvir"]
 texture = ExtResource("3_ucc45")
@@ -12,6 +17,12 @@ expand_margin_left = 15.0
 expand_margin_top = 10.0
 expand_margin_right = 15.0
 expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fw6qc"]
+texture = ExtResource("6_dg40t")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1b6hw"]
+texture = ExtResource("7_kmvve")
 
 [node name="UI" type="Control"]
 process_mode = 3
@@ -57,3 +68,94 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_xsvir")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xsvir")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xsvir")
 text = "START"
+
+[node name="Stats" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 232.0
+offset_bottom = 272.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fw6qc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Health" type="Panel" parent="Stats/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1b6hw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/MarginContainer/VBoxContainer/Health"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 76.0
+offset_bottom = 44.0
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="Stats/MarginContainer/VBoxContainer/Health/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_jhcnp")
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/Health/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ef7ti")
+theme_override_font_sizes/font_size = 28
+text = "---"
+
+[node name="Strength" type="Panel" parent="Stats/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1b6hw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/MarginContainer/VBoxContainer/Strength"]
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 76.0
+offset_bottom = 44.0
+theme_override_constants/separation = 15
+
+[node name="TextureRect" type="TextureRect" parent="Stats/MarginContainer/VBoxContainer/Strength/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_176c7")
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/Strength/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ef7ti")
+theme_override_font_sizes/font_size = 28
+text = "---"
+
+[node name="Enemy Count" type="Panel" parent="Stats/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1b6hw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/MarginContainer/VBoxContainer/Enemy Count"]
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 76.0
+offset_bottom = 44.0
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="Stats/MarginContainer/VBoxContainer/Enemy Count/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_3nik6")
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/VBoxContainer/Enemy Count/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ef7ti")
+theme_override_font_sizes/font_size = 28
+text = "---"
