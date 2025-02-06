@@ -1,13 +1,44 @@
 using System.Collections.Generic;
 using System.Linq;
-using GamedevTvActionAdventure25d_RPG.Scripts.UI;
+using GamedevTvActionAdventure25d_RPG.Scripts.General;
 using Godot;
 
-namespace GamedevTvActionAdventure25d_RPG.Scripts.General;
+namespace GamedevTvActionAdventure25d_RPG.Scripts.UI;
 
 public partial class UiController : Control
 {
     private Dictionary<ContainerType, UiContainer> _containers;
+
+    private bool _isConnected = false;
+
+    private void ConnectSignals()
+    {
+        if (_isConnected)
+        {
+            return;
+        }
+
+        _isConnected = true;
+        GameEvents.OnEndGame += HandleOnEndGame;
+    }
+
+    private void DisconnectSignals()
+    {
+        if (!_isConnected)
+        {
+            return;
+        }
+
+        _isConnected = false;
+        GameEvents.OnEndGame -= HandleOnEndGame;
+    }
+
+    private void HandleOnEndGame()
+    {
+        _containers[ContainerType.Stats].Visible = false;
+        _containers[ContainerType.Defeat].Visible = true;
+        GetTree().Paused = true;
+    }
 
     public override void _Ready()
     {
@@ -16,6 +47,7 @@ public partial class UiController : Control
             .Cast<UiContainer>()
             .ToDictionary(e => e.Container, e => e);
         _containers[ContainerType.Start].Visible = true;
+        ConnectSignals();
     }
 
     public override void _Input(InputEvent @event)

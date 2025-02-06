@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://de6lvoatlehk8"]
+[gd_scene load_steps=21 format=3 uid="uid://de6lvoatlehk8"]
 
 [ext_resource type="Texture2D" uid="uid://eak017jc0ed3" path="res://Assets/Sprites/UI/UI Element 1.png" id="1_cgfk4"]
 [ext_resource type="Script" path="res://Scripts/UI/UiController.cs" id="1_qsktx"]
@@ -14,6 +14,8 @@
 [ext_resource type="Resource" uid="uid://bl5sjifbv0mk5" path="res://Resources/player_health_stat.tres" id="10_xmbh6"]
 [ext_resource type="Resource" uid="uid://bolacv87yi15i" path="res://Resources/player_strength_stat.tres" id="12_5jrrl"]
 [ext_resource type="Script" path="res://Scripts/UI/EnemyCountLabel.cs" id="14_ge8ds"]
+[ext_resource type="Texture2D" uid="uid://c6han05jemh2o" path="res://Assets/Sprites/UI/UI Element 3.png" id="15_1j4at"]
+[ext_resource type="Texture2D" uid="uid://dsl4465xxlrpp" path="res://Assets/Sprites/UI/UI ElementUI 10.png" id="16_cmil6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xsvir"]
 texture = ExtResource("3_ucc45")
@@ -27,6 +29,9 @@ texture = ExtResource("6_dg40t")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1b6hw"]
 texture = ExtResource("7_kmvve")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50uwy"]
+texture = ExtResource("15_1j4at")
 
 [node name="UI" type="Control"]
 process_mode = 3
@@ -173,3 +178,45 @@ theme_override_fonts/font = ExtResource("2_ef7ti")
 theme_override_font_sizes/font_size = 28
 text = "---"
 script = ExtResource("14_ge8ds")
+
+[node name="Defeat" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(520, 520)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -260.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_50uwy")
+script = ExtResource("1_wrkeo")
+Container = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Defeat"]
+layout_mode = 2
+theme_override_constants/margin_top = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Defeat/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="Defeat/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_ef7ti")
+theme_override_font_sizes/font_size = 60
+text = "DEFEAT!"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Defeat/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_cmil6")
