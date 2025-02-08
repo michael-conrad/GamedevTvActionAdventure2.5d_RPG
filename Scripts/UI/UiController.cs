@@ -20,6 +20,14 @@ public partial class UiController : Control
 
         _isConnected = true;
         GameEvents.OnEndGame += HandleOnEndGame;
+        GameEvents.OnVictory += HandleOnVictory;
+    }
+
+    private void HandleOnVictory()
+    {
+        _containers[ContainerType.Stats].Visible = false;
+        _containers[ContainerType.Victory].Visible = true;
+        GetTree().Paused = true;
     }
 
     private void DisconnectSignals()
@@ -31,6 +39,7 @@ public partial class UiController : Control
 
         _isConnected = false;
         GameEvents.OnEndGame -= HandleOnEndGame;
+        GameEvents.OnVictory -= HandleOnVictory;
     }
 
     private void HandleOnEndGame()

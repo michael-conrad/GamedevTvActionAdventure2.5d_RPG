@@ -41,6 +41,10 @@ public partial class EnemiesContainer : Node3D
     private void HandleChildExitingTree(Node node)
     {
         GameEvents.RaiseNewEnemyCount(--_totalEnemies);
+        if (_totalEnemies == 0)
+        {
+            GameEvents.RaiseVictory();
+        }
     }
 
     public override void _ExitTree()
