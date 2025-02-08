@@ -59,11 +59,14 @@ public abstract partial class PlayerState : CharacterState
         return !IsNotFacingEdge();
     }
 
-    protected void CheckForAttackInput(InputEvent @event)
+    protected bool CheckForAttackInput()
     {
         if (Input.IsActionJustPressed(GameConstants.Input.Attack))
         {
             CharacterNode.StateMachine.SwitchState<PlayerAttackState>();
+            return true;
         }
+
+        return false;
     }
 }

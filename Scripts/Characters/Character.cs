@@ -64,7 +64,11 @@ public abstract partial class Character : CharacterBody3D
 
     private void DisconnectSignals()
     {
-        if (!_isConnected || HurtBox == null) return;
+        if (!_isConnected || HurtBox == null)
+        {
+            return;
+        }
+
         _isConnected = false;
         HurtBox.AreaEntered -= HandleHurtBoxEnter;
     }

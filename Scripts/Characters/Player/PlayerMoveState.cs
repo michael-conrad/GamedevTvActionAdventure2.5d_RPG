@@ -11,6 +11,14 @@ public partial class PlayerMoveState : PlayerState
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
+
+        CheckForAttackInput();
+        if (Input.IsActionJustPressed(GameConstants.Input.Dash))
+        {
+            CharacterNode.StateMachine.SwitchState<PlayerDashState>();
+            return;
+        }
+
         if (CharacterNode.Direction == Vector3.Zero)
         {
             CharacterNode.StateMachine.SwitchState<PlayerIdleState>();
@@ -29,16 +37,6 @@ public partial class PlayerMoveState : PlayerState
 
         CharacterNode.MoveAndSlide();
         CharacterNode.Flip();
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-        CheckForAttackInput(@event);
-        if (Input.IsActionJustPressed(GameConstants.Input.Dash))
-        {
-            CharacterNode.StateMachine.SwitchState<PlayerDashState>();
-        }
     }
 
     protected override void EnterState()

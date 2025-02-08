@@ -25,5 +25,6 @@ public abstract class GameConstants
         public const string MoveDown = "MoveBackward";
         public const string Dash = "Dash";
         public const string Attack = "Attack";
+        public const string Start = "Start";
     }
 }

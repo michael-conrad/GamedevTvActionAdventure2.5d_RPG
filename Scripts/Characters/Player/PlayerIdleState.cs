@@ -8,22 +8,33 @@ public partial class PlayerIdleState : PlayerState
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
+        if (CheckForAttackInput())
+        {
+            return;
+        }
+
+        if (CheckForDashInput())
+        {
+            return;
+        }
+
         if (CharacterNode.Direction != Vector3.Zero)
         {
             CharacterNode.StateMachine.SwitchState<PlayerMoveState>();
         }
     }
 
-
-    public override void _Input(InputEvent @event)
+    private bool CheckForDashInput()
     {
-        base._Input(@event);
-        CheckForAttackInput(@event);
         if (Input.IsActionJustPressed(GameConstants.Input.Dash))
         {
             CharacterNode.StateMachine.SwitchState<PlayerDashState>();
+            return true;
         }
+
+        return false;
     }
+
 
     protected override void EnterState()
     {

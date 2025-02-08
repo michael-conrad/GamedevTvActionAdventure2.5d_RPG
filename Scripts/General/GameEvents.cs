@@ -10,6 +10,7 @@ public static class GameEvents
     public static event Action OnVictory;
 
     public static event Action<int> OnNewEnemyCount;
+    public static event Action OnPauseToggle;
 
     public static void RaiseStartGame()
     {
@@ -29,5 +30,10 @@ public static class GameEvents
     public static void RaiseVictory()
     {
         OnVictory?.Invoke();
+    }
+
+    public static void RaisePauseToggle()
+    {
+        OnPauseToggle?.Invoke();
     }
 }

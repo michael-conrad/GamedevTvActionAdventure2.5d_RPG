@@ -12,8 +12,9 @@ public partial class Player : Character
         StateMachine.SwitchState<PlayerIdleState>();
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _PhysicsProcess(double delta)
     {
+        base._PhysicsProcess(delta);
         var input = Input.GetVector(
             GameConstants.Input.MoveLeft,
             GameConstants.Input.MoveRight,
