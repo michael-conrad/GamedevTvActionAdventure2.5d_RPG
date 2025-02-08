@@ -47,7 +47,8 @@ public abstract partial class Character : CharacterBody3D
         // horrible initial starting point of having shared resources...
         // for (var i = 0; i < Stats.Length; i++)
         // {
-        //     Stats[i] = (StatResource)Stats[i].Duplicate();
+        //     StatResource statResource = Stats[i];
+        //     Stats[i] = (StatResource)statResource.Duplicate(true);
         // }
         // I really find setting these via the Godot editor asinine. So no export for you deary!
         AttackArea = GetNodeOrNull<Area3D>("AttackArea");
