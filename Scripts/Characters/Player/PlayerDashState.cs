@@ -5,6 +5,7 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class PlayerDashState : PlayerState
 {
+    [Export] private PackedScene _bombScene;
     private bool _isConnected = false;
 
     [Export(PropertyHint.Range, "0,20,0.1")]
@@ -80,6 +81,12 @@ public partial class PlayerDashState : PlayerState
         }
 
         _timer.Start();
+        if (_bombScene != null)
+        {
+            var bomb = _bombScene.Instantiate<Node3D>();
+            GetTree().CurrentScene.AddChild(bomb);
+            bomb.GlobalPosition = CharacterNode.GlobalPosition;
+        }
     }
 
     protected override void ExitState()
