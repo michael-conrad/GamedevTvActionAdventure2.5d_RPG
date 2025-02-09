@@ -1,19 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqgblagavui2s"]
+[gd_scene load_steps=6 format=3 uid="uid://dqgblagavui2s"]
 
 [ext_resource type="Texture2D" uid="uid://d1k18j12gcfhi" path="res://Assets/Sprites/General/16x16.png" id="1_b3k6c"]
+[ext_resource type="Script" path="res://Scripts/Reward/TreasureChest.cs" id="1_vd4lq"]
 [ext_resource type="Texture2D" uid="uid://bcu2oj1hq82ax" path="res://Assets/Sprites/Gamepad/xbox_button_color_b_outline.png" id="2_nrfj1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bn5bf"]
 size = Vector3(0.7, 0.7, 0.7)
 
-[node name="TreasureChest" type="StaticBody3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_44ejp"]
+height = 1.0
+radius = 1.0
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="TreasureChest" type="StaticBody3D"]
+script = ExtResource("1_vd4lq")
+
+[node name="ChestClosed" type="Sprite3D" parent="."]
 pixel_size = 0.05
 texture_filter = 4
 texture = ExtResource("1_b3k6c")
 region_enabled = true
 region_rect = Rect2(16, 7, 16, 23)
+
+[node name="ChestOpen" type="Sprite3D" parent="."]
+pixel_size = 0.05
+texture_filter = 4
+texture = ExtResource("1_b3k6c")
+region_enabled = true
+region_rect = Rect2(32, 8, 16, 22)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_bn5bf")
@@ -23,3 +36,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938597, 0)
 visible = false
 texture_filter = 4
 texture = ExtResource("2_nrfj1")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.032998, 0)
+shape = SubResource("CylinderShape3D_44ejp")

@@ -71,7 +71,11 @@ public partial class UiController : Control
         _containers = GetChildren().Where(e => e is UiContainer)
             .Cast<UiContainer>()
             .ToDictionary(e => e.Container, e => e);
-        foreach (var container in _containers.Values) container.Visible = false;
+        foreach (var container in _containers.Values)
+        {
+            container.Visible = false;
+        }
+
         _containers[ContainerType.Start].Visible = true;
         ConnectSignals();
     }
