@@ -47,6 +47,15 @@ public partial class EnemiesContainer : Node3D
         }
     }
 
+    public override void _Notification(int what)
+    {
+        base._Notification(what);
+        if (what == NotificationWMCloseRequest)
+        {
+            DisconnectSignals();
+        }
+    }
+
     public override void _ExitTree()
     {
         base._ExitTree();
