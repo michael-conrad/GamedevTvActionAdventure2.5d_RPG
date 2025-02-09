@@ -33,7 +33,6 @@ shape = SubResource("BoxShape3D_bn5bf")
 
 [node name="InteractiveIcon" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938597, 0)
-visible = false
 texture_filter = 4
 texture = ExtResource("2_nrfj1")
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://de6lvoatlehk8"]
+[gd_scene load_steps=23 format=3 uid="uid://de6lvoatlehk8"]
 
 [ext_resource type="Texture2D" uid="uid://eak017jc0ed3" path="res://Assets/Sprites/UI/UI Element 1.png" id="1_cgfk4"]
 [ext_resource type="Script" path="res://Scripts/UI/UiController.cs" id="1_qsktx"]
 [ext_resource type="Script" path="res://Scripts/UI/UiContainer.cs" id="1_wrkeo"]
 [ext_resource type="FontFile" uid="uid://dtuftcit1l65s" path="res://Assets/RifficFree-Bold.ttf" id="2_ef7ti"]
-[ext_resource type="Texture2D" uid="uid://2mlfyurpjekx" path="res://Assets/Sprites/UI/UI Element 2.png" id="3_ucc45"]
 [ext_resource type="Texture2D" uid="uid://bjmby6nrersge" path="res://Assets/Sprites/UI/UI ElementUI 12.png" id="6_dg40t"]
 [ext_resource type="Texture2D" uid="uid://d35wsiq12hhki" path="res://Assets/Sprites/UI/UI ElementUI 6.png" id="7_kmvve"]
 [ext_resource type="Texture2D" uid="uid://ejc08v2o1kue" path="res://Assets/Sprites/UI/UI ElementUI 7.png" id="8_jhcnp"]
@@ -19,13 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bxkiv0rycw0bg" path="res://Assets/Sprites/UI/UI ElementUI 11.png" id="17_2vfem"]
 [ext_resource type="Texture2D" uid="uid://ehqdqprensfo" path="res://Assets/Sprites/UI/UI Element 5.png" id="18_bwbki"]
 [ext_resource type="Texture2D" uid="uid://crhf0jhjt7kdg" path="res://Assets/Sprites/UI/UI ElementUI 13.png" id="19_6bhqk"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xsvir"]
-texture = ExtResource("3_ucc45")
-expand_margin_left = 15.0
-expand_margin_top = 10.0
-expand_margin_right = 15.0
-expand_margin_bottom = 10.0
+[ext_resource type="Texture2D" uid="uid://dy8ykdvwysac4" path="res://Assets/Sprites/Gamepad/xbox_guide_outline_trimmed.png" id="20_y6nti"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fw6qc"]
 texture = ExtResource("6_dg40t")
@@ -47,7 +40,6 @@ grow_vertical = 2
 script = ExtResource("1_qsktx")
 
 [node name="Start" type="CenterContainer" parent="." node_paths=PackedStringArray("StartButton")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +47,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wrkeo")
-StartButton = NodePath("VBoxContainer/StartButton")
+StartButton = NodePath("")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Start"]
 layout_mode = 2
@@ -70,16 +62,12 @@ texture = ExtResource("1_cgfk4")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="StartButton" type="Button" parent="Start/VBoxContainer"]
+[node name="StartButton" type="TextureRect" parent="Start/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("2_ef7ti")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxTexture_xsvir")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xsvir")
-theme_override_styles/normal = SubResource("StyleBoxTexture_xsvir")
-text = "START"
+size_flags_vertical = 4
+texture = ExtResource("20_y6nti")
+stretch_mode = 5
 
 [node name="Stats" type="PanelContainer" parent="."]
 visible = false
@@ -289,7 +277,7 @@ theme_override_constants/margin_top = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Pause/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 48
+theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -306,15 +294,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("18_bwbki")
 
-[node name="Button" type="Button" parent="Pause/MarginContainer/VBoxContainer"]
+[node name="StartButton" type="TextureRect" parent="Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 24
-theme_override_fonts/font = ExtResource("2_ef7ti")
-theme_override_font_sizes/font_size = 58
-text = "PRESS START"
-flat = true
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("20_y6nti")
+stretch_mode = 5
 
 [node name="Reward" type="PanelContainer" parent="." node_paths=PackedStringArray("RewardTextLabel", "RewardTexture")]
 visible = false
@@ -343,7 +328,7 @@ theme_override_constants/margin_top = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Reward/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 48
+theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="Reward/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -356,7 +341,7 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Reward/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 14
 
 [node name="TextureRect" type="TextureRect" parent="Reward/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -373,12 +358,9 @@ theme_override_font_sizes/font_size = 32
 text = "REWARD"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Reward/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="StartButton" type="TextureRect" parent="Reward/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 24
-theme_override_fonts/font = ExtResource("2_ef7ti")
-theme_override_font_sizes/font_size = 58
-text = "PRESS START"
-flat = true
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("20_y6nti")
+stretch_mode = 5
