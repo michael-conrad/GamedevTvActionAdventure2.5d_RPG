@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GamedevTvActionAdventure25d_RPG.Scripts.General;
+using GamedevTvActionAdventure25d_RPG.Scripts.Reward;
 using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.UI;
@@ -24,6 +25,16 @@ public partial class UiController : Control
         GameEvents.OnEndGame += HandleOnEndGame;
         GameEvents.OnVictory += HandleOnVictory;
         GameEvents.OnPauseToggle += HandleOnPauseToggle;
+        GameEvents.OnReward += HandleOnReward;
+    }
+
+    private void HandleOnReward(RewardResource reward)
+    {
+        var uiContainer = _containers[ContainerType.Reward];
+        uiContainer.Visible = true;
+        GetTree().Paused = true;
+        uiContainer.RewardTexture.Texture = reward.RewardTexture;
+        uiContainer.RewardTextLabel.Text = reward.RewardName;
     }
 
     private void HandleOnPauseToggle()
@@ -57,6 +68,7 @@ public partial class UiController : Control
         GameEvents.OnEndGame -= HandleOnEndGame;
         GameEvents.OnVictory -= HandleOnVictory;
         GameEvents.OnPauseToggle -= HandleOnPauseToggle;
+        GameEvents.OnReward -= HandleOnReward;
     }
 
     private void HandleOnEndGame()
@@ -93,6 +105,14 @@ public partial class UiController : Control
                 _containers[ContainerType.Stats].Visible = true;
                 GetTree().Paused = false;
                 GameEvents.RaiseStartGame();
+                return;
+            }
+
+            if (_containers[ContainerType.Reward].Visible)
+            {
+                // do close the reward
+                _containers[ContainerType.Reward].Visible = false;
+                GetTree().Paused = false;
                 return;
             }
 

@@ -10,6 +10,7 @@ public partial class TreasureChest : StaticBody3D
     private Sprite3D _chestClosed;
     private Sprite3D _chestOpen;
     private bool _isConnected = false;
+    private bool _isOpened = false;
     private Sprite3D _notificationIcon;
 
     [Export] private RewardResource _reward;
@@ -42,13 +43,25 @@ public partial class TreasureChest : StaticBody3D
     public override void _Process(double delta)
     {
         base._Process(delta);
+        if (_isOpened)
+        {
+            return;
+        }
+
         if (!_notificationIcon.Visible || !Input.IsActionJustPressed(GameConstants.Input.Interact))
         {
             return;
         }
 
+        ShowNotificationIcon(false);
         ShowChestOpen(true);
-        GD.Print("Treasure Chest Opened");
+        _isOpened = true;
+        if (_reward == null)
+        {
+            return;
+        }
+
+        GameEvents.RaiseReward(_reward);
     }
 
     private void ShowNotificationIcon(bool visible)
@@ -83,6 +96,11 @@ public partial class TreasureChest : StaticBody3D
 
     private void HandleBodyEntered(Node3D body)
     {
+        if (_isOpened)
+        {
+            return;
+        }
+
         if (body is Player)
         {
             ShowNotificationIcon(true);

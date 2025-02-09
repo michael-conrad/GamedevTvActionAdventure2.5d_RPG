@@ -316,7 +316,7 @@ theme_override_font_sizes/font_size = 58
 text = "PRESS START"
 flat = true
 
-[node name="Reward" type="PanelContainer" parent="."]
+[node name="Reward" type="PanelContainer" parent="." node_paths=PackedStringArray("RewardTextLabel", "RewardTexture")]
 visible = false
 custom_minimum_size = Vector2(520, 520)
 layout_mode = 1
@@ -334,6 +334,8 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_50uwy")
 script = ExtResource("1_wrkeo")
 Container = 5
+RewardTextLabel = NodePath("MarginContainer/VBoxContainer/VBoxContainer/RewardText")
+RewardTexture = NodePath("MarginContainer/VBoxContainer/VBoxContainer/TextureRect")
 
 [node name="MarginContainer" type="MarginContainer" parent="Reward"]
 layout_mode = 2
