@@ -1,20 +1,16 @@
 using GamedevTvActionAdventure25d_RPG.Scripts.General;
 using Godot;
 
-namespace GamedevTvActionAdventure25d_RPG.Scenes.Abilities;
+namespace GamedevTvActionAdventure25d_RPG.Scripts.Abilities;
 
-public partial class Bomb : Node3D
+public partial class Bomb : Ability
 {
-    [Export] private AnimatedSprite3D _animatedSprite3D;
     private AnimationPlayer _animationPlayer;
 
     [Export] private CollisionShape3D _collisionShape3D;
 
     private bool _isConnected = false;
     [Export] private Sprite3D _sprite;
-
-    [Export(PropertyHint.Range, "1, 100, 1")]
-    public float Damage { get; private set; } = 10;
 
     private void ConnectSignals()
     {
@@ -24,8 +20,8 @@ public partial class Bomb : Node3D
         }
 
         _isConnected = true;
-        _animatedSprite3D.AnimationFinished += HandleAnimationFinished;
-        _animatedSprite3D.FrameChanged += HandleFrameChanged;
+        AnimatedSprite.AnimationFinished += HandleAnimationFinished;
+        AnimatedSprite.FrameChanged += HandleFrameChanged;
     }
 
     public override void _Ready()
@@ -33,15 +29,15 @@ public partial class Bomb : Node3D
         base._Ready();
         ConnectSignals();
         _sprite.Visible = true;
-        _animatedSprite3D.Visible = false;
+        AnimatedSprite.Visible = false;
         _collisionShape3D.Disabled = true;
-        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        _animationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
         _animationPlayer.Play(GameConstants.Anim.Expand);
     }
 
     private void HandleFrameChanged()
     {
-        if (_animatedSprite3D.Frame >= 3)
+        if (AnimatedSprite.Frame >= 3)
         {
             _collisionShape3D.Disabled = false;
             return;
@@ -58,8 +54,8 @@ public partial class Bomb : Node3D
         }
 
         _isConnected = false;
-        _animatedSprite3D.AnimationFinished -= HandleAnimationFinished;
-        _animatedSprite3D.FrameChanged -= HandleFrameChanged;
+        AnimatedSprite.AnimationFinished -= HandleAnimationFinished;
+        AnimatedSprite.FrameChanged -= HandleFrameChanged;
     }
 
     private void HandleAnimationFinished()

@@ -1,3 +1,4 @@
+using GamedevTvActionAdventure25d_RPG.Scripts.Abilities;
 using GamedevTvActionAdventure25d_RPG.Scripts.General;
 using Godot;
 
@@ -8,6 +9,7 @@ public partial class PlayerAttackState : PlayerState
     private int _comboCount = 0;
     [Export] private float _comboTime = 0.5f;
     private bool _isConnected = false;
+    [Export] private PackedScene _lightningScene;
 
     private int _maxComboCount = 2;
     private Timer _timer;
@@ -43,6 +45,20 @@ public partial class PlayerAttackState : PlayerState
         var sprite = CharacterNode.CharacterSprite;
         sprite.AnimationFinished += HandleAnimationFinished;
         sprite.FrameChanged += HandleFrameChange;
+        var hitbox = CharacterNode.HitBox;
+        hitbox.BodyEntered += HandleBodyEntered;
+    }
+
+    private void HandleBodyEntered(Node3D body)
+    {
+        if (_comboCount + 1 != _maxComboCount)
+        {
+            return;
+        }
+
+        var lightning = _lightningScene.Instantiate<Lightning>();
+        GetTree().CurrentScene.AddChild(lightning);
+        lightning.GlobalPosition = body.GlobalPosition;
     }
 
     private void DisconnectSignals()
@@ -56,6 +72,9 @@ public partial class PlayerAttackState : PlayerState
         var sprite = CharacterNode.CharacterSprite;
         sprite.AnimationFinished -= HandleAnimationFinished;
         sprite.FrameChanged -= HandleFrameChange;
+
+        var hitbox = CharacterNode.HitBox;
+        hitbox.BodyEntered -= HandleBodyEntered;
     }
 
     private void HandleFrameChange()

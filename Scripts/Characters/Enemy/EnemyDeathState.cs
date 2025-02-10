@@ -9,7 +9,7 @@ public partial class EnemyDeathState : EnemyState
     protected override void EnterState()
     {
         base.EnterState();
-        CharacterNode.CharacterSprite.AnimationFinished += HandleAnimationFinished;
+        ConnectSignals();
         CharacterNode.CharacterSprite.Play(GameConstants.Anim.Death);
     }
 
@@ -43,6 +43,7 @@ public partial class EnemyDeathState : EnemyState
 
     private void HandleAnimationFinished()
     {
+        DisconnectSignals();
         CharacterNode.QueueFree();
         CharacterNode.PathNode.QueueFree();
     }

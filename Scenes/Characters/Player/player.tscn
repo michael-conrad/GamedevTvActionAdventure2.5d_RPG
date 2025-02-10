@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=91 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
 [ext_resource type="Texture2D" uid="uid://crclm0o8w7qjy" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_djdun"]
@@ -85,6 +85,7 @@
 [ext_resource type="PackedScene" uid="uid://b77p4gvvvqqbl" path="res://Scenes/Abilities/bomb.tscn" id="81_400mr"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="81_gi2rf"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_hutok"]
+[ext_resource type="PackedScene" uid="uid://c6bnaqqcaiboq" path="res://Scenes/Abilities/lightning.tscn" id="85_u104h"]
 [ext_resource type="Script" path="res://Scripts/Characters/AttackHitBox.cs" id="86_6mmw3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p4emw"]
@@ -391,6 +392,7 @@ script = ExtResource("33_6et8e")
 
 [node name="PlayerAttackState" type="Node" parent="StateMachine"]
 script = ExtResource("81_gi2rf")
+_lightningScene = ExtResource("85_u104h")
 
 [node name="DeathState" type="Node" parent="StateMachine"]
 script = ExtResource("83_hutok")
@@ -401,7 +403,7 @@ target_position = Vector3(0, -2, 0)
 
 [node name="HitBox" type="Area3D" parent="."]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("86_6mmw3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
