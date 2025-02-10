@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=90 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
 [ext_resource type="Texture2D" uid="uid://crclm0o8w7qjy" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_djdun"]
@@ -85,6 +85,7 @@
 [ext_resource type="PackedScene" uid="uid://b77p4gvvvqqbl" path="res://Scenes/Abilities/bomb.tscn" id="81_400mr"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="81_gi2rf"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_hutok"]
+[ext_resource type="Script" path="res://Scripts/Characters/AttackHitBox.cs" id="86_6mmw3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p4emw"]
 radius = 0.3
@@ -375,8 +376,8 @@ _states = [NodePath("PlayerDashState"), NodePath("PlayerIdleState"), NodePath("P
 
 [node name="PlayerDashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_timer")]
 script = ExtResource("80_d55l3")
-_timer = NodePath("Timer")
 _bombScene = ExtResource("81_400mr")
+_timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="StateMachine/PlayerDashState"]
 wait_time = 0.25
@@ -401,6 +402,7 @@ target_position = Vector3(0, -2, 0)
 [node name="HitBox" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("86_6mmw3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 shape = SubResource("BoxShape3D_ti3vj")

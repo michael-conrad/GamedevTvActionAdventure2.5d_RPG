@@ -13,11 +13,16 @@ public partial class Bomb : Node3D
     private bool _isConnected = false;
     [Export] private Sprite3D _sprite;
 
-    [Export] public int Damage { get; private set; }
+    [Export(PropertyHint.Range, "1, 100, 1")]
+    public float Damage { get; private set; } = 10;
 
     private void ConnectSignals()
     {
-        if (_isConnected) return;
+        if (_isConnected)
+        {
+            return;
+        }
+
         _isConnected = true;
         _animatedSprite3D.AnimationFinished += HandleAnimationFinished;
         _animatedSprite3D.FrameChanged += HandleFrameChanged;
@@ -47,7 +52,11 @@ public partial class Bomb : Node3D
 
     private void DisconnectSignals()
     {
-        if (!_isConnected) return;
+        if (!_isConnected)
+        {
+            return;
+        }
+
         _isConnected = false;
         _animatedSprite3D.AnimationFinished -= HandleAnimationFinished;
         _animatedSprite3D.FrameChanged -= HandleFrameChanged;

@@ -1,5 +1,5 @@
 using System.Linq;
-using GamedevTvActionAdventure25d_RPG.Scenes.Abilities;
+using GamedevTvActionAdventure25d_RPG.Scenes.Abilities.Interfaces;
 using GamedevTvActionAdventure25d_RPG.Scripts.Resources;
 using Godot;
 
@@ -88,22 +88,13 @@ public abstract partial class Character : CharacterBody3D
 
     private void HandleHurtBoxEnter(Area3D area)
     {
-        var health = GetStatResource(Stat.Health);
-        var ownerNode = area.GetOwnerOrNull<Node>();
-        if (ownerNode is Player.Player player)
+        if (area is not IHitBox hitbox)
         {
-            var strengthValue = player.GetStatResource(Stat.Strength).StatValue;
-            health.StatValue -= strengthValue;
-            GD.Print($"Hurt: {Name}, Remaining Health: {health.StatValue}");
             return;
         }
 
-        if (ownerNode is Bomb bomb)
-        {
-            var strengthValue = bomb.Damage;
-            health.StatValue -= strengthValue;
-            GD.Print($"Hurt: {Name}, Remaining Health: {health.StatValue}");
-        }
+        var health = GetStatResource(Stat.Health);
+        health.StatValue -= hitbox.GetDamage();
     }
 
     public StatResource GetStatResource(Stat stat)

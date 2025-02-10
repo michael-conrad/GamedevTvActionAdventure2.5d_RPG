@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://dui1q6ovp3aqf"]
+[gd_scene load_steps=116 format=3 uid="uid://dui1q6ovp3aqf"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_abhp2"]
 [ext_resource type="Resource" uid="uid://cogj822y6kqe" path="res://Resources/enemy_health_stat.tres" id="2_8lvp4"]
@@ -109,6 +109,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="105_5n1jc"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_ne4y0"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyDeathState.cs" id="108_khtqs"]
+[ext_resource type="Script" path="res://Scripts/Characters/AttackHitBox.cs" id="110_wx1vq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e6a02"]
 animations = [{
@@ -580,6 +581,7 @@ shape = SubResource("CylinderShape3D_o5uy1")
 [node name="HitBox" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("110_wx1vq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 shape = SubResource("BoxShape3D_sil3t")
