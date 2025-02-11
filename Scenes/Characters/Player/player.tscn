@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=93 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
 [ext_resource type="Texture2D" uid="uid://crclm0o8w7qjy" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_djdun"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://7xuemwpt088y" path="res://Assets/Sprites/Characters/Player/Dying/Dying_001.png" id="3_qv18q"]
 [ext_resource type="Resource" uid="uid://bolacv87yi15i" path="res://Resources/player_strength_stat.tres" id="3_srimo"]
 [ext_resource type="Texture2D" uid="uid://0fwmagkqoxnv" path="res://Assets/Sprites/Characters/Player/Dying/Dying_002.png" id="4_edg3k"]
+[ext_resource type="Shader" path="res://Shaders/character_hurt.gdshader" id="4_fc0ck"]
 [ext_resource type="Texture2D" uid="uid://3u8b12u02qhg" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_002.png" id="4_vtird"]
 [ext_resource type="Texture2D" uid="uid://bckfsi17vlooo" path="res://Assets/Sprites/Characters/Player/Dying/Dying_003.png" id="5_5v5rv"]
 [ext_resource type="Texture2D" uid="uid://bj42b7orel7sc" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_003.png" id="5_yppmo"]
@@ -91,6 +92,13 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p4emw"]
 radius = 0.3
 height = 1.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_if6q2"]
+render_priority = 1
+shader = ExtResource("4_fc0ck")
+shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 0.8, 0.8, 1)
+shader_parameter/tex = ExtResource("3_k0e6w")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_chftp"]
 animations = [{
@@ -283,7 +291,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 24.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -367,6 +375,7 @@ StateMachine = NodePath("StateMachine")
 shape = SubResource("CapsuleShape3D_p4emw")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+material_overlay = SubResource("ShaderMaterial_if6q2")
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_chftp")
 animation = &"Idle"

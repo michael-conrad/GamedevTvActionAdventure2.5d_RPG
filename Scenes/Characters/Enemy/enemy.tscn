@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://dui1q6ovp3aqf"]
+[gd_scene load_steps=118 format=3 uid="uid://dui1q6ovp3aqf"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_abhp2"]
 [ext_resource type="Resource" uid="uid://cogj822y6kqe" path="res://Resources/enemy_health_stat.tres" id="2_8lvp4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2q4doabiricl" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_001.png" id="3_oosc5"]
 [ext_resource type="Resource" uid="uid://qsd6bqmxsr2a" path="res://Resources/enemy_strength_stat.tres" id="3_r7kr3"]
 [ext_resource type="Texture2D" uid="uid://bmxtjsm5ioll6" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_002.png" id="4_72voc"]
+[ext_resource type="Shader" path="res://Shaders/character_hurt.gdshader" id="4_dc0rw"]
 [ext_resource type="Texture2D" uid="uid://csqr0m6unuk64" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_003.png" id="5_wf3t6"]
 [ext_resource type="Texture2D" uid="uid://bcjy2eg1x6453" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_004.png" id="6_5nm3m"]
 [ext_resource type="Texture2D" uid="uid://ds16ckx3f3hd2" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_005.png" id="7_o70ho"]
@@ -110,6 +111,13 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_ne4y0"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyDeathState.cs" id="108_khtqs"]
 [ext_resource type="Script" path="res://Scripts/Characters/AttackHitBox.cs" id="110_wx1vq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13e1x"]
+render_priority = 1
+shader = ExtResource("4_dc0rw")
+shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 0.8, 0.8, 1)
+shader_parameter/tex = ExtResource("47_4vvsk")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e6a02"]
 animations = [{
@@ -520,6 +528,7 @@ ChaseArea = NodePath("ChaseArea")
 NaviAgent = NodePath("NavigationAgent3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+material_overlay = SubResource("ShaderMaterial_13e1x")
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_e6a02")
 animation = &"Idle"
