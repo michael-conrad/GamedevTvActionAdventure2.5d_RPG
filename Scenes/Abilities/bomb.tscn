@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://b77p4gvvvqqbl"]
 
 [ext_resource type="Texture2D" uid="uid://2otbrnrclhux" path="res://Assets/Sprites/Effects/Explosion/Bomb.png" id="1_n8c3h"]
-[ext_resource type="Script" path="res://Scripts/Abilities/Bomb.cs" id="1_prg64"]
+[ext_resource type="Script" uid="uid://te5htee5pgif" path="res://Scripts/Abilities/Bomb.cs" id="1_prg64"]
 [ext_resource type="Texture2D" uid="uid://ci5qbroi0wal2" path="res://Assets/Sprites/Effects/Explosion/1.png" id="2_hdxcx"]
 [ext_resource type="Texture2D" uid="uid://bagukxuy7qv8o" path="res://Assets/Sprites/Effects/Explosion/2.png" id="3_chuxf"]
 [ext_resource type="Texture2D" uid="uid://dscvoqspv5117" path="res://Assets/Sprites/Effects/Explosion/3.png" id="4_t7q8t"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ksf40h8v5bx8" path="res://Assets/Sprites/Effects/Explosion/8.png" id="9_ica0p"]
 [ext_resource type="Texture2D" uid="uid://c360vr2auid7t" path="res://Assets/Sprites/Effects/Explosion/9.png" id="10_jua7k"]
 [ext_resource type="Texture2D" uid="uid://d2vw81mn7urch" path="res://Assets/Sprites/Effects/Explosion/10.png" id="11_4l2xc"]
-[ext_resource type="Script" path="res://Scripts/Abilities/AbilityHitbox.cs" id="13_d0hd5"]
+[ext_resource type="Script" uid="uid://dbxy4l8d487ad" path="res://Scripts/Abilities/AbilityHitbox.cs" id="13_d0hd5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w6sve"]
 animations = [{
@@ -150,8 +150,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c4i01"]
 _data = {
-"Expand": SubResource("Animation_hhl3c"),
-"RESET": SubResource("Animation_uef8v")
+&"Expand": SubResource("Animation_hhl3c"),
+&"RESET": SubResource("Animation_uef8v")
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2idwg"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://c6bnaqqcaiboq"]
 
 [ext_resource type="Texture2D" uid="uid://dbb5r6j7pjkgr" path="res://Assets/Sprites/Effects/Lightning/1.png" id="1_1gsx3"]
-[ext_resource type="Script" path="res://Scripts/Abilities/Lightning.cs" id="1_7psal"]
+[ext_resource type="Script" uid="uid://taghegt7ctx2" path="res://Scripts/Abilities/Lightning.cs" id="1_7psal"]
 [ext_resource type="Texture2D" uid="uid://bc414a0xs77or" path="res://Assets/Sprites/Effects/Lightning/2.png" id="2_qc4sg"]
 [ext_resource type="Texture2D" uid="uid://binsyfk71u8jn" path="res://Assets/Sprites/Effects/Lightning/3.png" id="3_f8dxq"]
 [ext_resource type="Texture2D" uid="uid://1234s5d85xp6" path="res://Assets/Sprites/Effects/Lightning/4.png" id="4_nmcmx"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://7w4w0qetg6qt" path="res://Assets/Sprites/Effects/Lightning/10.png" id="10_hreb0"]
 [ext_resource type="Texture2D" uid="uid://dok8m0un6mqaw" path="res://Assets/Sprites/Effects/Lightning/11.png" id="11_qkwfm"]
 [ext_resource type="Texture2D" uid="uid://5oow453egcrn" path="res://Assets/Sprites/Effects/Lightning/12.png" id="12_lbx4s"]
-[ext_resource type="Script" path="res://Scripts/Abilities/AbilityHitbox.cs" id="14_l3kax"]
+[ext_resource type="Script" uid="uid://dbxy4l8d487ad" path="res://Scripts/Abilities/AbilityHitbox.cs" id="14_l3kax"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0vtdo"]
 animations = [{
