@@ -177,7 +177,7 @@ frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_c4i01")
+&"": SubResource("AnimationLibrary_c4i01")
 }
 
 [node name="Hitbox" type="Area3D" parent="."]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=91 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=93 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" uid="uid://cx2wfdrqni41s" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
 [ext_resource type="Texture2D" uid="uid://crclm0o8w7qjy" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_djdun"]
+[ext_resource type="Resource" uid="uid://bl5sjifbv0mk5" path="res://Resources/player_health_stat.tres" id="2_si63r"]
 [ext_resource type="Texture2D" uid="uid://o4dspckoej4s" path="res://Assets/Sprites/Characters/Player/Dying/Dying_000.png" id="2_vkpkh"]
+[ext_resource type="Resource" uid="uid://bolacv87yi15i" path="res://Resources/player_strength_stat.tres" id="3_cmja1"]
 [ext_resource type="Texture2D" uid="uid://dxlnser676cqr" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_000.png" id="3_k0e6w"]
 [ext_resource type="Texture2D" uid="uid://7xuemwpt088y" path="res://Assets/Sprites/Characters/Player/Dying/Dying_001.png" id="3_qv18q"]
 [ext_resource type="Texture2D" uid="uid://0fwmagkqoxnv" path="res://Assets/Sprites/Characters/Player/Dying/Dying_002.png" id="4_edg3k"]
@@ -359,11 +361,14 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_ti3vj"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CharacterSprite", "StateMachine")]
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 1.55334
 script = ExtResource("1_fvqxw")
+Stats = Array[Object]([ExtResource("2_si63r"), ExtResource("3_cmja1")])
+CharacterSprite = NodePath("AnimatedSprite3D")
+StateMachine = NodePath("StateMachine")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_p4emw")
