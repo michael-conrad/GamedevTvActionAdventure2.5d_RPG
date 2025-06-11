@@ -112,7 +112,7 @@
 [ext_resource type="Script" uid="uid://j6ybhshjgo51" path="res://Scripts/Characters/Enemy/EnemyDeathState.cs" id="108_khtqs"]
 [ext_resource type="Script" uid="uid://drlj1gcmogxai" path="res://Scripts/Characters/AttackHitBox.cs" id="110_wx1vq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_13e1x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qydl1"]
 render_priority = 1
 shader = ExtResource("4_dc0rw")
 shader_parameter/active = false
@@ -528,7 +528,7 @@ ChaseArea = NodePath("ChaseArea")
 NaviAgent = NodePath("NavigationAgent3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-material_overlay = SubResource("ShaderMaterial_13e1x")
+material_overlay = SubResource("ShaderMaterial_qydl1")
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_e6a02")
 animation = &"Idle"

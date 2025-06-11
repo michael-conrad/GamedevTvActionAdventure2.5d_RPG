@@ -93,7 +93,7 @@
 radius = 0.3
 height = 1.7
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_if6q2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_si63r"]
 render_priority = 1
 shader = ExtResource("4_fc0ck")
 shader_parameter/active = false
@@ -374,10 +374,10 @@ StateMachine = NodePath("StateMachine")
 shape = SubResource("CapsuleShape3D_p4emw")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-material_overlay = SubResource("ShaderMaterial_if6q2")
+material_overlay = SubResource("ShaderMaterial_si63r")
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Idle"
+animation = &"Attack1"
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_x37t5")]
 _currentState = NodePath("PlayerIdleState")
