@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://dui1q6ovp3aqf"]
+[gd_scene load_steps=119 format=3 uid="uid://dui1q6ovp3aqf"]
 
 [ext_resource type="Script" uid="uid://bc4oa8llxbtbf" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_abhp2"]
 [ext_resource type="Resource" uid="uid://cogj822y6kqe" path="res://Resources/enemy_health_stat.tres" id="2_8lvp4"]
@@ -107,12 +107,13 @@
 [ext_resource type="Script" uid="uid://cbcgtu63g8rgt" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="102_fmq08"]
 [ext_resource type="Script" uid="uid://2l5x76gp11f2" path="res://Scripts/Characters/Enemy/EnemyReturnState.cs" id="103_on363"]
 [ext_resource type="Script" uid="uid://ccqhjgn6j3c65" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="104_o2k8l"]
+[ext_resource type="Script" uid="uid://c8gwng3cvbo54" path="res://Scripts/Characters/Enemy/EnemyAnimatedSprite3d.cs" id="104_wfvcq"]
 [ext_resource type="Script" uid="uid://bcyinecva4ptt" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="105_5n1jc"]
 [ext_resource type="Script" uid="uid://crn8krcosx105" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_ne4y0"]
 [ext_resource type="Script" uid="uid://j6ybhshjgo51" path="res://Scripts/Characters/Enemy/EnemyDeathState.cs" id="108_khtqs"]
 [ext_resource type="Script" uid="uid://drlj1gcmogxai" path="res://Scripts/Characters/AttackHitBox.cs" id="110_wx1vq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qydl1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfvcq"]
 render_priority = 1
 shader = ExtResource("4_dc0rw")
 shader_parameter/active = false
@@ -528,10 +529,11 @@ ChaseArea = NodePath("ChaseArea")
 NaviAgent = NodePath("NavigationAgent3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-material_overlay = SubResource("ShaderMaterial_qydl1")
+material_override = SubResource("ShaderMaterial_wfvcq")
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_e6a02")
 animation = &"Idle"
+script = ExtResource("104_wfvcq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_rw63o")

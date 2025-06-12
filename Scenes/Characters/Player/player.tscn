@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://dc2f24h2ivhp0"]
+[gd_scene load_steps=94 format=3 uid="uid://dc2f24h2ivhp0"]
 
 [ext_resource type="Script" uid="uid://cx2wfdrqni41s" path="res://Scripts/Characters/Player/Player.cs" id="1_fvqxw"]
 [ext_resource type="Texture2D" uid="uid://crclm0o8w7qjy" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_djdun"]
@@ -82,6 +82,7 @@
 [ext_resource type="Texture2D" uid="uid://dxxfuxge6h8bp" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_004.png" id="75_ssny7"]
 [ext_resource type="Texture2D" uid="uid://dgrc8ah3jmfio" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_005.png" id="76_hj24q"]
 [ext_resource type="PackedScene" uid="uid://b15tct2altow7" path="res://Scenes/Characters/state_machine.tscn" id="77_x37t5"]
+[ext_resource type="Script" uid="uid://b07mfmkekypdw" path="res://Scripts/Characters/Player/PlayerAnimatedSprite3d.cs" id="79_si63r"]
 [ext_resource type="Script" uid="uid://betuf1ebovvaj" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="80_d55l3"]
 [ext_resource type="PackedScene" uid="uid://b77p4gvvvqqbl" path="res://Scenes/Abilities/bomb.tscn" id="81_400mr"]
 [ext_resource type="Script" uid="uid://cprc5q1d2eoht" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="81_gi2rf"]
@@ -93,7 +94,7 @@
 radius = 0.3
 height = 1.7
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_si63r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmja1"]
 render_priority = 1
 shader = ExtResource("4_fc0ck")
 shader_parameter/active = false
@@ -374,10 +375,11 @@ StateMachine = NodePath("StateMachine")
 shape = SubResource("CapsuleShape3D_p4emw")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-material_overlay = SubResource("ShaderMaterial_si63r")
+material_override = SubResource("ShaderMaterial_cmja1")
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_chftp")
-animation = &"Attack1"
+animation = &"Idle"
+script = ExtResource("79_si63r")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_currentState", "_states") instance=ExtResource("77_x37t5")]
 _currentState = NodePath("PlayerIdleState")
