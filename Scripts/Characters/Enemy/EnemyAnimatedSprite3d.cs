@@ -1,7 +1,8 @@
 using Godot;
 
-namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
+namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 
+[Tool]
 public partial class EnemyAnimatedSprite3d : AnimatedSprite3D
 {
     private ShaderMaterial _shaderMaterial;

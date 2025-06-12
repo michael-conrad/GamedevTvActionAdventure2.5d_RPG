@@ -2,6 +2,7 @@ using Godot;
 
 namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
+[Tool]
 public partial class PlayerAnimatedSprite3d : AnimatedSprite3D
 {
     private ShaderMaterial _shaderMaterial;

@@ -1,6 +1,6 @@
 shader_type spatial;
 
-render_mode unshaded, cull_disabled, depth_draw_opaque, depth_prepass_alpha;
+render_mode unshaded, cull_disabled;
 
 uniform bool active = false;
 uniform vec4 flash_color: source_color = vec4(1.0, 0.8, 0.8, 1.0);
