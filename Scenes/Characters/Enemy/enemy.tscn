@@ -114,10 +114,10 @@
 [ext_resource type="Script" uid="uid://drlj1gcmogxai" path="res://Scripts/Characters/AttackHitBox.cs" id="110_wx1vq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfvcq"]
-render_priority = 1
+render_priority = 0
 shader = ExtResource("4_dc0rw")
 shader_parameter/active = false
-shader_parameter/flash_color = Color(1, 0.8, 0.8, 1)
+shader_parameter/flash_color = Color(1, 0.2, 0.2, 1)
 shader_parameter/tex = ExtResource("47_4vvsk")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e6a02"]

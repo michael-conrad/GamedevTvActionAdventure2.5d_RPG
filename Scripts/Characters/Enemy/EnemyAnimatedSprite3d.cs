@@ -5,18 +5,46 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 [Tool]
 public partial class EnemyAnimatedSprite3d : AnimatedSprite3D
 {
+    private bool _isConnected = false;
     private ShaderMaterial _shaderMaterial;
 
     public override void _Ready()
     {
         base._Ready();
+        ConnectSignals();
         _shaderMaterial = (ShaderMaterial)MaterialOverride;
+
     }
 
-    public override void _Process(double delta)
+    private void ConnectSignals()
     {
-        base._Process(delta);
+        if (_isConnected)
+        {
+            return;
+        }
+
+        _isConnected = true;
+        FrameChanged += HandleFrameChanged;
+    }
+
+    private void HandleFrameChanged()
+    {
         _shaderMaterial.SetShaderParameter("tex", SpriteFrames.GetFrameTexture(Animation, Frame));
-        // _shaderMaterial.SetShaderParameter("billboard_mode", Billboard);
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        DisconnectSignals();
+        base.Dispose(disposing);
+    }
+
+    private void DisconnectSignals()
+    {
+        if (!_isConnected)
+        {
+            return;
+        }
+
+        FrameChanged -= HandleFrameChanged;
     }
 }

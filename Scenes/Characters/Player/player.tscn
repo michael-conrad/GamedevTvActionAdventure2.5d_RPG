@@ -95,10 +95,10 @@ radius = 0.3
 height = 1.7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmja1"]
-render_priority = 1
+render_priority = 0
 shader = ExtResource("4_fc0ck")
 shader_parameter/active = false
-shader_parameter/flash_color = Color(1, 0.8, 0.8, 1)
+shader_parameter/flash_color = Color(1, 0.2, 0.3, 1)
 shader_parameter/tex = ExtResource("3_k0e6w")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_chftp"]
