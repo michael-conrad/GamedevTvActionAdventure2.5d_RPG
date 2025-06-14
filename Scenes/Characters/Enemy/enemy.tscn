@@ -114,6 +114,7 @@
 [ext_resource type="Script" uid="uid://drlj1gcmogxai" path="res://Scripts/Characters/AttackHitBox.cs" id="110_wx1vq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfvcq"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_dc0rw")
 shader_parameter/active = false
@@ -534,6 +535,10 @@ pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_e6a02")
 animation = &"Idle"
 script = ExtResource("104_wfvcq")
+
+[node name="Timer" type="Timer" parent="AnimatedSprite3D"]
+wait_time = 0.25
+one_shot = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_rw63o")

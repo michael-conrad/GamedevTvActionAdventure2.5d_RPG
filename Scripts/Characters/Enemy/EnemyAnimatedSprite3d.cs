@@ -5,15 +5,19 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Enemy;
 [Tool]
 public partial class EnemyAnimatedSprite3d : AnimatedSprite3D
 {
-    private bool _isConnected = false;
-    private ShaderMaterial _shaderMaterial;
+    private bool _isConnected;
+    private Timer _timer;
+    public ShaderMaterial MyShaderMaterial;
 
     public override void _Ready()
     {
         base._Ready();
+        _timer = GetNode<Timer>("Timer");
+        _timer.Autostart = false;
+        _timer.WaitTime = 0.25f;
+        _timer.OneShot = true;
+        MyShaderMaterial = (ShaderMaterial)MaterialOverride;
         ConnectSignals();
-        _shaderMaterial = (ShaderMaterial)MaterialOverride;
-
     }
 
     private void ConnectSignals()
@@ -25,11 +29,17 @@ public partial class EnemyAnimatedSprite3d : AnimatedSprite3D
 
         _isConnected = true;
         FrameChanged += HandleFrameChanged;
+        _timer.Timeout += OnTimerOnTimeout;
+    }
+
+    private void OnTimerOnTimeout()
+    {
+        MyShaderMaterial.SetShaderParameter("active", false);
     }
 
     private void HandleFrameChanged()
     {
-        _shaderMaterial.SetShaderParameter("tex", SpriteFrames.GetFrameTexture(Animation, Frame));
+        MyShaderMaterial.SetShaderParameter("tex", SpriteFrames.GetFrameTexture(Animation, Frame));
     }
 
     protected override void Dispose(bool disposing)
@@ -45,6 +55,7 @@ public partial class EnemyAnimatedSprite3d : AnimatedSprite3D
             return;
         }
 
+        _timer.Timeout -= OnTimerOnTimeout;
         FrameChanged -= HandleFrameChanged;
     }
 }

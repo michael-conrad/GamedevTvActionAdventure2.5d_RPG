@@ -6,7 +6,9 @@ namespace GamedevTvActionAdventure25d_RPG.Scripts.Characters.Player;
 
 public partial class Player : Character
 {
+    private Timer _flashTimer;
     private bool _isConnected = false;
+    private ShaderMaterial _myShaderMaterial;
 
     private void ConnectSignals()
     {
@@ -39,6 +41,8 @@ public partial class Player : Character
     public override void _Ready()
     {
         base._Ready();
+        _flashTimer = GetNode<Timer>("AnimatedSprite3D/Timer");
+        _myShaderMaterial = GetNode<PlayerAnimatedSprite3d>("AnimatedSprite3D").MyShaderMaterial;
         RayCast = GetNode<RayCast3D>("RayCast3D");
         StateMachine.SwitchState<PlayerIdleState>();
         ConnectSignals();
@@ -62,5 +66,12 @@ public partial class Player : Character
         RayCast.Position = LastFacing * RayDistance;
         RayCast.TargetPosition = new Vector3(0, -RayDepth, 0); // Relative to the RayCast3D Node's position!
         Flip();
+    }
+
+    protected override void HandleHurtBoxEnter(Area3D area)
+    {
+        base.HandleHurtBoxEnter(area);
+        _myShaderMaterial.SetShaderParameter("active", true);
+        _flashTimer.Start();
     }
 }
