@@ -15,4 +15,9 @@ public partial class AbilityHitbox : Area3D, IHitBox
 
         return ability.Damage;
     }
+
+    public bool CanStun()
+    {
+        return true;
+    }
 }

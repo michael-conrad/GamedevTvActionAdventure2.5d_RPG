@@ -42,10 +42,10 @@ public partial class EnemyAnimatedSprite3d : AnimatedSprite3D
         MyShaderMaterial.SetShaderParameter("tex", SpriteFrames.GetFrameTexture(Animation, Frame));
     }
 
-    protected override void Dispose(bool disposing)
+    public override void _ExitTree()
     {
         DisconnectSignals();
-        base.Dispose(disposing);
+        base._ExitTree();
     }
 
     private void DisconnectSignals()

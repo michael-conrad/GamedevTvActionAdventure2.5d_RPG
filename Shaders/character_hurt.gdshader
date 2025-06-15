@@ -17,5 +17,3 @@ void fragment() {
 		ALBEDO = vec3(color.r, color.g, color.b);
 	}
 }
-
-

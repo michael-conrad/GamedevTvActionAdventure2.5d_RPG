@@ -16,6 +16,7 @@ public abstract class GameConstants
         public const string Attack = "Attack";
         public const string Death = "Death";
         public const string Expand = "Expand";
+        public const string Stun = "Stun";
     }
 
     public abstract class Input

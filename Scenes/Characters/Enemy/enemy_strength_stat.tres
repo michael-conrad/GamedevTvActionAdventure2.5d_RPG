@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c34qix8hrc7p"]
+[gd_resource type="Resource" script_class="StatResource" load_steps=2 format=3 uid="uid://c34qix8hrc7p"]
 
 [ext_resource type="Script" uid="uid://1emsqmld588w" path="res://Scripts/Resources/StatResource.cs" id="1_kh68v"]
 

@@ -11,4 +11,9 @@ public partial class AttackHitBox : Area3D, IHitBox
         var strengthValue = GetOwnerOrNull<Character>().GetStatResource(Stat.Strength).StatValue;
         return strengthValue;
     }
+
+    public bool CanStun()
+    {
+        return false;
+    }
 }
