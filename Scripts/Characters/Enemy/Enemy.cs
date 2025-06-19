@@ -13,8 +13,8 @@ public partial class Enemy : Character
     public override void _Ready()
     {
         base._Ready();
-        _flashTimer = GetNode<Timer>("AnimatedSprite3D/Timer");
-        _myShaderMaterial = GetNode<EnemyAnimatedSprite3d>("AnimatedSprite3D").MyShaderMaterial;
+        _flashTimer = GetNode<Timer>("EnemyAnimatedSprite3d/Timer");
+        _myShaderMaterial = GetNode<EnemyAnimatedSprite3d>("EnemyAnimatedSprite3d").MyShaderMaterial;
         StateMachine.SwitchState<EnemyIdleState>();
         MyConnectSignals();
     }

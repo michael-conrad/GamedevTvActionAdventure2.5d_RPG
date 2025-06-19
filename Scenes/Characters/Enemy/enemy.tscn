@@ -525,19 +525,19 @@ collision_mask = 3
 floor_max_angle = 1.55334
 script = ExtResource("1_abhp2")
 Stats = Array[Object]([ExtResource("2_8lvp4"), ExtResource("3_r7kr3")])
-CharacterSprite = NodePath("AnimatedSprite3D")
+CharacterSprite = NodePath("EnemyAnimatedSprite3d")
 StateMachine = NodePath("StateMachine")
 ChaseArea = NodePath("ChaseArea")
 NaviAgent = NodePath("NavigationAgent3D")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="EnemyAnimatedSprite3d" type="AnimatedSprite3D" parent="."]
 material_override = SubResource("ShaderMaterial_wfvcq")
 pixel_size = 0.003
 sprite_frames = SubResource("SpriteFrames_e6a02")
 animation = &"Stun"
 script = ExtResource("104_wfvcq")
 
-[node name="Timer" type="Timer" parent="AnimatedSprite3D"]
+[node name="Timer" type="Timer" parent="EnemyAnimatedSprite3d"]
 wait_time = 0.25
 one_shot = true
 

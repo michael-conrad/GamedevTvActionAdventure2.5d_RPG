@@ -41,8 +41,8 @@ public partial class Player : Character
     public override void _Ready()
     {
         base._Ready();
-        _flashTimer = GetNode<Timer>("AnimatedSprite3D/Timer");
-        _myShaderMaterial = GetNode<PlayerAnimatedSprite3d>("AnimatedSprite3D").MyShaderMaterial;
+        _flashTimer = GetNode<Timer>("PlayerAnimatedSprite3d/Timer");
+        _myShaderMaterial = GetNode<PlayerAnimatedSprite3d>("PlayerAnimatedSprite3d").MyShaderMaterial;
         RayCast = GetNode<RayCast3D>("RayCast3D");
         StateMachine.SwitchState<PlayerIdleState>();
         ConnectSignals();
