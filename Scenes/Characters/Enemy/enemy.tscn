@@ -533,8 +533,9 @@ NaviAgent = NodePath("NavigationAgent3D")
 [node name="EnemyAnimatedSprite3d" type="AnimatedSprite3D" parent="."]
 material_override = SubResource("ShaderMaterial_wfvcq")
 pixel_size = 0.003
+alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_e6a02")
-animation = &"Stun"
+animation = &"Idle"
 script = ExtResource("104_wfvcq")
 
 [node name="Timer" type="Timer" parent="EnemyAnimatedSprite3d"]

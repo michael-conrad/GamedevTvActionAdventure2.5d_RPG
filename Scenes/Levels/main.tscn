@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bivnbgn86rjdl"]
+[gd_scene load_steps=24 format=3 uid="uid://bivnbgn86rjdl"]
 
 [ext_resource type="Script" uid="uid://cfnur7ny2e2ve" path="res://Scripts/Levels/Main.cs" id="1_w6kfe"]
 [ext_resource type="PackedScene" uid="uid://dc2f24h2ivhp0" path="res://Scenes/Characters/Player/player.tscn" id="2_vujc1"]
@@ -11,6 +11,17 @@
 [ext_resource type="PackedScene" uid="uid://dqgblagavui2s" path="res://Scenes/Reward/treasure_chest.tscn" id="9_a45rt"]
 [ext_resource type="Texture2D" uid="uid://crhf0jhjt7kdg" path="res://Assets/Sprites/UI/UI ElementUI 13.png" id="10_r1bnh"]
 [ext_resource type="Script" uid="uid://c1omsiwgjf80b" path="res://Scripts/Reward/RewardResource.cs" id="11_1ff5k"]
+[ext_resource type="PackedScene" uid="uid://c5168ciadgywu" path="res://Scenes/General/torch.tscn" id="12_asd15"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_asd15"]
+rayleigh_color = Color(0.260322, 0.000164679, 0.316321, 1)
+
+[sub_resource type="Sky" id="Sky_lv1w4"]
+sky_material = SubResource("PhysicalSkyMaterial_asd15")
+
+[sub_resource type="Environment" id="Environment_snpdt"]
+background_mode = 2
+sky = SubResource("Sky_lv1w4")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_a1cdn"]
 vertices = PackedVector3Array(13.75, 9.4, 8.5, 14.5, 9.4, 8.5, 14.75, 9.4, 7.5, 13.25, 9.4, 7.5, -7.5, 9.4, -39.5, 1.5, 9.4, 5.75, 2.75, 9.4, 5.75, 3, 9.4, 7.5, 4, 9.4, 7.75, 31, 9.4, 6.25, 31, 9.4, 8.5, 35.5, 9.4, 8.5, 35.5, 9.4, -39.5, -7.5, 9.4, 8.5, 1, 9.4, 8.5, 29.5, 9.4, 6, 29, 9.4, 7.5, 14.5, 9.4, 9.25, 13, 8.9, 9.5, 15.75, 5.4, 26.5, 15.75, 5.9, 14, 15.25, 5.9, 14, 15.3056, 5.4, 15.3889, 15, 8.9, 9.5, 13, 5.9, 14, 12.5, 5.9, 14, 12.5, 5.4, 26.5, 12.9444, 5.4, 15.3889, 12.5, 5.4, 15.3889, -7.5, 5.4, 26.5, -6.75, 5.4, 26.5, -7, 5.4, 9.5, -7.5, 5.4, 9.5, 12, 5.4, 14, 11.75, 5.4, 13, -5, 5.4, 9.5, -5, 5.4, 26.5, 11.75, 5.4, 9.5, 16.25, 5.4, 14, 31.75, 5.4, 26.5, 33, 5.4, 26, 33, 5.4, 9.5, 16.25, 5.4, 9.5, 35, 5.4, 9.5, 35, 5.4, 26.5, 35.5, 5.4, 26.5, 35.5, 5.4, 9.5, 32.25, 5.4, 26.75, 32, 4.9, 27.75, 33, 5.4, 29.25, 27.75, 1.4, 30.5, 27.75, 1.9, 29.5, 23, 1.4, 27.5, 23, 1.4, 39, 26.5625, 1.4, 29, 22, 1.4, 39.5, 22, 1.4, 41.5, 26.8571, 1.4, 27.6071, 33, 1.4, 41.5, 33.25, 1.4, 30.5, -7.5, 1.4, 27.5, -7.5, 1.4, 41.5, -7, 1.4, 41.5, -6.75, 1.4, 38.75, -6.75, 1.4, 30.25, -7, 1.4, 27.5, 21.25, 1.4, 39.25, -5, 1.4, 41.5, 21, 1.4, 38.25, 21, 1.4, 27.5, -5, 1.4, 27.5, 35, 1.4, 27.5, 35, 1.4, 41.5, 35.5, 1.4, 41.5, 35.5, 1.4, 27.5)
@@ -61,11 +72,18 @@ TargetStat = 1
 TargetValue = 4.0
 
 [node name="Main" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1328, -4.99153, -0.601326)
 script = ExtResource("1_w6kfe")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_snpdt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.996132, -0.00692624, 0.0876014, 0.0270244, -0.972723, 0.23039, 0.0836161, 0.231867, 0.969147, -0.545065, 5.36142, 45.8994)
+light_energy = 0.2
+shadow_enabled = true
+
 [node name="Player" parent="." instance=ExtResource("2_vujc1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1245, 6.43067, 41.0777)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.415359, 6.26537, 22.7584)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -128,3 +146,6 @@ _target = NodePath("../Player")
 [node name="TreasureChest" parent="." instance=ExtResource("9_a45rt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8672, 1.52553, 30.6013)
 _reward = SubResource("Resource_n6y0k")
+
+[node name="Torch" parent="." instance=ExtResource("12_asd15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.08592, 9.00417)

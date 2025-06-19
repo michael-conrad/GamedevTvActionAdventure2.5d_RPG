@@ -16,6 +16,7 @@ script = ExtResource("1_vd4lq")
 
 [node name="ChestClosed" type="Sprite3D" parent="."]
 pixel_size = 0.05
+alpha_cut = 2
 texture_filter = 4
 texture = ExtResource("1_b3k6c")
 region_enabled = true
@@ -23,6 +24,7 @@ region_rect = Rect2(16, 7, 16, 23)
 
 [node name="ChestOpen" type="Sprite3D" parent="."]
 pixel_size = 0.05
+alpha_cut = 2
 texture_filter = 4
 texture = ExtResource("1_b3k6c")
 region_enabled = true
