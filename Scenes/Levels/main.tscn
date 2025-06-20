@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bivnbgn86rjdl"]
+[gd_scene load_steps=25 format=3 uid="uid://bivnbgn86rjdl"]
 
 [ext_resource type="Script" uid="uid://cfnur7ny2e2ve" path="res://Scripts/Levels/Main.cs" id="1_w6kfe"]
 [ext_resource type="PackedScene" uid="uid://dc2f24h2ivhp0" path="res://Scenes/Characters/Player/player.tscn" id="2_vujc1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://crhf0jhjt7kdg" path="res://Assets/Sprites/UI/UI ElementUI 13.png" id="10_r1bnh"]
 [ext_resource type="Script" uid="uid://c1omsiwgjf80b" path="res://Scripts/Reward/RewardResource.cs" id="11_1ff5k"]
 [ext_resource type="PackedScene" uid="uid://c5168ciadgywu" path="res://Scenes/General/torch.tscn" id="12_asd15"]
+[ext_resource type="PackedScene" uid="uid://ca8puif2bufav" path="res://Scenes/General/box_large.tscn" id="13_lv1w4"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_asd15"]
 rayleigh_color = Color(0.260322, 0.000164679, 0.316321, 1)
@@ -78,12 +79,12 @@ script = ExtResource("1_w6kfe")
 environment = SubResource("Environment_snpdt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.996132, -0.00692624, 0.0876014, 0.0270244, -0.972723, 0.23039, 0.0836161, 0.231867, 0.969147, -0.545065, 5.36142, 45.8994)
+transform = Transform3D(0.998467, -0.054898, 0.00701624, 0.0518153, 0.9718, 0.230042, -0.0194472, -0.229326, 0.973155, 3.66579, 8.52788, 32.4149)
 light_energy = 0.2
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_vujc1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.415359, 6.26537, 22.7584)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.415359, 5.94875, 12.9883)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -149,3 +150,6 @@ _reward = SubResource("Resource_n6y0k")
 
 [node name="Torch" parent="." instance=ExtResource("12_asd15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.08592, 9.00417)
+
+[node name="BoxLarge" parent="." instance=ExtResource("13_lv1w4")]
+transform = Transform3D(0.951417, 0, -0.307905, 0, 1, 0, 0.307905, 0, 0.951417, 3.33362, 5.39883, 12.9053)

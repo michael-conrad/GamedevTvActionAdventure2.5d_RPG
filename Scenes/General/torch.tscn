@@ -33,6 +33,7 @@ radius = 0.1
 height = 0.2
 
 [node name="Torch" type="Node3D"]
+process_mode = 3
 
 [node name="torch_mounted_gltf" parent="." instance=ExtResource("1_ymcw7")]
 

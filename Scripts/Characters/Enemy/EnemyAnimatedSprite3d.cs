@@ -55,6 +55,7 @@ public partial class EnemyAnimatedSprite3d : AnimatedSprite3D
             return;
         }
 
+        _isConnected = false;
         _timer.Timeout -= OnTimerOnTimeout;
         FrameChanged -= HandleFrameChanged;
     }

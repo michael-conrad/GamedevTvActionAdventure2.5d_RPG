@@ -379,6 +379,7 @@ shape = SubResource("CapsuleShape3D_p4emw")
 [node name="PlayerAnimatedSprite3d" type="AnimatedSprite3D" parent="."]
 material_override = SubResource("ShaderMaterial_cmja1")
 pixel_size = 0.003
+shaded = true
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_chftp")
 animation = &"Idle"
