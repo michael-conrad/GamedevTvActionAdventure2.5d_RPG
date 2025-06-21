@@ -99,13 +99,13 @@ public abstract partial class Character : CharacterBody3D
     {
         if (Direction.X < 0 || Velocity.X < 0)
         {
-            CharacterSprite.FlipH = true;
+            CharacterSprite.FlipH = false;
         }
         else
         {
             if (Direction.X > 0 || Velocity.X > 0)
             {
-                CharacterSprite.FlipH = false;
+                CharacterSprite.FlipH = true;
             }
         }
     }

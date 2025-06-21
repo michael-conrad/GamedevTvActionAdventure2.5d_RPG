@@ -79,7 +79,7 @@ script = ExtResource("1_w6kfe")
 environment = SubResource("Environment_snpdt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.998467, -0.054898, 0.00701624, 0.0518153, 0.9718, 0.230042, -0.0194472, -0.229326, 0.973155, 3.66579, 8.52788, 32.4149)
+transform = Transform3D(0.984778, -0.148398, 0.0905024, -0.054878, 0.228596, 0.971973, -0.164928, -0.962144, 0.216972, 1.09646, 14.6121, 34.733)
 light_energy = 0.2
 shadow_enabled = true
 
@@ -152,4 +152,4 @@ _reward = SubResource("Resource_n6y0k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.08592, 9.00417)
 
 [node name="BoxLarge" parent="." instance=ExtResource("13_lv1w4")]
-transform = Transform3D(0.951417, 0, -0.307905, 0, 1, 0, 0.307905, 0, 0.951417, 3.33362, 5.39883, 12.9053)
+transform = Transform3D(0.951417, 0, -0.307905, 0, 1, 0, 0.307905, 0, 0.951417, 3.33362, 5.11837, 13.2992)

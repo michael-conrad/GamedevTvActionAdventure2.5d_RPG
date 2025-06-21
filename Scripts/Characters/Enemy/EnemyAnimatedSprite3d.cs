@@ -16,7 +16,8 @@ public partial class EnemyAnimatedSprite3d : AnimatedSprite3D
         _timer.Autostart = false;
         _timer.WaitTime = 0.25f;
         _timer.OneShot = true;
-        MyShaderMaterial = (ShaderMaterial)MaterialOverride;
+        MyShaderMaterial = (ShaderMaterial)MaterialOverlay;
+        MyShaderMaterial.SetShaderParameter("tex", "");
         ConnectSignals();
     }
 

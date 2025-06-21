@@ -7,7 +7,7 @@ public partial class PlayerAnimatedSprite3d : AnimatedSprite3D
 {
     private bool _isConnected = false;
     private Timer _timer;
-    public ShaderMaterial MyShaderMaterial;
+    public ShaderMaterial ShaderMaterialOverlay;
 
     public override void _Ready()
     {
@@ -16,7 +16,8 @@ public partial class PlayerAnimatedSprite3d : AnimatedSprite3D
         _timer.Autostart = false;
         _timer.WaitTime = 0.25f;
         _timer.OneShot = true;
-        MyShaderMaterial = (ShaderMaterial)MaterialOverride;
+        ShaderMaterialOverlay = (ShaderMaterial)MaterialOverlay;
+        ShaderMaterialOverlay.SetShaderParameter("tex", "");
         ConnectSignals();
     }
 
@@ -34,12 +35,12 @@ public partial class PlayerAnimatedSprite3d : AnimatedSprite3D
 
     private void OnTimerOnTimeout()
     {
-        MyShaderMaterial.SetShaderParameter("active", false);
+        ShaderMaterialOverlay.SetShaderParameter("active", false);
     }
 
     private void HandleFrameChanged()
     {
-        MyShaderMaterial.SetShaderParameter("tex", SpriteFrames.GetFrameTexture(Animation, Frame));
+        ShaderMaterialOverlay.SetShaderParameter("tex", SpriteFrames.GetFrameTexture(Animation, Frame));
     }
 
     public override void _ExitTree()

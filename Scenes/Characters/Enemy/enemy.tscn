@@ -114,13 +114,13 @@
 [ext_resource type="Script" uid="uid://drlj1gcmogxai" path="res://Scripts/Characters/AttackHitBox.cs" id="110_wx1vq"]
 [ext_resource type="Script" uid="uid://wbpiga22pexw" path="res://Scripts/Characters/Enemy/EnemyStunState.cs" id="112_e1tsi"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfvcq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1tsi"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_dc0rw")
 shader_parameter/active = false
 shader_parameter/flash_color = Color(1, 0.2, 0.2, 1)
-shader_parameter/tex = ExtResource("47_4vvsk")
+shader_parameter/tex = ExtResource("49_biutg")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e6a02"]
 animations = [{
@@ -531,11 +531,16 @@ ChaseArea = NodePath("ChaseArea")
 NaviAgent = NodePath("NavigationAgent3D")
 
 [node name="EnemyAnimatedSprite3d" type="AnimatedSprite3D" parent="."]
-material_override = SubResource("ShaderMaterial_wfvcq")
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_e1tsi")
+cast_shadow = 2
 pixel_size = 0.003
+double_sided = false
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_e6a02")
 animation = &"Idle"
+frame = 2
+frame_progress = 0.117569
 script = ExtResource("104_wfvcq")
 
 [node name="Timer" type="Timer" parent="EnemyAnimatedSprite3d"]

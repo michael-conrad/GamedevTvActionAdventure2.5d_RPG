@@ -42,7 +42,7 @@ public partial class Player : Character
     {
         base._Ready();
         _flashTimer = GetNode<Timer>("PlayerAnimatedSprite3d/Timer");
-        _myShaderMaterial = GetNode<PlayerAnimatedSprite3d>("PlayerAnimatedSprite3d").MyShaderMaterial;
+        _myShaderMaterial = GetNode<PlayerAnimatedSprite3d>("PlayerAnimatedSprite3d").ShaderMaterialOverlay;
         RayCast = GetNode<RayCast3D>("RayCast3D");
         StateMachine.SwitchState<PlayerIdleState>();
         ConnectSignals();

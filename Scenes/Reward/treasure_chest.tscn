@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqgblagavui2s"]
+[gd_scene load_steps=8 format=3 uid="uid://dqgblagavui2s"]
 
 [ext_resource type="Texture2D" uid="uid://d1k18j12gcfhi" path="res://Assets/Sprites/General/16x16.png" id="1_b3k6c"]
 [ext_resource type="Script" uid="uid://cpwmlxatvss6v" path="res://Scripts/Reward/TreasureChest.cs" id="1_vd4lq"]
 [ext_resource type="Texture2D" uid="uid://bcu2oj1hq82ax" path="res://Assets/Sprites/Gamepad/xbox_button_color_b_outline.png" id="2_nrfj1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tg4ei"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qq3u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bn5bf"]
 size = Vector3(0.7, 0.7, 0.7)
@@ -15,6 +19,7 @@ radius = 1.0
 script = ExtResource("1_vd4lq")
 
 [node name="ChestClosed" type="Sprite3D" parent="."]
+material_overlay = SubResource("ShaderMaterial_tg4ei")
 pixel_size = 0.05
 alpha_cut = 2
 texture_filter = 4
@@ -23,6 +28,7 @@ region_enabled = true
 region_rect = Rect2(16, 7, 16, 23)
 
 [node name="ChestOpen" type="Sprite3D" parent="."]
+material_overlay = SubResource("ShaderMaterial_3qq3u")
 pixel_size = 0.05
 alpha_cut = 2
 texture_filter = 4
