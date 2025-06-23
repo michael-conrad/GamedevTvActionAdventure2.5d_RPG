@@ -100,7 +100,7 @@ render_priority = 0
 shader = ExtResource("4_fc0ck")
 shader_parameter/active = false
 shader_parameter/flash_color = Color(1, 0.2, 0.2, 1)
-shader_parameter/tex = ExtResource("11_g14qb")
+shader_parameter/tex = ExtResource("15_io2hr")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_chftp"]
 animations = [{
@@ -385,8 +385,8 @@ double_sided = false
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_chftp")
 animation = &"Idle"
-frame = 9
-frame_progress = 0.929479
+frame = 13
+frame_progress = 0.660237
 script = ExtResource("79_si63r")
 
 [node name="Timer" type="Timer" parent="PlayerAnimatedSprite3d"]
