@@ -120,7 +120,7 @@ render_priority = 0
 shader = ExtResource("4_dc0rw")
 shader_parameter/active = false
 shader_parameter/flash_color = Color(1, 0.2, 0.2, 1)
-shader_parameter/tex = ExtResource("49_biutg")
+shader_parameter/tex = ExtResource("47_4vvsk")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e6a02"]
 animations = [{
@@ -539,8 +539,6 @@ double_sided = false
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_e6a02")
 animation = &"Idle"
-frame = 2
-frame_progress = 0.117569
 script = ExtResource("104_wfvcq")
 
 [node name="Timer" type="Timer" parent="EnemyAnimatedSprite3d"]

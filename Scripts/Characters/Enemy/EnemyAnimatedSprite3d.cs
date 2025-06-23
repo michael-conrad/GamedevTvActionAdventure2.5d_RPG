@@ -17,8 +17,8 @@ public partial class EnemyAnimatedSprite3d : AnimatedSprite3D
         _timer.WaitTime = 0.25f;
         _timer.OneShot = true;
         MyShaderMaterial = (ShaderMaterial)MaterialOverlay;
-        MyShaderMaterial.SetShaderParameter("tex", "");
         ConnectSignals();
+        HandleFrameChanged(); //initialize tex with current frame. fixes editor display.
     }
 
     private void ConnectSignals()
